@@ -12,7 +12,7 @@
     </title>
     <meta name="csrf_token" content="{{  csrf_token() }}" id="csrf_token">
     <meta name="auth" content="{{  Auth::check() }}" id="auth">
-    <link rel="stylesheet" type="text/css" href="{{  mix('/css/orchid.css','vendor/orchid') }}">
+    <link rel="stylesheet" type="text/css" href="{{  asset('vendor/orchid/css/orchid.css') }}">
 
     @stack('head')
 
