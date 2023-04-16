@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Auth;
 use Orchid\Platform\Models\User as Authenticatable;
 
 class User extends Authenticatable
@@ -63,4 +64,18 @@ class User extends Authenticatable
         'updated_at',
         'created_at',
     ];
+
+    /**
+     * check if user is admin
+     */
+
+     public function isAdmin()
+     {
+        if(Auth::user()->is_admin)
+        {
+            return true;
+        }
+
+        return false;
+     }
 }
