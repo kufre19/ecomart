@@ -43,7 +43,7 @@ use Tabuna\Breadcrumbs\Trail;
 |
 */
 
-Route::group(["domain" => env("SUB_DOMAIN"),"middleware"=>["admin_auth"]], function () {
+// Route::group(["prefix" => env("SUB_DOMAIN"),"middleware"=>["admin_auth"]], function () {
     Route::get("test", function () {
         return "sub domain";
     });
@@ -135,7 +135,7 @@ Route::group(["domain" => env("SUB_DOMAIN"),"middleware"=>["admin_auth"]], funct
 
     //Route::screen('idea', 'Idea::class','platform.screens.idea');
 
-});
+// });
 
 
     /*
