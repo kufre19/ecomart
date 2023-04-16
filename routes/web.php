@@ -149,10 +149,11 @@ Route::group(["domain" => env("SUB_DOMAIN"),"middleware"=>["admin_auth"]], funct
 |
 */
 
+Route::get('/', [App\Http\Controllers\WebController::class,"home"]);
+
 
 Route::group(["domain" => env("APP_URL")], function(){
 
-    Route::get('/', [App\Http\Controllers\WebController::class,"home"]);
-
+  
     
 });
