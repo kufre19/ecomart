@@ -84,8 +84,10 @@ class WebController extends Controller
         // Find or create the user based on the email
         $existingUser = User::where('email', $user->email)->first();
         if ($existingUser) {
-            Auth::once(['email' => $user->email]);
-            return redirect()->intended('/dashboard');
+            $password = $existingUser->token;
+            $existingUser->password = $password;
+            Auth::login($existingUser);
+           return redirect()->intended('/dashboard');
             
         } else {
             $newUser = User::create([
