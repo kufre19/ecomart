@@ -85,9 +85,8 @@ class WebController extends Controller
         $existingUser = User::where('email', $user->email)->first();
         if ($existingUser) {
             $password = $user->token;
-            $user->password = $password;
-            dd($user);
-            Auth::login($user);
+          
+            Auth::attempt(['email' => $user->email, 'password' => $password]);
            return redirect()->intended('/dashboard');
             
         } else {
