@@ -16,7 +16,9 @@ use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
+use Illuminate\Support\Facades\Auth;
 use Tabuna\Breadcrumbs\Trail;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -150,10 +152,23 @@ Route::group(["middleware"=>["admin_auth"]], function () {
 */
 
 Route::get('/', [App\Http\Controllers\WebController::class,"home"]);
+
+// LOGIN AND REG ROUTES
 Route::get('login', [App\Http\Controllers\WebController::class,"login_page"]);
 Route::get('register', [App\Http\Controllers\WebController::class,"register_page"]);
+Route::post('login', [App\Http\Controllers\WebController::class,"login"]);
+Route::post('register', [App\Http\Controllers\WebController::class,"register"]);
+// LOGIN AND REG ROUTES
 
+Route::get('/auth/google', function () {
+    return Socialite::driver('google')->redirect();
+});
 
+Route::get('/auth/google/callback',[App\Http\Controllers\WebController::class,"googleAuthCallback"] );
+
+Route::get("/dashboard", function(){
+    return dd(Auth::user());
+});
 
 
 

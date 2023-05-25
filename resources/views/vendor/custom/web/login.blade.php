@@ -14,7 +14,7 @@
         </nav><!-- End .breadcrumb-nav -->
 
         <div class="login-page bg-image pt-8 pb-8 pt-md-12 pb-md-12 pt-lg-17 pb-lg-17"
-            style="background-image: url('assets/images/backgrounds/login-bg.jpg')">
+            style="background-image: url({{ asset('custom/assets/images/backgrounds/login-bg.jpg') }})">
             <div class="container">
                 <div class="form-box">
                     <div class="form-tab">
@@ -30,7 +30,10 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane fade" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
-                                <form method="POST" action="{{url("login")}}">
+                                {{-- LOGIN FORM START --}}
+
+                                <form method="POST" action="{{ url('login') }}">
+                                    @csrf
 
                                     <div class="form-group">
                                         <label for="login-email">Email address *</label>
@@ -59,6 +62,8 @@
                                         <a href="#" class="forgot-link">Forgot Your Password?</a>
                                     </div><!-- End .form-footer -->
                                 </form>
+                                {{-- LOGIN FORM ENDS --}}
+
                                 <div class="form-choice">
                                     <p class="text-center">or sign in with</p>
                                     <div class="row">
@@ -79,8 +84,10 @@
                             </div><!-- .End .tab-pane -->
                             <div class="tab-pane fade show active" id="register-2" role="tabpanel"
                                 aria-labelledby="register-tab-2">
-                                <form method="POST" id="registration-form"
-                                    onsubmit="submitForm(event, 'https://backoffice.ecomart.ng/api/user/register')">
+
+                                {{-- REGISTER FORM START --}}
+                                <form method="POST" action="{{ url('register') }}">
+                                    @csrf
                                     <div class="form-group">
                                         <label for="name">Your username*</label>
                                         <input type="text" class="form-control" id="name" name="name" required>
@@ -92,8 +99,7 @@
 
                                     <div class="form-group">
                                         <label for="password">Password *</label>
-                                        <input type="password" class="form-control" id="password" name="password"
-                                            required>
+                                        <input type="password" class="form-control" id="password" name="password" required>
                                     </div><!-- End .form-group -->
                                     <div class="form-group">
                                         <label for="password_confirmation">Confirm Password *</label>
@@ -101,52 +107,7 @@
                                             name="password_confirmation" required>
                                     </div><!-- End .form-group -->
                                     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                                    <!-- <script>
-                                        $(document).ready(function() {
-                                                    //handle registration form submit
-                                                    $('#registration-form').on('submit', function(event) {
-                                                        event.preventDefault();
-                                                        var registrationData = {
-                                                            'name': $('#name').val(),
-                                                            'email': $('#email').val(),
-                                                            'password': $('#password').val(),
-                                                            'password-confirmation': $('#confirm-password').val(),
-                                                        };
-                                                        $.ajax({
-                                                            url: 'https://backoffice.ecomart.ng/api/user/register',
-                                                            method: 'POST',
-                                                            data: registrationData,
-                                                            success: function(response) {
-                                                                alert('Registration successful');
-                                                            },
-                                                            error: function(xhr, status, error) {
-                                                                alert('Registration failed:' + error);
-                                                            }
-                                                        });
-                                                    });
 
-                                                    //handle login form submit
-                                                    $('#login-form').on('submit', function(event) {
-                                                                event.preventDefault();
-                                                                var loginData = {
-                                                                    'email': $('#email').val(),
-                                                                    'password': $('#password').val()
-                                                                }
-                                                                $.ajax({
-                                                                    url: 'https://backoffice.ecomart.ng/api/user/login',
-                                                                    method: 'POST',
-                                                                    data: loginData,
-                                                                    success: function(response) {
-                                                                        alert('Login successful');
-                                                                        //save access token for subsequent requests
-                                                                        localStorage.setItem('access_token', response, access_token);
-                                                                    },
-                                                                    error: function(xhr, status, error) {
-                                                                        alert('Login Failed' + error)
-                                                                    }
-                                                                })
-                                                            }
-                                    </script> -->
                                     <div class="form-footer">
                                         <button type="submit" class="btn btn-outline-primary-2">
                                             <span>SIGN UP</span>
@@ -161,6 +122,8 @@
                                         </div><!-- End .custom-checkbox -->
                                     </div><!-- End .form-footer -->
                                 </form>
+                                {{-- REGISTER FORM END --}}
+
                                 <div class="form-choice">
                                     <p class="text-center">or sign in with</p>
                                     <div class="row">
