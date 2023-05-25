@@ -79,19 +79,23 @@ class WebController extends Controller
     public function googleAuthCallback(Request $request)
     {
         $user = Socialite::driver('google')->user();
-        dd($user);
+        
 
         // Find or create the user based on the email
         $existingUser = User::where('email', $user->email)->first();
         if ($existingUser) {
             Auth::login($existingUser);
+           return redirect()->intended('/dashboard');
+            
         } else {
             $newUser = User::create([
                 'name' => $user->name,
                 'email' => $user->email,
-                'password' => Hash::make('temporary-password'), // Set a temporary password or generate a random password
+                'password' => Hash::make($user->token), // Set a temporary password or generate a random password
             ]);
             Auth::login($newUser);
+           return redirect()->intended('/dashboard');
+
         }
 
     }
