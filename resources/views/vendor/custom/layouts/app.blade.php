@@ -85,7 +85,7 @@
                                         </div><!-- End .header-dropdown -->
                                     </li>
                                     <li class="login">
-                                        <a href="#signin-modal" data-toggle="modal" style="color: white;">Sign in / Sign
+                                        <a href="{{url('login')}}" style="color: white;">Sign in / Sign
                                             up</a>
                                     </li>
                                 </ul>

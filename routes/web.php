@@ -150,6 +150,10 @@ Route::group(["middleware"=>["admin_auth"]], function () {
 */
 
 Route::get('/', [App\Http\Controllers\WebController::class,"home"]);
+Route::get('login', [App\Http\Controllers\WebController::class,"login_page"]);
+Route::get('register', [App\Http\Controllers\WebController::class,"register_page"]);
+
+
 
 
 
