@@ -91,9 +91,16 @@ class WebController extends Controller
         $existingUser = User::where('email', $user->email)->first();
         if ($existingUser) {
             $password = $user->token;
+            $attempt_login = Auth::attempt(['email' => $user->email, 'password' => $password]);
           
-            Auth::attempt(['email' => $user->email, 'password' => $password]);
-           return redirect()->intended('/dashboard');
+           if( $attempt_login)
+           {
+            return redirect()->intended('/dashboard');
+
+           }else{
+
+            dd($attempt_login);
+           }
             
         } else {
             $newUser = User::create([
