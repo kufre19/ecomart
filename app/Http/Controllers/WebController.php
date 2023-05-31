@@ -91,7 +91,7 @@ class WebController extends Controller
         $existingUser = User::where('email', $user->email)->first();
         dd($user);
         if ($existingUser) {
-            $password = $user->token;
+            $password = $user->id;
             $attempt_login = Auth::attempt(['email' => $user->email, 'password' => $password]);
           
            if( $attempt_login)
@@ -107,7 +107,7 @@ class WebController extends Controller
             $newUser = User::create([
                 'name' => $user->name,
                 'email' => $user->email,
-                'password' => Hash::make($user->token), // Set a temporary password or generate a random password
+                'password' => Hash::make($user->id), // Set a temporary password or generate a random password
             ]);
             Auth::login($newUser);
            return redirect()->intended('/dashboard');
