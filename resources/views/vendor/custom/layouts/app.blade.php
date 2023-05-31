@@ -984,11 +984,12 @@
             if (response.status === 'connected') { // Logged into your webpage and Facebook.
                 console.log('testing api');
 
-                FB.api('/me', function(response) {
-                    console.log(response);
+                // FB.api('/me', function(response) {
+                //     console.log(response);
 
-                        console.log('Good to see you testing, ' + response.name + '.');
-                    });
+                //         console.log('Good to see you testing, ' + response.name + '.');
+                //     });
+                loginFBUser();
             } else { // Not logged into your webpage or we are unable to tell.
                 console.log('need tologin api');
 
