@@ -985,6 +985,8 @@
                 console.log('testing api');
 
                 FB.api('/me', function(response) {
+                    console.log(response);
+
                         console.log('Good to see you testing, ' + response.name + '.');
                     });
             } else { // Not logged into your webpage or we are unable to tell.
