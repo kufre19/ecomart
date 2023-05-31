@@ -980,22 +980,44 @@
         });
 
 
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                // The user is logged in and has authenticated your
+                // app, and response.authResponse supplies
+                // the user's ID, a valid access token, a signed
+                // request, and the time the access token 
+                // and signed request each expire.
+                var uid = response.authResponse.userID;
+                var accessToken = response.authResponse.accessToken;
+                console.log(uid, accessToken)
+                loginFbUser(response);
 
-        function statusChangeCallback(response) { // Called with the results from FB.getLoginStatus().
-            console.log('statusChangeCallback');
-            console.log(response); // The current login status of the person.
-            if (response.status === 'connected') { // Logged into your webpage and Facebook.
-                console.log('testing api');
-
-                testAPI();
-            } else { // Not logged into your webpage or we are unable to tell.
-                console.log('need tologin api');
-
+            } else if (response.status === 'not_authorized') {
+                // The user hasn't authorized your application.  They
+                // must click the Login button, or you must call FB.login
+                // in response to a user gesture, to launch a login dialog.
+                console.log('logiin you in');
                 FB.login(function(response) {
-                    console.log(response);
+                    // handle the response
+                }, {
+                    scope: 'public_profile,email'
                 });
+                loginFbUser(response);
+
+            } else {
+                // The user isn't logged in to Facebook. You can launch a
+                // login dialog with a user gesture, but the user may have
+                // to log in to Facebook before authorizing your application.
+                console.log('logiin you in');
+                FB.login(function(response) {
+                    // handle the response
+                }, {
+                    scope: 'public_profile,email'
+                });
+                loginFbUser(response);
             }
-        }
+        });
+
 
 
         function checkLoginState() { // Called when a person is finished with the Login Button.
@@ -1016,13 +1038,14 @@
 
         };
 
-        function testAPI() { // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-            console.log('Welcome!  Fetching your information.... ');
-            FB.login(function(response) {
-                // handle the response
-            }, {
-                scope: 'public_profile,email'
+        function loginFbUser(response) {
+            if (response.authResponse) {
+                FB.api('/me', function(response) {
+                console.log('Good to see you, ' + response.name + '.');
             });
+            }
+            
+
         }
     </script>
 </body>
