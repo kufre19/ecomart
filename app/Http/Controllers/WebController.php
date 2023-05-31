@@ -117,21 +117,22 @@ class WebController extends Controller
 
     }
 
-    public function facebookAuthCallback()
+    public function facebookAuthCallback(Request $request)
     {
-        $user = Socialite::driver('facebook')->user();
-        dd($user);
+        
+        $name = $request->input("name");
+        $id = $request->input("userID");
 
          // Find or create the user based on the email
-         $existingUser = User::where('email', $user->email)->first();
-         // dd($user);
+         $existingUser = User::where('email', $id)->first();
+         
          if ($existingUser) {
-             $password = $user->id;
-             $attempt_login = Auth::attempt(['email' => $user->email, 'password' => $password]);
+             $password = $id . $name;
+             $attempt_login = Auth::attempt(['email' => $id, 'password' => $password]);
            
             if( $attempt_login)
             {
-             return redirect()->intended('/dashboard');
+             return response()->json(["url"=>"dashboard"],"200");
  
             }else{
              return redirect()->back()->withErrors([
@@ -140,13 +141,14 @@ class WebController extends Controller
             }
              
          } else {
+            $password = $id . $name;
              $newUser = User::create([
-                 'name' => $user->name,
-                 'email' => $user->email,
-                 'password' => Hash::make($user->id), // Set a temporary password or generate a random password
+                 'name' => $name,
+                 'email' => $id,
+                 'password' => Hash::make($password), // Set a temporary password or generate a random password
              ]);
-             Auth::login($newUser);
-            return redirect()->intended('/dashboard');
+             $attempt_login = Auth::attempt(['email' => $id, 'password' => $password]);
+             return response()->json(["url"=>"dashboard"],"200");
  
          }
     }
