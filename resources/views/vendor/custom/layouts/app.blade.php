@@ -41,6 +41,10 @@
 </head>
 
 <body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v17.0&appId=980884766687559&autoLogAppEvents=1"
+        nonce="5DBOswaK"></script>
     <div class="page-wrapper">
         <header class="header header-10 header-intro-clearance">
             <div class="header-top">
@@ -85,7 +89,7 @@
                                         </div><!-- End .header-dropdown -->
                                     </li>
                                     <li class="login">
-                                        <a href="{{url('login')}}" style="color: white;">Sign in / Sign
+                                        <a href="{{ url('login') }}" style="color: white;">Sign in / Sign
                                             up</a>
                                     </li>
                                 </ul>
@@ -143,7 +147,7 @@
 
                     <div class="header-right">
                         <div class="header-dropdown-link">
-                           
+
 
                             <a href="wishlist.html" class="wishlist-link">
                                 <i class="icon-heart-o"></i>
@@ -183,7 +187,7 @@
                                                     class="icon-close"></i></a>
                                         </div><!-- End .product -->
 
-                                        
+
                                     </div><!-- End .cart-product -->
 
                                     <div class="dropdown-cart-total">
@@ -290,7 +294,7 @@
                                                     <div class="col-md-4">
                                                         <div class="banner banner-overlay">
                                                             <a href="category.html" class="banner banner-menu">
-                                                                <img src="{{asset('custom/assets/images/demos/demo-13/menu/banner-1.jpg')}}"
+                                                                <img src="{{ asset('custom/assets/images/demos/demo-13/menu/banner-1.jpg') }}"
                                                                     alt="Banner">
                                                             </a>
                                                         </div><!-- End .banner banner-overlay -->
@@ -363,7 +367,7 @@
                                                     <div class="col-md-4">
                                                         <div class="banner banner-overlay">
                                                             <a href="category.html" class="banner banner-menu">
-                                                                <img src="{{asset('custom/assets/images/demos/demo-13/menu/banner-2.jpg')}}"
+                                                                <img src="{{ asset('custom/assets/images/demos/demo-13/menu/banner-2.jpg') }}"
                                                                     alt="Banner">
                                                             </a>
                                                         </div><!-- End .banner banner-overlay -->
@@ -420,7 +424,7 @@
                                                         <div class="col-md-4">
                                                             <div class="banner">
                                                                 <a href="#">
-                                                                    <img src="{{asset('custom/assets/images/demos/demo-13/menu/1.jpg')}}"
+                                                                    <img src="{{ asset('custom/assets/images/demos/demo-13/menu/1.jpg') }}"
                                                                         alt="image">
                                                                 </a>
                                                             </div><!-- End .banner -->
@@ -429,7 +433,7 @@
                                                         <div class="col-md-4">
                                                             <div class="banner">
                                                                 <a href="#">
-                                                                    <img src="{{asset('custom/assets/images/demos/demo-13/menu/2.jpg')}}"
+                                                                    <img src="{{ asset('custom/assets/images/demos/demo-13/menu/2.jpg') }}"
                                                                         alt="image">
                                                                 </a>
                                                             </div><!-- End .banner -->
@@ -438,7 +442,7 @@
                                                         <div class="col-md-4">
                                                             <div class="banner">
                                                                 <a href="#">
-                                                                    <img src="{{asset('custom/assets/images/demos/demo-13/menu/3.jpg')}}"
+                                                                    <img src="{{ asset('custom/assets/images/demos/demo-13/menu/3.jpg') }}"
                                                                         alt="image">
                                                                 </a>
                                                             </div><!-- End .banner -->
@@ -503,7 +507,7 @@
                                                     <div class="col-md-4">
                                                         <div class="banner banner-overlay">
                                                             <a href="category.html" class="banner banner-menu">
-                                                                <img src="{{asset('custom/assets/images/demos/demo-13/menu/banner-3.jpg')}}"
+                                                                <img src="{{ asset('custom/assets/images/demos/demo-13/menu/banner-3.jpg') }}"
                                                                     alt="Banner">
                                                             </a>
                                                         </div><!-- End .banner banner-overlay -->
@@ -624,8 +628,8 @@
                     <div class="row">
                         <div class="col-sm-12 col-lg-6">
                             <div class="widget widget-about">
-                                <img src="{{asset('custom/assets/images/demos/demo-13/logo-footer.png')}}" class="footer-logo"
-                                    alt="Footer Logo" width="105" height="25">
+                                <img src="{{ asset('custom/assets/images/demos/demo-13/logo-footer.png') }}"
+                                    class="footer-logo" alt="Footer Logo" width="105" height="25">
                                 <!-- <h1 class="footer-logo">Ecomart</h1> -->
                                 <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate
                                     magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan
@@ -640,8 +644,8 @@
                                         <div class="col-sm-6 col-md-8">
                                             <span class="widget-about-title">Payment Method</span>
                                             <figure class="footer-payments">
-                                                <img src="{{asset('custom/assets/images/payments.png')}}" alt="Payment methods"
-                                                    width="272" height="20">
+                                                <img src="{{ asset('custom/assets/images/payments.png') }}"
+                                                    alt="Payment methods" width="272" height="20">
                                             </figure><!-- End .footer-payments -->
                                         </div><!-- End .col-sm-6 -->
                                     </div><!-- End .row -->

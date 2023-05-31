@@ -68,16 +68,19 @@
                                     <p class="text-center">or sign in with</p>
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <a href="{{url('/auth/google')}}" class="btn btn-login btn-g">
+                                            <a href="{{ url('/auth/google') }}" class="btn btn-login btn-g">
                                                 <i class="icon-google"></i>
                                                 Login With Google
                                             </a>
                                         </div><!-- End .col-6 -->
                                         <div class="col-sm-6">
-                                            <a href="#" class="btn btn-login btn-f">
+                                            {{-- <a href="#" class="btn btn-login btn-f">
                                                 <i class="icon-facebook-f"></i>
                                                 Login With Facebook
-                                            </a>
+                                            </a> --}}
+                                            <div class="fb-login-button" data-width="" data-size="" data-button-type=""
+                                                data-layout="" data-auto-logout-link="false" data-use-continue-as="true">
+                                            </div>
                                         </div><!-- End .col-6 -->
                                     </div><!-- End .row -->
                                 </div><!-- End .form-choice -->
@@ -99,7 +102,8 @@
 
                                     <div class="form-group">
                                         <label for="password">Password *</label>
-                                        <input type="password" class="form-control" id="password" name="password" required>
+                                        <input type="password" class="form-control" id="password" name="password"
+                                            required>
                                     </div><!-- End .form-group -->
                                     <div class="form-group">
                                         <label for="password_confirmation">Confirm Password *</label>
@@ -128,16 +132,19 @@
                                     <p class="text-center">or sign in with</p>
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <a href="{{url('/auth/google')}}" class="btn btn-login btn-g">
+                                            <a href="{{ url('/auth/google') }}" class="btn btn-login btn-g">
                                                 <i class="icon-google"></i>
                                                 Login With Google
                                             </a>
                                         </div><!-- End .col-6 -->
                                         <div class="col-sm-6">
-                                            <a href="{{url('/auth/facebook')}}" class="btn btn-login  btn-f">
+                                            {{-- <a href="{{url('/auth/facebook')}}" class="btn btn-login  btn-f">
                                                 <i class="icon-facebook-f"></i>
                                                 Login With Facebook
-                                            </a>
+                                            </a> --}}
+                                            <div class="fb-login-button" data-width="" data-size=""
+                                                data-button-type="" data-layout="" data-auto-logout-link="false"
+                                                data-use-continue-as="true"></div>
                                         </div><!-- End .col-6 -->
                                     </div><!-- End .row -->
                                 </div><!-- End .form-choice -->
