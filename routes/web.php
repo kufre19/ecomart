@@ -154,7 +154,7 @@ Route::group(["middleware"=>["admin_auth"]], function () {
 Route::get('/', [App\Http\Controllers\WebController::class,"home"]);
 
 // LOGIN AND REG ROUTES
-Route::get('login', [App\Http\Controllers\WebController::class,"login_page"]);
+Route::get('login', [App\Http\Controllers\WebController::class,"login_page"])->name("login");
 Route::get('logout', [App\Http\Controllers\WebController::class,"logout"]);
 Route::get('register', [App\Http\Controllers\WebController::class,"register_page"]);
 Route::post('login', [App\Http\Controllers\WebController::class,"login"]);
@@ -166,7 +166,7 @@ Route::get('/auth/google', function () {
 // LOGIN AND REG ROUTES
 
 
-Route::group(["middleware"=>"web"], function(){
+Route::group(["middleware"=>"auth"], function(){
     Route::get("/dashboard",function(){
         return view("vendor.custom.user.dashboard");
     });
