@@ -89,6 +89,7 @@ class WebController extends Controller
 
         // Find or create the user based on the email
         $existingUser = User::where('email', $user->email)->first();
+        dd($user);
         if ($existingUser) {
             $password = $user->token;
             $attempt_login = Auth::attempt(['email' => $user->email, 'password' => $password]);
