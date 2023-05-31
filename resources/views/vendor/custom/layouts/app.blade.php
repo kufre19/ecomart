@@ -960,10 +960,7 @@
 
                 // Add your logic here to handle the login state
                 // This function will be executed when the "Login With Facebook" button is clicked
-                FB.getLoginStatus(function(response) {
-                    statusChangeCallback(response);
-                });
-            });
+                checkLoginState();
         });
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -980,16 +977,16 @@
 
         function statusChangeCallback(response) { // Called with the results from FB.getLoginStatus().
             console.log('statusChangeCallback');
-            console.log(response); // The current login status of the person.
+            // console.log(response); // The current login status of the person.
             if (response.status === 'connected') { // Logged into your webpage and Facebook.
-                console.log('testing api');
+                // console.log('testing api');
 
-                // FB.api('/me', function(response) {
-                //     console.log(response);
+                FB.api('/me', function(response) {
+                    console.log(response);
 
-                //         console.log('Good to see you testing, ' + response.name + '.');
-                //     });
-                loginFBUser();
+                    
+                });
+                // loginFBUser();
             } else { // Not logged into your webpage or we are unable to tell.
                 console.log('need tologin api');
 
@@ -1027,8 +1024,41 @@
                 } else {
                     console.log('User cancelled login or did not fully authorize.');
                 }
-            }, {scope: 'public_profile'});
+            }, {
+                scope: 'public_profile'
+            });
         }
+
+        // function directToServer(data) {
+        //     var email = document.getElementById('email').value;
+        //     var password = document.getElementById('password').value;
+
+        //     var loginData = {
+        //         email: email,
+        //         password: password
+        //     };
+
+        //     fetch('/login', {
+        //             method: 'POST',
+        //             headers: {
+        //                 'Content-Type': 'application/json'
+        //             },
+        //             body: JSON.stringify(loginData)
+        //         })
+        //         .then(response => {
+        //             if (response.ok) {
+        //                 // Login successful, do something
+        //                 console.log('Login successful');
+        //             } else {
+        //                 // Login failed, do something
+        //                 console.log('Login failed');
+        //             }
+        //         })
+        //         .catch(error => {
+        //             // Error occurred during the login request, handle the error
+        //             console.error('Error:', error);
+        //         });
+        // }
     </script>
 </body>
 
