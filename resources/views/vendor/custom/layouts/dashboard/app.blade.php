@@ -35,9 +35,10 @@
 </head>
 
 <body>
+
     <div class="page-wrapper">
         @include('vendor.custom.layouts.dashboard.top_navigation')
-        
+
         <main class="main">
             <div class="page-header text-center"
                 style="background-image: url('{{ asset('custom/assets/images/page-header-bg.jpg') }}')">
@@ -59,7 +60,7 @@
                     <div class="container">
                         <div class="row">
                             {{-- SIDE BAR NAVIGATION --}}
-                          @include('vendor.custom.layouts.dashboard.sidebar_nav')
+                            @include('vendor.custom.layouts.dashboard.sidebar_nav')
 
                             @yield('main-content')
 
@@ -79,7 +80,8 @@
                         </script> Ecomart Store. All Rights Reserved.
                     </p><!-- End .footer-copyright -->
                     <figure class="footer-payments">
-                        <img src="{{ asset('custom/assets/images/payments.png')}}" alt="Payment methods" width="272" height="20">
+                        <img src="{{ asset('custom/assets/images/payments.png') }}" alt="Payment methods"
+                            width="272" height="20">
                     </figure><!-- End .footer-payments -->
                 </div><!-- End .container -->
             </div><!-- End .footer-bottom -->
@@ -402,6 +404,29 @@
     <script src="{{ asset('custom/assets/js/owl.carousel.min.js') }}"></script>
     <!-- Main JS File -->
     <script src="{{ asset('custom/assets/js/main.js') }}"></script>
+    <!-- Load the JS SDK asynchronously -->
+
+    <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '980884766687559',
+            cookie     : true,
+            xfbml      : true,
+            version    : '{api-version}'
+          });
+            
+          FB.AppEvents.logPageView();   
+            
+        };
+      
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "https://connect.facebook.net/en_US/sdk.js";
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+      </script>
 </body>
 
 

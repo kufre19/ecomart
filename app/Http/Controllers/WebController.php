@@ -99,8 +99,9 @@ class WebController extends Controller
             return redirect()->intended('/dashboard');
 
            }else{
-
-            dd($attempt_login);
+            return redirect()->back()->withErrors([
+                'email' => 'An error occured please try again!',
+            ]);
            }
             
         } else {
@@ -114,6 +115,45 @@ class WebController extends Controller
 
         }
 
+    }
+
+    public function facebookAuthCallback()
+    {
+        $user = Socialite::driver('facebook')->user();
+        dd($user);
+
+         // Find or create the user based on the email
+         $existingUser = User::where('email', $user->email)->first();
+         // dd($user);
+         if ($existingUser) {
+             $password = $user->id;
+             $attempt_login = Auth::attempt(['email' => $user->email, 'password' => $password]);
+           
+            if( $attempt_login)
+            {
+             return redirect()->intended('/dashboard');
+ 
+            }else{
+             return redirect()->back()->withErrors([
+                 'email' => 'An error occured please try again!',
+             ]);
+            }
+             
+         } else {
+             $newUser = User::create([
+                 'name' => $user->name,
+                 'email' => $user->email,
+                 'password' => Hash::make($user->id), // Set a temporary password or generate a random password
+             ]);
+             Auth::login($newUser);
+            return redirect()->intended('/dashboard');
+ 
+         }
+    }
+
+    public function facebookAuth()
+    {
+        return Socialite::driver('facebook')->redirect();
     }
 
 
