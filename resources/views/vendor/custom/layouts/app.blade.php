@@ -982,14 +982,15 @@
             console.log('statusChangeCallback');
             console.log(response); // The current login status of the person.
             if (response.status === 'connected') { // Logged into your webpage and Facebook.
-            console.log('testing api');
+                console.log('testing api');
 
                 testAPI();
             } else { // Not logged into your webpage or we are unable to tell.
-            console.log('need tologin api');
+                console.log('need tologin api');
 
-                document.getElementById('status').innerHTML = 'Please log ' +
-                    'into this webpage.';
+                FB.login(function(response) {
+                   console.log(response);
+                });
             }
         }
 
