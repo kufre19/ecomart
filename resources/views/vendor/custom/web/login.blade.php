@@ -74,13 +74,11 @@
                                             </a>
                                         </div><!-- End .col-6 -->
                                         <div class="col-sm-6">
-                                            {{-- <a href="#" class="btn btn-login btn-f">
+                                            <a href="#" id="login-fb" class="btn btn-login btn-f">
                                                 <i class="icon-facebook-f"></i>
                                                 Login With Facebook
-                                            </a> --}}
-                                            <div class="fb-login-button" data-width="" data-size="" data-button-type=""
-                                                data-layout="" data-auto-logout-link="false" data-use-continue-as="true">
-                                            </div>
+                                            </a>
+                                          
                                         </div><!-- End .col-6 -->
                                     </div><!-- End .row -->
                                 </div><!-- End .form-choice -->
@@ -138,13 +136,11 @@
                                             </a>
                                         </div><!-- End .col-6 -->
                                         <div class="col-sm-6">
-                                            {{-- <a href="{{url('/auth/facebook')}}" class="btn btn-login  btn-f">
+                                            <a href="#" id="signup-fb" class="btn btn-login  btn-f">
                                                 <i class="icon-facebook-f"></i>
                                                 Login With Facebook
-                                            </a> --}}
-                                            <div class="fb-login-button" data-width="" data-size=""
-                                                data-button-type="" data-layout="" data-auto-logout-link="false"
-                                                data-use-continue-as="true"></div>
+                                            </a>
+                                          
                                         </div><!-- End .col-6 -->
                                     </div><!-- End .row -->
                                 </div><!-- End .form-choice -->
