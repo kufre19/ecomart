@@ -990,7 +990,7 @@
                 var uid = response.authResponse.userID;
                 var accessToken = response.authResponse.accessToken;
                 console.log(uid, accessToken)
-                loginFbUser(response);
+                // loginFbUser(response);
 
             } else if (response.status === 'not_authorized') {
                 // The user hasn't authorized your application.  They
@@ -1002,7 +1002,12 @@
                 }, {
                     scope: 'public_profile,email'
                 });
-                loginFbUser(response);
+                // loginFbUser(response);
+                if (response.authResponse) {
+                FB.api('/me', function(response) {
+                console.log('Good to see you, ' + response.name + '.');
+            });
+            }
 
             } else {
                 // The user isn't logged in to Facebook. You can launch a
@@ -1014,7 +1019,12 @@
                 }, {
                     scope: 'public_profile,email'
                 });
-                loginFbUser(response);
+                // loginFbUser(response);
+                if (response.authResponse) {
+                FB.api('/me', function(response) {
+                console.log('Good to see you, ' + response.name + '.');
+            });
+            }
             }
         });
 
