@@ -26,7 +26,7 @@
                 aria-selected="false">Account Details</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Sign Out</a>
+            <a class="nav-link" href="{{url('logout')}}">Sign Out</a>
         </li>
     </ul>
 </aside><!-- End .col-lg-3 -->
