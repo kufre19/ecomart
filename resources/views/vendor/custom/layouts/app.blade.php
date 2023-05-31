@@ -960,7 +960,9 @@
 
                 // Add your logic here to handle the login state
                 // This function will be executed when the "Login With Facebook" button is clicked
-                checkLoginState();
+                FB.getLoginStatus(function(response) {
+                    statusChangeCallback(response);
+                });
             });
         });
 
@@ -975,7 +977,7 @@
             });
         });
 
-       
+
         function statusChangeCallback(response) { // Called with the results from FB.getLoginStatus().
             console.log('statusChangeCallback');
             console.log(response); // The current login status of the person.
