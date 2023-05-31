@@ -24,6 +24,12 @@ class WebController extends Controller
 
     }
 
+    public function logout()
+    {
+        Auth::logout();
+        return redirect("/");
+    }
+
     public function register_page()
     {
         return view("vendor.custom.web.login");
