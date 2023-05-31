@@ -1029,36 +1029,7 @@
             });
         }
 
-        // function directToServer(data) {
-        //     var email = document.getElementById('email').value;
-        //     var password = document.getElementById('password').value;
-
-        //     var loginData = {
-        //         email: email,
-        //         password: password
-        //     };
-
-        //     fetch('/login', {
-        //             method: 'POST',
-        //             headers: {
-        //                 'Content-Type': 'application/json'
-        //             },
-        //             body: JSON.stringify(loginData)
-        //         })
-        //         .then(response => {
-        //             if (response.ok) {
-        //                 // Login successful, do something
-        //                 console.log('Login successful');
-        //             } else {
-        //                 // Login failed, do something
-        //                 console.log('Login failed');
-        //             }
-        //         })
-        //         .catch(error => {
-        //             // Error occurred during the login request, handle the error
-        //             console.error('Error:', error);
-        //         });
-        // }
+   
     </script>
 </body>
 
