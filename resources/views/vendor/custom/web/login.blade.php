@@ -78,6 +78,7 @@
                                                 <i class="icon-facebook-f"></i>
                                                 Login With Facebook
                                             </a>
+                                            
                                           
                                         </div><!-- End .col-6 -->
                                     </div><!-- End .row -->

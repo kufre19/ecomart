@@ -955,14 +955,27 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var loginFbButton = document.getElementById('login-fb');
-            loginFbButton.addEventListener('click', checkLoginState);
+            loginFbButton.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default action of the button
+
+                // Add your logic here to handle the login state
+                // This function will be executed when the "Login With Facebook" button is clicked
+                checkLoginState();
+            });
         });
+
         document.addEventListener('DOMContentLoaded', function() {
             var loginFbButton = document.getElementById('signup-fb');
-            loginFbButton.addEventListener('click', checkLoginState);
+            loginFbButton.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default action of the button
+
+                // Add your logic here to handle the login state
+                // This function will be executed when the "Login With Facebook" button is clicked
+                checkLoginState();
+            });
         });
 
-
+       
         function statusChangeCallback(response) { // Called with the results from FB.getLoginStatus().
             console.log('statusChangeCallback');
             console.log(response); // The current login status of the person.
