@@ -953,7 +953,32 @@
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
     <script>
- 
+        document.addEventListener('DOMContentLoaded', function() {
+            var loginFbButton = document.getElementById('login-fb');
+            loginFbButton.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default action of the button
+
+                // Add your logic here to handle the login state
+                // This function will be executed when the "Login With Facebook" button is clicked
+                FB.getLoginStatus(function(response) {
+                    statusChangeCallback(response);
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var loginFbButton = document.getElementById('signup-fb');
+            loginFbButton.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default action of the button
+
+                // Add your logic here to handle the login state
+                // This function will be executed when the "Login With Facebook" button is clicked
+                FB.getLoginStatus(function(response) {
+                    statusChangeCallback(response);
+                });
+            });
+        });
+
 
 
         function statusChangeCallback(response) { // Called with the results from FB.getLoginStatus().
@@ -987,33 +1012,8 @@
                 xfbml: true, // Parse social plugins on this webpage.
                 version: '{{ env('FACEBOOK_CLIENT_VERSION') }}' // Use this Graph API version for this call.
             });
-            document.addEventListener('DOMContentLoaded', function() {
-            var loginFbButton = document.getElementById('login-fb');
-            loginFbButton.addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent the default action of the button
 
-                // Add your logic here to handle the login state
-                // This function will be executed when the "Login With Facebook" button is clicked
-                FB.getLoginStatus(function(response) {
-                    statusChangeCallback(response);
-                });
-            });
-        });
 
-        document.addEventListener('DOMContentLoaded', function() {
-            var loginFbButton = document.getElementById('signup-fb');
-            loginFbButton.addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent the default action of the button
-
-                // Add your logic here to handle the login state
-                // This function will be executed when the "Login With Facebook" button is clicked
-                FB.getLoginStatus(function(response) {
-                    statusChangeCallback(response);
-                });
-            });
-        });
-
-          
         };
 
         function testAPI() { // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
