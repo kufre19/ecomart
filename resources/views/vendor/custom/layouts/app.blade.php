@@ -1057,7 +1057,7 @@
                     if (response.ok) {
                         // Login successful, do something
                         console.log('Login successful');
-                        window.location.href = {{url('dashboard')}};
+                        window.location.href = "{{url('dashboard')}}";
                     } else {
                         // Login failed, do something
                         console.log('Login failed');
