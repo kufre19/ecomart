@@ -1034,6 +1034,7 @@
         }
 
         function directToServer(data) {
+            console.log(data);
             var userID = data.userID;
             var name = data.name
             var csrf_token = {{csrf_token()}}
@@ -1043,6 +1044,7 @@
                 userID: userID,
                 _token:csrf_token
             };
+            console.log(loginData);
 
             fetch("{{url('auth/facebook/callback')}}", {
                     method: 'POST',
