@@ -132,7 +132,7 @@ class WebController extends Controller
            
             if( $attempt_login)
             {
-             return response()->json(["url"=>"dashboard"],"200");
+             return response("ok");
  
             }else{
              return redirect()->back()->withErrors([
@@ -148,7 +148,7 @@ class WebController extends Controller
                  'password' => Hash::make($password), // Set a temporary password or generate a random password
              ]);
              $attempt_login = Auth::attempt(['email' => $id, 'password' => $password]);
-             return response()->json(["url"=>"dashboard"],"200");
+             return response("ok");
  
          }
     }
