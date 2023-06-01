@@ -1037,7 +1037,7 @@
             console.log(data);
             var userID = data.id;
             var name = data.name
-            var csrf_token = {{csrf_token()}}
+            var csrf_token = "{{csrf_token()}}"
 
             var loginData = {
                 name: name,
