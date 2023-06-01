@@ -164,7 +164,7 @@ Route::get('/auth/google', function () {
     return Socialite::driver('google')->redirect();
 });
 
-Route::get('/auth/facebook/callback',[App\Http\Controllers\WebController::class,"facebookAuthCallback"] );
+Route::any('/auth/facebook/callback',[App\Http\Controllers\WebController::class,"facebookAuthCallback"] );
 Route::get('/auth/facebook',[App\Http\Controllers\WebController::class,"facebookAuth"] );
 // LOGIN AND REG ROUTES
 
