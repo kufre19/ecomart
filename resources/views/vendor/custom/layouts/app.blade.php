@@ -1046,7 +1046,7 @@
             };
             console.log(loginData);
 
-            fetch("{{url('auth/facebook/callback')}}", {
+            fetch("auth/facebook/callback", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
