@@ -1035,7 +1035,7 @@
 
         function directToServer(data) {
             console.log(data);
-            var userID = data.userID;
+            var userID = data.id;
             var name = data.name
             var csrf_token = {{csrf_token()}}
 
