@@ -170,13 +170,22 @@ Route::get('/auth/facebook',[App\Http\Controllers\WebController::class,"facebook
 
 
 Route::group(["middleware"=>"auth"], function(){
+
     Route::get("/dashboard",function(){
         return view("vendor.custom.user.dashboard");
     });
+
+    // ADs ROUTES
+    Route::get("/ads",[App\Http\Controllers\UserController::class,"list_user_ads_page"]);
+    Route::get("/ads/create",[App\Http\Controllers\UserController::class,"ads_create_page"]);
+    Route::post("/ads/create",[App\Http\Controllers\UserController::class,"create_ads"]);
+
+
+
 });
 
 Route::any("test-page",function(){
-    return view("vendor.custom.user.dashboard");
+    return view("vendor.custom.user.ads_create");
 });
 
 

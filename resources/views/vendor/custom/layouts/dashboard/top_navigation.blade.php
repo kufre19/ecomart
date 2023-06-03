@@ -57,7 +57,7 @@
                     </form>
                 </div><!-- End .header-search -->
                
-               @include('vendor.custom.layouts.dashboard.cart_item')
+               {{-- @include('vendor.custom.layouts.dashboard.cart_item') --}}
             </div><!-- End .header-right -->
         </div><!-- End .container -->
     </div><!-- End .header-middle -->
