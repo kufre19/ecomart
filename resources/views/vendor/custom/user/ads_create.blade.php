@@ -80,8 +80,8 @@
 
             <div class="form-group mb-2">
                 <label for="imageUpload">Item Images</label>
-                <input type="file" name="imageUpload" class="form-control-file" id="imageUpload"
-                    accept="image/jpeg, image/png, image/gif" required>
+                <input type="file" name="adsImages[]" class="form-control-file" id="imageUpload"
+                    accept="image/jpeg, image/png, image/gif" multiple required>
             </div>
 
 

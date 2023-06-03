@@ -38,20 +38,20 @@ trait HandleAdverts
             'location' => 'required|min:5',
             'item_title' => 'required|min:3',
             'item_description' => 'required|min:8',
-            'imageUpload.*' => 'required|file|mimes:jpeg,png,gif|max:5120', 
+            'adsImages.*' => 'required|file|mimes:jpeg,png,gif|max:5120',
         ]);
 
-        
+
 
         if ($validator->fails()) {
             // Handle validation errors
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        // // Validate the number of images
-        // if (count($request->file('imageUpload')) > 4) {
-        //     return redirect()->back()->withErrors(['imageUpload' => 'Maximum 4 images are allowed.'])->withInput();
-        // }
+        // Validate the number of images
+        if (count($request->file('adsImages')) > 4) {
+            return redirect()->back()->withErrors(['adsImages' => 'Maximum 4 images are allowed.'])->withInput();
+        }
 
         // Retrieve data from the request
         $category = $request->input('category');
@@ -66,7 +66,7 @@ trait HandleAdverts
 
 
 
-        $this->initAdsImageModel();
+       
         $this->initAdsModel();
 
         // Store the data in the Ads model
@@ -81,22 +81,39 @@ trait HandleAdverts
         $ads->negotiable = $isNegotiable;
 
         // Save the model instance to persist the data
-        $ads->save();
+        $ads_Stored = $ads->save();
+       
 
-        // Handle uploaded images
-        // if ($request->hasFile('imageUpload')) {
-        //     $images = $request->file('imageUpload');
-            
-        //     foreach ($images as $image) {
-        //         // Process and store each image as desired
-        //         $filename = $image->store('images');
-                
-        //         // Associate the image with the Ads model
-        //         $ads->images()->create([
-        //             'filename' => $filename,
-        //         ]);
-        //     }
-        // }
+        if ($ads_Stored) {
+            // Handle uploaded images
+            if ($request->hasFile('adsImages')) {
+               
+                $images = $request->file('adsImages');
+
+                foreach ($images as $image) {
+                    // Generate a unique filename with timestamp
+                    $filename = time() . '_' . $image->getClientOriginalName();
+                    
+
+                    // Store the image in the public/ads_images folder
+                    $ads_image_Stored = $image->storeAs('public/ads_images', $filename);
+                    // dd("ol",$filename);
+
+                    // Associate the image with the Ads model
+                    // $ads->images()->create([
+                    //     'filename' => $filename,
+                    // ]);
+                    $this->initAdsImageModel();
+                    $ads_image_model = $this->AdsImageModel;
+                    $ads_image_model->ads_id = $this->AdsModel->id;
+                    $ads_image_model->ads_image = $ads_image_Stored;
+                    $ads_image_model->save();
+
+
+                }
+            }
+        }
+
         return redirect()->back();
     }
 }
