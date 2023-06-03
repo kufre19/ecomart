@@ -94,7 +94,7 @@
                 placeholder="Description *"></textarea>
             <br>
             <label for="negotiable">
-                <input type="checkbox" id="negotiable" name="negotiable" value="Negotiable">
+                <input type="checkbox" id="negotiable" name="negotiable" value="Yes">
                 Negotiable
             </label>
             <br>

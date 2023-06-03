@@ -4,7 +4,7 @@ namespace App\Traits;
 
 use App\Models\Ads;
 use App\Models\AdsImages;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 trait HandleAdverts
@@ -34,23 +34,19 @@ trait HandleAdverts
     {
 
 
-        // $validator = Validator::make($request->all(), [
-        //     'location' => 'required|min:5',
-        //     'item_title' => 'required|min:3',
-        //     'item_description' => 'required|min:8',
-        //     'imageUpload.*' => 'required|file|mimes:jpeg,png,gif|max:5120', 
-        // ]);
+        $validator = Validator::make($request->all(), [
+            'location' => 'required|min:5',
+            'item_title' => 'required|min:3',
+            'item_description' => 'required|min:8',
+            'imageUpload.*' => 'required|file|mimes:jpeg,png,gif|max:5120', 
+        ]);
 
-        // if ($request->has('negotiable')) {
-        //     $request->merge(['negotiable' => 'Yes']);
-        // } else {
-        //     $request->merge(['negotiable' => 'No']);
-        // }
+        
 
-        // if ($validator->fails()) {
-        //     // Handle validation errors
-        //     return redirect()->back()->withErrors($validator)->withInput();
-        // }
+        if ($validator->fails()) {
+            // Handle validation errors
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         // // Validate the number of images
         // if (count($request->file('imageUpload')) > 4) {
@@ -64,9 +60,11 @@ trait HandleAdverts
         $condition = $request->input('condition');
         $manufacturerYear = $request->input('manufacturer_year');
         $title = $request->input('item_title');
-        $type = $request->input('ptype');
         $description = $request->input('item_description');
-        $isNegotiable = $request->has('negotiable');
+        $negotiate = $request->has('negotiable');
+        $isNegotiable = ($negotiate == true) ? 'Yes' : 'No';
+
+
 
         $this->initAdsImageModel();
         $this->initAdsModel();
@@ -79,9 +77,8 @@ trait HandleAdverts
         $ads->condition = $condition;
         $ads->manufacturer_year = $manufacturerYear;
         $ads->title = $title;
-        $ads->type = $type;
         $ads->description = $description;
-        $ads->is_negotiable = $isNegotiable;
+        $ads->negotiable = $isNegotiable;
 
         // Save the model instance to persist the data
         $ads->save();
@@ -100,5 +97,6 @@ trait HandleAdverts
         //         ]);
         //     }
         // }
+        return redirect()->back();
     }
 }
