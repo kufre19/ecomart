@@ -15,6 +15,7 @@ use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
+use App\Orchid\Screens\AdsCategories\CategoriesListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
 use Illuminate\Support\Facades\Auth;
 use Tabuna\Breadcrumbs\Trail;
@@ -45,16 +46,39 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 
-Route::group(["middleware"=>["admin_auth"]], function () {
+Route::group(["middleware" => ["admin_auth"], "prefix" => "admin"], function () {
     Route::get("test", function () {
         return "sub domain";
     });
 
 
 
+
     // Main
-    Route::screen('/admin/dashboard', PlatformScreen::class)
+    Route::screen('/dashboard', PlatformScreen::class)
         ->name('platform.main');
+
+    // Platform > System > Ads Categories > categories
+    Route::screen('categories', CategoriesListScreen::class)
+        ->name('platform.systems.categories');
+    // ->breadcrumbs(function (Trail $trail) {
+    //     return $trail
+    //         ->parent('platform.index')
+    //         ->push(__('Users'), route('platform.systems.users'));
+    // });
+
+    
+    // Platform > System > Users > Create
+    Route::screen('categories/create', UserEditScreen::class)
+        ->name('platform.systems.categories.create');
+        // ->breadcrumbs(function (Trail $trail) {
+        //     return $trail
+        //         ->parent('platform.systems.users')
+        //         ->push(__('Create'), route('platform.systems.users.create'));
+        // });
+
+    // Route::get("categories/create",[]);
+
 
     // Platform > Profile
     Route::screen('profile', UserProfileScreen::class)
@@ -140,7 +164,7 @@ Route::group(["middleware"=>["admin_auth"]], function () {
 });
 
 
-    /*
+/*
 |--------------------------------------------------------------------------
 | Other Routes
 |--------------------------------------------------------------------------
@@ -151,45 +175,36 @@ Route::group(["middleware"=>["admin_auth"]], function () {
 |
 */
 
-Route::get('/', [App\Http\Controllers\WebController::class,"home"]);
+Route::get('/', [App\Http\Controllers\WebController::class, "home"]);
 
 // LOGIN AND REG ROUTES
-Route::get('login', [App\Http\Controllers\WebController::class,"login_page"])->name("login");
-Route::get('logout', [App\Http\Controllers\WebController::class,"logout"]);
-Route::get('register', [App\Http\Controllers\WebController::class,"register_page"]);
-Route::post('login', [App\Http\Controllers\WebController::class,"login"]);
-Route::post('register', [App\Http\Controllers\WebController::class,"register"]);
-Route::get('/auth/google/callback',[App\Http\Controllers\WebController::class,"googleAuthCallback"] );
+Route::get('login', [App\Http\Controllers\WebController::class, "login_page"])->name("login");
+Route::get('logout', [App\Http\Controllers\WebController::class, "logout"]);
+Route::get('register', [App\Http\Controllers\WebController::class, "register_page"]);
+Route::post('login', [App\Http\Controllers\WebController::class, "login"]);
+Route::post('register', [App\Http\Controllers\WebController::class, "register"]);
+Route::get('/auth/google/callback', [App\Http\Controllers\WebController::class, "googleAuthCallback"]);
 Route::get('/auth/google', function () {
     return Socialite::driver('google')->redirect();
 });
 
-Route::any('/auth/facebook/callback',[App\Http\Controllers\WebController::class,"facebookAuthCallback"] );
-Route::get('/auth/facebook',[App\Http\Controllers\WebController::class,"facebookAuth"] );
+Route::any('/auth/facebook/callback', [App\Http\Controllers\WebController::class, "facebookAuthCallback"]);
+Route::get('/auth/facebook', [App\Http\Controllers\WebController::class, "facebookAuth"]);
 // LOGIN AND REG ROUTES
 
 
-Route::group(["middleware"=>"auth"], function(){
+Route::group(["middleware" => "auth"], function () {
 
-    Route::get("/dashboard",function(){
+    Route::get("/dashboard", function () {
         return view("vendor.custom.user.dashboard");
     });
 
     // ADs ROUTES
-    Route::get("/ads",[App\Http\Controllers\UserController::class,"list_user_ads_page"]);
-    Route::get("/ads/create",[App\Http\Controllers\UserController::class,"ads_create_page"]);
-    Route::post("/ads/create",[App\Http\Controllers\UserController::class,"create_ads"]);
-
-
-
+    Route::get("/ads", [App\Http\Controllers\UserController::class, "list_user_ads_page"]);
+    Route::get("/ads/create", [App\Http\Controllers\UserController::class, "ads_create_page"]);
+    Route::post("/ads/create", [App\Http\Controllers\UserController::class, "create_ads"]);
 });
 
-Route::any("test-page",function(){
+Route::any("test-page", function () {
     return view("vendor.custom.user.ads_create");
 });
-
-
-
-
-
-

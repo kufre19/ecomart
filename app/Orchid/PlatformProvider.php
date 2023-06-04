@@ -29,6 +29,11 @@ class PlatformProvider extends OrchidServiceProvider
     {
         return [
            
+            Menu::make(__('CAtegories'))
+            ->icon('user')
+            ->route('platform.systems.users')
+            ->permission('platform.systems.users')
+            ->title(__('Access rights')),
 
             Menu::make(__('Users'))
                 ->icon('user')
