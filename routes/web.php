@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+use App\Orchid\Screens\Ads\AdsEditScreen;
+use App\Orchid\Screens\Ads\AdsListScreen;
+use App\Orchid\Screens\AdsCategories\CategoriesEdit;
 use Illuminate\Support\Facades\Route;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
 use App\Orchid\Screens\Examples\ExampleChartsScreen;
@@ -16,6 +19,8 @@ use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\AdsCategories\CategoriesListScreen;
+use App\Orchid\Screens\AdsCategories\SubCategoriesEditScreen;
+use App\Orchid\Screens\AdsCategories\SubCategoriesListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
 use Illuminate\Support\Facades\Auth;
 use Tabuna\Breadcrumbs\Trail;
@@ -58,27 +63,25 @@ Route::group(["middleware" => ["admin_auth"], "prefix" => "admin"], function () 
     Route::screen('/dashboard', PlatformScreen::class)
         ->name('platform.main');
 
-    // Platform > System > Ads Categories > categories
-    Route::screen('categories', CategoriesListScreen::class)
-        ->name('platform.systems.categories');
-    // ->breadcrumbs(function (Trail $trail) {
-    //     return $trail
-    //         ->parent('platform.index')
-    //         ->push(__('Users'), route('platform.systems.users'));
-    // });
+    // Platform > System > Ads 
+    Route::screen("ads",AdsListScreen::class)->name("platform.ads.list");
+    Route::screen("ads/edit",AdsEditScreen::class)->name("platform.ads.edit");
+
+
+
+    // Platform > System > Ads > Categories > categories
+    Route::screen("ads/categories/edit/{category?}", CategoriesEdit::class)->name("platform.ads.categories.edit");
+    Route::screen("ads/categories", CategoriesListScreen::class)->name("platform.ads.categories");
+
+    // Platform > System > Ads > SubCategories > subcategories
+    Route::screen("ads/subcategories/list", SubCategoriesListScreen::class)->name("platform.ads.sub_categories.list");
+    Route::screen("ads/subcategories/edit/{adsSubCategory?}", SubCategoriesEditScreen::class)->name("platform.ads.sub_categories.edit");
+
 
     
-    // Platform > System > Users > Create
-    Route::screen('categories/create', UserEditScreen::class)
-        ->name('platform.systems.categories.create');
-        // ->breadcrumbs(function (Trail $trail) {
-        //     return $trail
-        //         ->parent('platform.systems.users')
-        //         ->push(__('Create'), route('platform.systems.users.create'));
-        // });
 
-    // Route::get("categories/create",[]);
 
+    
 
     // Platform > Profile
     Route::screen('profile', UserProfileScreen::class)

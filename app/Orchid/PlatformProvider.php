@@ -28,12 +28,24 @@ class PlatformProvider extends OrchidServiceProvider
     public function registerMainMenu(): array
     {
         return [
-           
-            Menu::make(__('CAtegories'))
-            ->icon('user')
-            ->route('platform.systems.users')
+
+            Menu::make(__('Adverts'))
+            ->icon('feed')
+            ->route('platform.ads.categories')
             ->permission('platform.systems.users')
-            ->title(__('Access rights')),
+            ->title(__('Ads')),
+           
+            Menu::make(__('Categories'))
+            ->icon('table')
+            ->route('platform.ads.categories')
+            ->permission('platform.systems.users')
+            ->title(__('Ads Categories')),
+
+            Menu::make(__('Sub Categories'))
+            ->icon('table')
+            ->route('platform.ads.sub_categories.list')
+            ->permission('platform.systems.users'),
+           
 
             Menu::make(__('Users'))
                 ->icon('user')

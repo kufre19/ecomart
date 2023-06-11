@@ -2,13 +2,13 @@
 
 namespace App\Orchid\Screens\AdsCategories;
 
-use App\Models\AdsCategory;
-use App\Orchid\Layouts\AdsCategories\CategoriesListLayout;
+use App\Models\AdsSubCategory;
+use App\Orchid\Layouts\AdsCategories\SubCategoriesListLayout;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layout;
 use Orchid\Screen\Screen;
 
-class CategoriesListScreen extends Screen
+class SubCategoriesListScreen extends Screen
 {
     /**
      * Query data.
@@ -17,9 +17,11 @@ class CategoriesListScreen extends Screen
      */
     public function query(): iterable
     {
-        $categories = AdsCategory::fetchAllCategoties();
+        $sub_cat = AdsSubCategory::fetchAllSubCat();
         return [
-            "categories"=>$categories
+            "sub_categories"=>$sub_cat,
+            "sub_category"=>"",
+            "category"=>""
         ];
     }
 
@@ -30,7 +32,7 @@ class CategoriesListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Categories List';
+        return 'Sub Categories';
     }
 
     /**
@@ -43,10 +45,7 @@ class CategoriesListScreen extends Screen
         return [
             Link::make("Add")
             ->icon("plus")
-            ->route("platform.ads.categories.edit"),
-            Link::make("Sub Categories")
-            ->icon("table")
-            ->route("platform.ads.sub_categories.list"),
+            ->route("platform.ads.sub_categories.edit"),
         ];
     }
 
@@ -57,9 +56,8 @@ class CategoriesListScreen extends Screen
      */
     public function layout(): iterable
     {
-       
         return [
-            CategoriesListLayout::class
+            SubCategoriesListLayout::class
         ];
     }
 }
