@@ -5,6 +5,7 @@ namespace App\Traits;
 use App\Models\Ads;
 use App\Models\AdsImages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 trait HandleAdverts
@@ -49,8 +50,8 @@ trait HandleAdverts
         }
 
         // Validate the number of images
-        if (count($request->file('adsImages')) > 4) {
-            return redirect()->back()->withErrors(['adsImages' => 'Maximum 4 images are allowed.'])->withInput();
+        if (count($request->file('adsImages')) > 6) {
+            return redirect()->back()->withErrors(['adsImages' => 'Maximum 6 images are allowed.'])->withInput();
         }
 
         // Retrieve data from the request
@@ -61,6 +62,10 @@ trait HandleAdverts
         $manufacturerYear = $request->input('manufacturer_year');
         $title = $request->input('item_title');
         $description = $request->input('item_description');
+        $price = $request->input('price');
+
+        $user_id = Auth::user()->id;
+        $life_cycle = time() + env("ADS_LIFE_CYCLE");
         $negotiate = $request->has('negotiable');
         $isNegotiable = ($negotiate == true) ? 'Yes' : 'No';
 
@@ -74,11 +79,15 @@ trait HandleAdverts
         $ads->category = $category;
         $ads->sub_category = $subCategory;
         $ads->location = $location;
+        $ads->price = $price;
         $ads->condition = $condition;
         $ads->manufacturer_year = $manufacturerYear;
         $ads->title = $title;
         $ads->description = $description;
         $ads->negotiable = $isNegotiable;
+        $ads->life_cycle = $life_cycle;
+        $ads->user_id = $user_id;
+
 
         // Save the model instance to persist the data
         $ads_Stored = $ads->save();

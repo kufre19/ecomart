@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Auth;
 use Orchid\Platform\Models\User as Authenticatable;
 
@@ -77,5 +78,10 @@ class User extends Authenticatable
         }
 
         return false;
+     }
+
+     public function ads(): HasMany
+     {
+        return $this->hasMany(Ads::class,"user_id");
      }
 }

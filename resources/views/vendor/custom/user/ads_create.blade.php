@@ -8,7 +8,7 @@
                 We collaborate with ambitious retailers and business people, we’d love to see your product sell!
             </p><!-- End .lead text-primary --> --}}
 
-            <a href="{{url("ads")}}" class="btn btn-primary btn-minwidth-sm">
+            <a href="{{ url('ads') }}" class="btn btn-primary btn-minwidth-sm">
                 <span>My Adverts</span>
             </a>
         </div><!-- End .text-center -->
@@ -18,30 +18,22 @@
             @csrf
             <div class="form-group mb-2">
                 <label for="myInputmain">Select Category</label>
-                <input list="ecomart-category" type="text" name="category" class="form-control" id="myInputmain"
-                   placeholder="select category" required>
-                <datalist id="ecomart-category">
-                    <option value="Automobiles"></option>
-                    <option value="Babies & Kids"></option>
-                    <option value="Sports & Arts"></option>
-                    <option value="Marine & Accessories"></option>
-                    <option value="Services"></option>
-                    <option value="Electronics"></option>
-                </datalist>
+                <select name="category" class="form-control" id="myInputmain" required>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                    @endforeach
+                </select>
+               
+
             </div>
 
             <div class="form-group mb-2">
                 <label for="myInput">Choose a sub-category:</label>
-                <input list="ecomart-subcategory" type="text" name="sub_category" class="form-control" id="myInputsub"
-                    placeholder="select sub-category" required>
-                <datalist id="ecomart-subcategory">
-                    <option value="sub-category_1"></option>
-                    <option value="sub-category_2"></option>
-                    <option value="sub-category_3"></option>
-                    <option value="sub-category_4"></option>
-                    <option value="sub-category_5"></option>
-                    <option value="sub-category_6"></option>
-                </datalist>
+                <select name="sub_category" class="form-control" id="myInputsub" required>
+                    @foreach ($sub_categories as $sub_category)
+                        <option value="{{ $category->id }}">{{ $sub_category->sub_category_name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="form-group mb-2">
@@ -50,12 +42,7 @@
                     placeholder="enter location" required>
 
                 <datalist id="ecomart-location">
-                    <option value="location_1"></option>
-                    <option value="location_2"></option>
-                    <option value="location_3"></option>
-                    <option value="location_4"></option>
-                    <option value="location_5"></option>
-                    <option value="location_6"></option>
+                    <option value="Lagos"></option>
                 </datalist>
             </div>
 
@@ -65,8 +52,8 @@
                     placeholder="item Condition" required>
 
                 <datalist id="ecomart-condition">
-                    <option value="condition_1"></option>
-                    <option value="condition_2"></option>
+                    <option value="New"></option>
+                    <option value="Second Grade"></option>
                 </datalist>
             </div>
 
@@ -79,6 +66,14 @@
             </div>
 
             <div class="form-group mb-2">
+                <label for="price1">Price of Item in Naira:</label>
+                <input type="text" name="price" class="form-control" id="price1"
+                    aria-describedby="emailHelp" placeholder="Enter Item Price In Naira"
+                    inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+            </div>
+            
+
+            <div class="form-group mb-2">
                 <label for="imageUpload">Item Images</label>
                 <input type="file" name="adsImages[]" class="form-control-file" id="imageUpload"
                     accept="image/jpeg, image/png, image/gif" multiple required>
@@ -88,7 +83,7 @@
             <label for="ptitle" class="sr-only">Title</label>
             <input type="text" name="item_title" class="form-control" id="ptitle" placeholder="Title " required>
             <br>
-         
+
             <label for="p_description" class="sr-only">Description</label>
             <textarea class="form-control" name="item_description" cols="30" rows="4" id="p_description" required
                 placeholder="Description *"></textarea>
