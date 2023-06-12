@@ -5,10 +5,12 @@ namespace App\Orchid\Screens\Ads;
 use App\Models\Ads;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Fields\Cropper;
 use Orchid\Screen\Screen;
 use Orchid\Screen\Sight;
 use Orchid\Support\Color;
 use Orchid\Support\Facades\Layout;
+use Orchid\Support\Facades\Toast;
 
 class AdsEditScreen extends Screen
 {
@@ -45,13 +47,29 @@ class AdsEditScreen extends Screen
         return [
             Button::make("Approve")
             ->icon("check")
-            ->method("approve_ads"),
+            ->method("updateAds",["status"=>Ads::ACTIVE]),
 
             Button::make("Disapprove")
-            ->icon("cross")
-            ->method("disapprove_ads")
+            ->icon("close")
+            ->method("updateAds",["status"=>Ads::DISAPPROVE]),
+
+            Button::make("Pause")
+            ->icon("ban")
+            ->method("updateAds",["status"=>Ads::PAUSED])
 
         ];
+    }
+
+
+    public function updateAds(Ads $ads,Request $request)
+    {
+       $status = $request->input("status");
+       $ads->update([
+            "status"=>$status
+       ]);
+       
+       Toast::success("Advert Upated Successfully!");
+       return redirect(route("platform.ads.list"));
     }
 
     /**
@@ -80,6 +98,10 @@ class AdsEditScreen extends Screen
                     {
                         $stat = "danger";
                     }
+                    if($ads->status == Ads::DISAPPROVE)
+                    {
+                        $stat = "error";
+                    }
                     if($ads->status == Ads::ACTIVE)
                     {
                         $stat = "success";
@@ -94,6 +116,13 @@ class AdsEditScreen extends Screen
                 }),
                
             ])->title('Advert'),
+
+            Layout::rows([
+               
+            ])
         ];
     }
+
+
+
 }

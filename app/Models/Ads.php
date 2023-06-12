@@ -15,6 +15,14 @@ class Ads extends Model
     public const PENDING="pending";
     public const ACTIVE="active";
     public const PAUSED="paused";
+    public const DISAPPROVE="disapprove";
+
+
+    protected $fillable = [
+        "status"
+
+    ];
+
 
 
 
