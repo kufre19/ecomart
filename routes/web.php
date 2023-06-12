@@ -65,7 +65,7 @@ Route::group(["middleware" => ["admin_auth"], "prefix" => "admin"], function () 
 
     // Platform > System > Ads 
     Route::screen("ads/list",AdsListScreen::class)->name("platform.ads.list");
-    Route::screen("ads/edit",AdsEditScreen::class)->name("platform.ads.edit");
+    Route::screen("ads/edit/{advert?}",AdsEditScreen::class)->name("platform.ads.edit");
 
 
 

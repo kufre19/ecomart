@@ -19,9 +19,20 @@ class Ads extends Model
 
 
 
-    public function user(): BelongsTo
+    public function getUser(): BelongsTo
     {
         return $this->belongsTo(User::class,"user_id");
+    }
+
+    public function getcategory(): BelongsTo
+    {
+        return $this->belongsTo(AdsCategory::class,"category");
+    }
+
+    public function getsubCategory(): BelongsTo
+    {
+        
+        return $this->belongsTo(AdsSubCategory::class,"sub_category");
     }
 
     public function adsImage(): HasMany
@@ -39,6 +50,12 @@ class Ads extends Model
     public function fetchAllAds(): Collection
     {
         return self::latest()->get();
+
+    }
+
+    public static function getAdvert($id): Collection
+    {
+        return self::where("id",$id)->first();
 
     }
 
