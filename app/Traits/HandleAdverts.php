@@ -23,12 +23,22 @@ trait HandleAdverts
 
     public function initAdsModel()
     {
-        $this->AdsModel = new Ads();
+       return $this->AdsModel = new Ads();
     }
 
     public function initAdsImageModel()
     {
-        $this->AdsImageModel = new AdsImages();
+       return $this->AdsImageModel = new AdsImages();
+    }
+
+    /**
+     * to create the image url for and add 
+     * @return array
+     */
+    
+    public function createAdsImageUrl(): Array
+    {
+        return [];
     }
 
     public function create_ads(Request $request)
@@ -71,7 +81,7 @@ trait HandleAdverts
 
 
 
-       
+
         $this->initAdsModel();
 
         // Store the data in the Ads model
@@ -91,18 +101,18 @@ trait HandleAdverts
 
         // Save the model instance to persist the data
         $ads_Stored = $ads->save();
-       
+
 
         if ($ads_Stored) {
             // Handle uploaded images
             if ($request->hasFile('adsImages')) {
-               
+
                 $images = $request->file('adsImages');
 
                 foreach ($images as $image) {
                     // Generate a unique filename with timestamp
                     $filename = time() . '_' . $image->getClientOriginalName();
-                    
+
 
                     // Store the image in the public/ads_images folder
                     $ads_image_Stored = $image->storeAs('public/ads_images', $filename);
@@ -117,8 +127,6 @@ trait HandleAdverts
                     $ads_image_model->ads_id = $this->AdsModel->id;
                     $ads_image_model->ads_image = $ads_image_Stored;
                     $ads_image_model->save();
-
-
                 }
             }
         }

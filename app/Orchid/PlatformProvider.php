@@ -31,7 +31,7 @@ class PlatformProvider extends OrchidServiceProvider
 
             Menu::make(__('Adverts'))
             ->icon('feed')
-            ->route('platform.ads.categories')
+            ->route('platform.ads.list')
             ->permission('platform.systems.users')
             ->title(__('Ads')),
            

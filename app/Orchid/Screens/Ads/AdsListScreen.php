@@ -2,6 +2,8 @@
 
 namespace App\Orchid\Screens\Ads;
 
+use App\Models\Ads;
+use App\Orchid\Layouts\Ads\AdsListLayout;
 use Orchid\Screen\Screen;
 
 class AdsListScreen extends Screen
@@ -11,9 +13,11 @@ class AdsListScreen extends Screen
      *
      * @return array
      */
-    public function query(): iterable
+    public function query(Ads $ads): iterable
     {
-        return [];
+        return [
+            "ads"=>$ads->fetchAllAds()
+        ];
     }
 
     /**
@@ -23,7 +27,7 @@ class AdsListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'AdsListScreen';
+        return 'Adverts';
     }
 
     /**
@@ -43,6 +47,8 @@ class AdsListScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [];
+        return [
+            AdsListLayout::class
+        ];
     }
 }
