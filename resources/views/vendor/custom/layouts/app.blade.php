@@ -39,7 +39,8 @@
     <link rel="stylesheet" href="{{ asset('custom/assets/css/skins/skin-demo-13.css') }}">
     <link rel="stylesheet" href="{{ asset('custom/assets/css/demos/demo-13.css') }}">
     {{-- ICON --}}
-    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -52,7 +53,7 @@
                         <!-- <a href="tel:#" style="color: white;"><i class="icon-phone"></i>Call: +0123 456 789</a> -->
                         <a href="index.html" class="logo">
                             <img src="{{ asset('custom/assets/images/demos/demo-13/logo.png') }}" alt="Ecomart Logo"
-                                width="105" height="25">
+                                width="90" height="25">
                             <!-- <h1 Ecomart</h1> -->
                         </a>
                     </div><!-- End .header-left -->
@@ -103,7 +104,7 @@
                     <div class="header-left">
                         <button class="mobile-menu-toggler">
                             <span class="sr-only">Toggle mobile menu</span>
-                            <i class="icon-bars"></i>
+                            <i class="fa fa-bars"></i>
                         </button>
 
 
