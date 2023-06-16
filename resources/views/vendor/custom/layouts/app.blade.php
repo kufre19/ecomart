@@ -64,17 +64,7 @@
                             <li>
                                 <a href="#" style="color: white;">Links</a>
                                 <ul>
-                                    <li>
-                                        <div class="header-dropdown">
-                                            <a href="#" style="color: white;">USD</a>
-                                            <div class="header-menu">
-                                                <ul>
-                                                    <li><a href="#">NGN</a></li>
-                                                    <li><a href="#">USD</a></li>
-                                                </ul>
-                                            </div><!-- End .header-menu -->
-                                        </div><!-- End .header-dropdown -->
-                                    </li>
+                                   
                                     <li>
                                         <div class="header-dropdown">
                                             <a href="#" style="color: white;">Engligh</a>
@@ -113,7 +103,7 @@
                     <div class="header-center">
                         <div
                             class="header-search header-search-extended header-search-visible header-search-no-radius d-none d-lg-block">
-                            <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                            <a href="#" class="search-toggle" role="button"><i class="fa fa-search"></i></a>
                             <form action="#" method="get">
                                 <div class="header-search-wrapper search-wrapper-wide">
                                     <div class="select-custom">
@@ -139,7 +129,7 @@
                                     <input type="search" class="form-control" name="q" id="q"
                                         placeholder="Search product ..." required>
                                     <button class="btn btn-primary" type="submit"><i
-                                            class="icon-search"></i></button>
+                                            class="fa fa-search"></i></button>
                                 </div><!-- End .header-search-wrapper -->
                             </form>
                         </div><!-- End .header-search -->
@@ -150,7 +140,7 @@
 
 
                             <a href="wishlist.html" class="wishlist-link">
-                                <i class="icon-heart-o"></i>
+                                <i class="fa fa-heart"></i>
                                 <span class="wishlist-count">0</span>
                                 <span class="wishlist-txt">Wishlist</span>
                             </a>
