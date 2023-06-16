@@ -209,14 +209,14 @@
             <div class="header-bottom sticky-header">
                 <div class="container">
                     <div class="header-left">
-                        <div class="dropdown category-dropdown show is-on" data-visible="true">
+                        <div class="dropdown category-dropdown show is-on" >
                             <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="true" data-display="static"
+                                aria-haspopup="true" aria-expanded="false" data-display=""
                                 title="Browse Categories">
                                 Browse Categories
                             </a>
 
-                            <div class="dropdown-menu show">
+                            <div class="dropdown-menu ">
                                 <nav class="side-nav">
                                     <ul class="menu-vertical sf-arrows">
                                         <li class="megamenu-container">
@@ -564,59 +564,7 @@
         <footer class="footer footer-2">
             <div class="icon-boxes-container">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="icon-box icon-box-side">
-                                <span class="icon-box-icon">
-                                    <i class="icon-rocket"></i>
-                                </span>
-
-                                <div class="icon-box-content">
-                                    <h3 class="icon-box-title">Free Shipping</h3><!-- End .icon-box-title -->
-                                    <p>Orders ₦50 or more</p>
-                                </div><!-- End .icon-box-content -->
-                            </div><!-- End .icon-box -->
-                        </div><!-- End .col-sm-6 col-lg-3 -->
-
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="icon-box icon-box-side">
-                                <span class="icon-box-icon">
-                                    <i class="icon-rotate-left"></i>
-                                </span>
-
-                                <div class="icon-box-content">
-                                    <h3 class="icon-box-title">Free Returns</h3><!-- End .icon-box-title -->
-                                    <p>Within 30 days</p>
-                                </div><!-- End .icon-box-content -->
-                            </div><!-- End .icon-box -->
-                        </div><!-- End .col-sm-6 col-lg-3 -->
-
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="icon-box icon-box-side">
-                                <span class="icon-box-icon">
-                                    <i class="icon-info-circle"></i>
-                                </span>
-
-                                <div class="icon-box-content">
-                                    <h3 class="icon-box-title">Get 20% Off 1 Item</h3><!-- End .icon-box-title -->
-                                    <p>When you sign up</p>
-                                </div><!-- End .icon-box-content -->
-                            </div><!-- End .icon-box -->
-                        </div><!-- End .col-sm-6 col-lg-3 -->
-
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="icon-box icon-box-side">
-                                <span class="icon-box-icon">
-                                    <i class="icon-life-ring"></i>
-                                </span>
-
-                                <div class="icon-box-content">
-                                    <h3 class="icon-box-title">We Support</h3><!-- End .icon-box-title -->
-                                    <p>24/7 amazing services</p>
-                                </div><!-- End .icon-box-content -->
-                            </div><!-- End .icon-box -->
-                        </div><!-- End .col-sm-6 col-lg-3 -->
-                    </div><!-- End .row -->
+                   
                 </div><!-- End .container -->
             </div><!-- End .icon-boxes-container -->
 

@@ -12,7 +12,7 @@
 
             <div class="cat-blocks-container">
                 <div class="row">
-                    <div class="col-6 col-sm-4 col-lg-2">
+                    <div class="col-sm-4 col-lg-2">
                         <a href="category-auto.html" class="cat-block">
                             <figure>
                                 <span>
@@ -24,7 +24,7 @@
                         </a>
                     </div><!-- End .col-sm-4 col-lg-2 -->
 
-                    <div class="col-6 col-sm-4 col-lg-2">
+                    <div class="col-sm-4 col-lg-2">
                         <a href="category-phones.html" class="cat-block">
                             <figure>
                                 <span>
@@ -36,7 +36,7 @@
                         </a>
                     </div><!-- End .col-sm-4 col-lg-2 -->
 
-                    <div class="col-6 col-sm-4 col-lg-2">
+                    <div class=" col-sm-3 col-lg-2">
                         <a href="category-electronics.html" class="cat-block">
                             <figure>
                                 <span>
@@ -48,7 +48,7 @@
                         </a>
                     </div><!-- End .col-sm-4 col-lg-2 -->
 
-                    <div class="col-6 col-sm-4 col-lg-2">
+                    <div class="col-sm-3 col-lg-2">
                         <a href="category-cooking.html" class="cat-block">
                             <figure>
                                 <span>
@@ -60,7 +60,7 @@
                         </a>
                     </div><!-- End .col-sm-4 col-lg-2 -->
 
-                    <div class="col-6 col-sm-4 col-lg-2">
+                    <div class="col-sm-3 col-lg-2">
                         <a href="category-furniture.html" class="cat-block">
                             <figure>
                                 <span>
@@ -82,7 +82,7 @@
                             <h3 class="cat-block-title">Houses & Properties</h3><!-- End .cat-block-title -->
                         </a>
                     </div><!-- End .col-sm-4 col-lg-2 -->
-                    <div class="col-6 col-sm-4 col-lg-2">
+                    <div class="col-sm-3 col-lg-2">
                         <a href="category-pets.html" class="cat-block">
                             <figure>
                                 <span>
@@ -93,7 +93,7 @@
                             <h3 class="cat-block-title">Animals & Pets</h3><!-- End .cat-block-title -->
                         </a>
                     </div><!-- End .col-sm-4 col-lg-2 -->
-                    <div class="col-6 col-sm-4 col-lg-2">
+                    <div class="col-sm-3 col-lg-2">
                         <a href="category-fashion.html" class="cat-block">
                             <figure>
                                 <span>
@@ -104,7 +104,7 @@
                             <h3 class="cat-block-title">Fashion & Accessories</h3><!-- End .cat-block-title -->
                         </a>
                     </div><!-- End .col-sm-4 col-lg-2 -->
-                    <div class="col-6 col-sm-4 col-lg-2">
+                    <div class="col-sm-3 col-lg-2">
                         <a href="category-health.html" class="cat-block">
                             <figure>
                                 <span>
@@ -115,7 +115,7 @@
                             <h3 class="cat-block-title">Health & Beauty</h3><!-- End .cat-block-title -->
                         </a>
                     </div><!-- End .col-sm-4 col-lg-2 -->
-                    <div class="col-6 col-sm-4 col-lg-2">
+                    <div class="col-sm-3 col-lg-2">
                         <a href="category-marine.html" class="cat-block">
                             <figure>
                                 <span>
@@ -126,7 +126,7 @@
                             <h3 class="cat-block-title">Marine & Accessories</h3><!-- End .cat-block-title -->
                         </a>
                     </div><!-- End .col-sm-4 col-lg-2 -->
-                    <div class="col-6 col-sm-4 col-lg-2">
+                    <div class="col-sm-3 col-lg-2">
                         <a href="category-services.html" class="cat-block">
                             <figure>
                                 <span>
@@ -137,7 +137,7 @@
                             <h3 class="cat-block-title">Services</h3><!-- End .cat-block-title -->
                         </a>
                     </div><!-- End .col-sm-4 col-lg-2 -->
-                    <div class="col-6 col-sm-4 col-lg-2">
+                    <div class="col-sm-3 col-lg-2">
                         <a href="category-babies.html" class="cat-block">
                             <figure>
                                 <span>
