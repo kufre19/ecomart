@@ -209,7 +209,7 @@
             <div class="header-bottom sticky-header">
                 <div class="container">
                     <div class="header-left">
-                        <div class="dropdown category-dropdown show is-on" >
+                        <div class="dropdown category-dropdown show is-on">
                             <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false" data-display=""
                                 title="Browse Categories">
@@ -564,7 +564,7 @@
         <footer class="footer footer-2">
             <div class="icon-boxes-container">
                 <div class="container">
-                   
+
                 </div><!-- End .container -->
             </div><!-- End .icon-boxes-container -->
 
@@ -601,21 +601,21 @@
                                     <li><a href="#">How to shop on Ecomart</a></li>
                                     <li><a href="faq.html">FAQ</a></li>
                                     <li><a href="contact.html">Contact us</a></li>
-                                    <li><a href="login.html">Log in</a></li>
+                                    <li><a href="login.html">Post Your Ads</a></li>
                                 </ul><!-- End .widget-list -->
                             </div><!-- End .widget -->
                         </div><!-- End .col-sm-4 col-lg-3 -->
 
-                       
+
                         <div class="col-sm-4 col-lg-2">
                             <div class="widget">
                                 <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
 
                                 <ul class="widget-list">
                                     <li><a href="#">Sign In</a></li>
-                                    <li><a href="cart.html">View Cart</a></li>
+
                                     <li><a href="#">My Wishlist</a></li>
-                                    <li><a href="#">Track My Order</a></li>
+
                                     <li><a href="#">Help</a></li>
                                 </ul><!-- End .widget-list -->
                             </div><!-- End .widget -->
@@ -965,12 +965,12 @@
             console.log(data);
             var userID = data.id;
             var name = data.name
-            var csrf_token = "{{csrf_token()}}"
+            var csrf_token = "{{ csrf_token() }}"
 
             var loginData = {
                 name: name,
                 userID: userID,
-                _token:csrf_token
+                _token: csrf_token
             };
             console.log(loginData);
 
@@ -985,7 +985,7 @@
                     if (response.ok) {
                         // Login successful, do something
                         console.log('Login successful');
-                        window.location.href = "{{url('dashboard')}}";
+                        window.location.href = "{{ url('dashboard') }}";
                     } else {
                         // Login failed, do something
                         console.log('Login failed');
