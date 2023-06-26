@@ -109,8 +109,7 @@
                                         <input type="password" class="form-control" id="password_confirmation"
                                             name="password_confirmation" required>
                                     </div><!-- End .form-group -->
-                                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+                                    
                                     <div class="form-footer">
                                         <button type="submit" class="btn btn-outline-primary-2">
                                             <span>SIGN UP</span>
@@ -138,7 +137,7 @@
                                         </div><!-- End .col-6 -->
                                         <div class="col-sm-6">
                                             <a href="#" id="signup-fb" class="btn btn-login  btn-f">
-                                                <i class="lab la-facebook la-2x"></i>
+                                                <i class="lab la-facebook-f la-2x"></i>
                                                 Login With Facebook
                                             </a>
                                           
