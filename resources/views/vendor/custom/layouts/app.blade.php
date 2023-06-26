@@ -95,7 +95,7 @@
                     <div class="header-left">
                         <button class="mobile-menu-toggler">
                             <span class="sr-only">Toggle mobile menu</span>
-                            <i class="lab la-bars"></i>
+                            <i class="las la-bars"></i>
                         </button>
                         
                         <a href="index.html" class="logo header-middle-logo">
