@@ -13,7 +13,7 @@
             <div class="cat-blocks-container">
                 <div class="row">
                     <div class="col-4 col-lg-2">
-                        <a href="category-auto.html" class="cat-block">
+                        <a href="{{url("ads/create")}}" class="cat-block">
                             <figure>
                                 <span>
                                     <i class="fa fa-plus fa-5x"></i>

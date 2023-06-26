@@ -51,7 +51,7 @@
                 <div class="container">
                     <div class="header-left">
                         <!-- <a href="tel:#" style="color: white;"><i class="icon-phone"></i>Call: +0123 456 789</a> -->
-                        <a href="index.html" class="logo">
+                        <a href="index.html" class="logo header-top-logo">
                             <img src="{{ asset('custom/assets/images/demos/demo-13/logo.png') }}" alt="Ecomart Logo"
                                 width="90" height="25">
                             <!-- <h1 Ecomart</h1> -->
@@ -62,12 +62,12 @@
 
                         <ul class="top-menu">
                             <li>
-                                <a href="#" style="color: white;">Links</a>
+                                <a href="#" style="color: rgb(2, 2, 2);">Navigation</a>
                                 <ul>
                                    
                                     <li>
                                         <div class="header-dropdown">
-                                            <a href="#" style="color: white;">Engligh</a>
+                                            <a href="#" style="color: rgb(10, 5, 5);">Engligh</a>
                                             <div class="header-menu">
                                                 <ul>
                                                     <li><a href="#">English</a></li>
@@ -79,7 +79,7 @@
                                         </div><!-- End .header-dropdown -->
                                     </li>
                                     <li class="login">
-                                        <a href="{{ url('login') }}" style="color: white;">Sign in / Sign
+                                        <a href="{{ url('login') }}" style="color: rgb(0, 0, 0);">Sign in / Sign
                                             up</a>
                                     </li>
                                 </ul>
@@ -89,21 +89,23 @@
                 </div><!-- End .container -->
             </div><!-- End .header-top -->
 
-            <div class="header-right-sm header-right">
+           
+            <div class="header-middle">
                 <div class="container">
                     <div class="header-left">
                         <button class="mobile-menu-toggler">
                             <span class="sr-only">Toggle mobile menu</span>
-                            <i class="fa fa-bars"></i>
+                            <i class="icon-bars"></i>
                         </button>
-
-
+                        
+                        <a href="index.html" class="logo header-middle-logo">
+                            <img src="{{ asset('custom/assets/images/demos/demo-13/logo.png') }}" alt="Ecomart Logo" width="55" height="10">
+                        </a>
                     </div><!-- End .header-left -->
 
                     <div class="header-center">
-                        <div
-                            class="header-search header-search-extended header-search-visible header-search-no-radius d-none d-lg-block">
-                            <a href="#" class="search-toggle" role="button"><i class="fa fa-search"></i></a>
+                        <div class="header-search header-search-extended header-search-visible header-search-no-radius d-none d-lg-block">
+                            <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
                             <form action="#" method="get">
                                 <div class="header-search-wrapper search-wrapper-wide">
                                     <div class="select-custom">
@@ -116,9 +118,9 @@
                                             <option value="5">- Kids Fashion</option>
                                             <option value="6">Electronics</option>
                                             <option value="7">- Smart TVs</option>
-                                            <option value="8">- Watercraft</option>
+                                            <option value="8">- Cameras</option>
                                             <option value="9">- Games</option>
-                                            <option value="10">Home &amp; Properties</option>
+                                            <option value="10">Home &amp; Garden</option>
                                             <option value="11">Motors</option>
                                             <option value="12">- Cars and Trucks</option>
                                             <option value="15">- Boats</option>
@@ -126,10 +128,8 @@
                                         </select>
                                     </div><!-- End .select-custom -->
                                     <label for="q" class="sr-only">Search</label>
-                                    <input type="search" class="form-control" name="q" id="q"
-                                        placeholder="Search product ..." required>
-                                    <button class="btn btn-primary" type="submit"><i
-                                            class="fa fa-search"></i></button>
+                                    <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
+                                    <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
                                 </div><!-- End .header-search-wrapper -->
                             </form>
                         </div><!-- End .header-search -->
@@ -137,8 +137,7 @@
 
                     <div class="header-right">
                         <div class="header-dropdown-link">
-
-
+                          
                             <a href="wishlist.html" class="wishlist-link">
                                 <i class="fa fa-heart"></i>
                                 <span class="wishlist-count">0</span>
@@ -150,7 +149,7 @@
                     </div><!-- End .header-right -->
                 </div><!-- End .container -->
             </div><!-- End .header-middle -->
-
+            
             <div class="header-bottom sticky-header">
                 <div class="container">
                     <div class="header-left">
@@ -679,132 +678,7 @@
         </div><!-- End .mobile-menu-wrapper -->
     </div><!-- End .mobile-menu-container -->
 
-    <!-- Sign in / Register Modal -->
-    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="icon-close"></i></span>
-                    </button>
-
-                    <div class="form-box">
-                        <div class="form-tab">
-                            <ul class="nav nav-pills nav-fill nav-border-anim" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin"
-                                        role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="register-tab" data-toggle="tab" href="#register"
-                                        role="tab" aria-controls="register" aria-selected="false">Register</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="tab-content-5">
-                                <div class="tab-pane fade show active" id="signin" role="tabpanel"
-                                    aria-labelledby="signin-tab">
-                                    <form action="#">
-                                        <div class="form-group">
-                                            <label for="singin-email">Username or email address *</label>
-                                            <input type="text" class="form-control" id="singin-email"
-                                                name="singin-email" required>
-                                        </div><!-- End .form-group -->
-
-                                        <div class="form-group">
-                                            <label for="singin-password">Password *</label>
-                                            <input type="password" class="form-control" id="singin-password"
-                                                name="singin-password" required>
-                                        </div><!-- End .form-group -->
-
-                                        <div class="form-footer">
-                                            <button type="submit" class="btn btn-outline-primary-2">
-                                                <span>LOG IN</span>
-                                                <i class="icon-long-arrow-right"></i>
-                                            </button>
-
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input"
-                                                    id="signin-remember">
-                                                <label class="custom-control-label" for="signin-remember">Remember
-                                                    Me</label>
-                                            </div><!-- End .custom-checkbox -->
-
-                                            <a href="#" class="forgot-link">Forgot Your Password?</a>
-                                        </div><!-- End .form-footer -->
-                                    </form>
-                                    <div class="form-choice">
-                                        <p class="text-center">or sign in with</p>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <a href="#" class="btn btn-login btn-g">
-                                                    <i class="icon-google"></i>
-                                                    Login With Google
-                                                </a>
-                                            </div><!-- End .col-6 -->
-                                            <div class="col-sm-6">
-                                                <a href="#" class="btn btn-login btn-f">
-                                                    <i class="icon-facebook-f"></i>
-                                                    Login With Facebook
-                                                </a>
-                                            </div><!-- End .col-6 -->
-                                        </div><!-- End .row -->
-                                    </div><!-- End .form-choice -->
-                                </div><!-- .End .tab-pane -->
-                                <div class="tab-pane fade" id="register" role="tabpanel"
-                                    aria-labelledby="register-tab">
-                                    <form action="#">
-                                        <div class="form-group">
-                                            <label for="register-email">Your email address *</label>
-                                            <input type="email" class="form-control" id="register-email"
-                                                name="register-email" required>
-                                        </div><!-- End .form-group -->
-
-                                        <div class="form-group">
-                                            <label for="register-password">Password *</label>
-                                            <input type="password" class="form-control" id="register-password"
-                                                name="register-password" required>
-                                        </div><!-- End .form-group -->
-
-                                        <div class="form-footer">
-                                            <button type="submit" class="btn btn-outline-primary-2">
-                                                <span>SIGN UP</span>
-                                                <i class="icon-long-arrow-right"></i>
-                                            </button>
-
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input"
-                                                    id="register-policy" required>
-                                                <label class="custom-control-label" for="register-policy">I agree to
-                                                    the <a href="#">privacy policy</a> *</label>
-                                            </div><!-- End .custom-checkbox -->
-                                        </div><!-- End .form-footer -->
-                                    </form>
-                                    <div class="form-choice">
-                                        <p class="text-center">or sign in with</p>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <a href="#" class="btn btn-login btn-g">
-                                                    <i class="icon-google"></i>
-                                                    Login With Google
-                                                </a>
-                                            </div><!-- End .col-6 -->
-                                            <div class="col-sm-6">
-                                                <a href="#" class="btn btn-login  btn-f">
-                                                    <i class="icon-facebook-f"></i>
-                                                    Login With Facebook
-                                                </a>
-                                            </div><!-- End .col-6 -->
-                                        </div><!-- End .row -->
-                                    </div><!-- End .form-choice -->
-                                </div><!-- .End .tab-pane -->
-                            </div><!-- End .tab-content -->
-                        </div><!-- End .form-tab -->
-                    </div><!-- End .form-box -->
-                </div><!-- End .modal-body -->
-            </div><!-- End .modal-content -->
-        </div><!-- End .modal-dialog -->
-    </div><!-- End .modal -->
-
+ 
 
     @include('platform::partials.toast')
 

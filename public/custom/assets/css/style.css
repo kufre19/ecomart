@@ -19903,4 +19903,26 @@ button:focus {
   content: "\f7e3";
 }
 
+/* Styles for larger devices */
+@media screen and (min-width: 1024px) {
+  .header-middle-logo {
+    display: none;
+  }
+}
+
+/* Styles for mobile devices */
+@media screen and (max-width: 767px) {
+  .header-top-logo {
+    display: none;
+  }
+
+  .top-menu {
+    display: none !important;
+  }
+  .header-10 .header-middle{
+    background-color: #9900CC;
+  }
+}
+
+
 /*# sourceMappingURL=style.css.map */
