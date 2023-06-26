@@ -13,9 +13,8 @@
                     href="{{url('logout')}}">Log out</a>)
                 <br>
                 From your account dashboard you can view your <a href="#tab-orders"
-                    class="tab-trigger-link link-underline">recent orders</a>, manage your
-                <a href="#tab-address" class="tab-trigger-link">shipping and billing
-                    addresses</a>, and <a href="#tab-account"
+                    class="tab-trigger-link link-underline">Ads</a>, manage your
+                <a href="#tab-address" class="tab-trigger-link">contacts and Ads</a>, and <a href="#tab-account"
                     class="tab-trigger-link">edit your password and account details</a>.
             </p>
         </div><!-- .End .tab-pane -->

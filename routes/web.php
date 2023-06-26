@@ -200,11 +200,11 @@ Route::group(["middleware" => "auth"], function () {
 
     Route::get("/dashboard", function () {
         return view("vendor.custom.user.dashboard");
-    });
+    })->name("dashboard");
 
     // ADs ROUTES
-    Route::get("/ads", [App\Http\Controllers\UserController::class, "list_user_ads_page"]);
-    Route::get("/ads/create", [App\Http\Controllers\UserController::class, "ads_create_page"]);
+    Route::get("/ads", [App\Http\Controllers\UserController::class, "list_user_ads_page"])->name("ads.list.page");
+    Route::get("/ads/create", [App\Http\Controllers\UserController::class, "ads_create_page"])->name("ads.create.page");
     Route::post("/ads/create", [App\Http\Controllers\UserController::class, "create_ads"]);
 });
 

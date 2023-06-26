@@ -26,7 +26,7 @@
                 </button>
 
                 <a href="index.html" class="logo">
-                    <img src="{{ asset('custom/assets/images/logo.png')}}" alt="Ecomart Logo" width="105" height="25">
+                    <img src="{{ asset('custom/assets/images/logo.png')}}" alt="Ecomart Logo" width="55" height="10">
                 </a>
 
                 <nav class="main-nav">

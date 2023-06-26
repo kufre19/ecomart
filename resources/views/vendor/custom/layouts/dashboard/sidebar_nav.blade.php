@@ -1,22 +1,20 @@
 <aside class="col-md-4 col-lg-3">
     <ul class="nav nav-dashboard flex-column mb-3 mb-md-0" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" id="tab-dashboard-link" data-toggle="tab"
-                href="#tab-dashboard" role="tab" aria-controls="tab-dashboard">Dashboard</a>
+            <a class="nav-link {{request()->routeIs('dashboard') ? 'active' : ''}}" id="tab-dashboard-link" 
+                href="{{url("dashboard")}}" role="tab" aria-controls="tab-dashboard">Dashboard</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="tab-adverts-link"
+            <a class="nav-link {{request()->routeIs('ads.create.page') ? 'active' : ''}}" id="tab-adverts-link"
                 href="{{url("ads/create")}}" role="tab" aria-controls="tab-adverts">Adverts</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="tab-address-link" data-toggle="tab"
-                href="#tab-address" role="tab" aria-controls="tab-address"
-                aria-selected="false">Contacts</a>
+            <a class="nav-link {{request()->routeIs('dashboard.account.contacts') ? 'active' : ''}}" id="tab-address-link"
+                href="{{url("ads/create")}}" role="tab" aria-controls="tab-address">Contacts</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="tab-account-link" data-toggle="tab"
-                href="#tab-account" role="tab" aria-controls="tab-account"
-                aria-selected="false">Account Details</a>
+            <a class="nav-link {{request()->routeIs('dashboard.account.settings') ? 'active' : ''}}" id="tab-account-link"
+                href="{{url("ads/create")}}" role="tab" aria-controls="tab-account">Account Settings</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{url('logout')}}">Sign Out</a>
