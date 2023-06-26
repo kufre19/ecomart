@@ -40,7 +40,7 @@
     <link rel="stylesheet" href="{{ asset('custom/assets/css/demos/demo-13.css') }}">
     {{-- ICON --}}
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 </head>
 
 <body>
@@ -582,16 +582,9 @@
 
                     <div class="social-icons social-icons-color">
                         <span class="social-label">Social Media</span>
-                        <a href="#" class="social-icon social-facebook" title="Facebook" target="_blank"><i
-                                class="icon-facebook-f"></i></a>
-                        <a href="#" class="social-icon social-twitter" title="Twitter" target="_blank"><i
-                                class="icon-twitter"></i></a>
-                        <a href="#" class="social-icon social-instagram" title="Instagram" target="_blank"><i
-                                class="icon-instagram"></i></a>
-                        <a href="#" class="social-icon social-youtube" title="Youtube" target="_blank"><i
-                                class="icon-youtube"></i></a>
-                        <a href="#" class="social-icon social-pinterest" title="Pinterest" target="_blank"><i
-                                class="icon-pinterest"></i></a>
+                        <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="lab la-google"></i></a>
+                        <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="lab la-twitter"></i></a>
+                        <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="lab la-instagram"></i></a>
                     </div><!-- End .soial-icons -->
                 </div><!-- End .container -->
             </div><!-- End .footer-bottom -->
@@ -666,14 +659,10 @@
             </div><!-- End .tab-content -->
 
             <div class="social-icons">
-                <a href="#" class="social-icon" target="_blank" title="Facebook"><i
-                        class="icon-facebook-f"></i></a>
-                <a href="#" class="social-icon" target="_blank" title="Twitter"><i
-                        class="icon-twitter"></i></a>
-                <a href="#" class="social-icon" target="_blank" title="Instagram"><i
-                        class="icon-instagram"></i></a>
-                <a href="#" class="social-icon" target="_blank" title="Youtube"><i
-                        class="icon-youtube"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="lab la-google"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="lab la-twitter"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="lab la-instagram"></i></a>
+                
             </div><!-- End .social-icons -->
         </div><!-- End .mobile-menu-wrapper -->
     </div><!-- End .mobile-menu-container -->
