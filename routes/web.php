@@ -179,6 +179,13 @@ Route::group(["middleware" => ["admin_auth"], "prefix" => "admin"], function () 
 */
 
 Route::get('/', [App\Http\Controllers\WebController::class, "home"]);
+Route::get('about-us', [App\Http\Controllers\WebController::class, "about_us"]);
+Route::get('contact-us', [App\Http\Controllers\WebController::class, "contact_us"]);
+Route::get('faqs', [App\Http\Controllers\WebController::class, "faqs"]);
+Route::get('how-to-shop', [App\Http\Controllers\WebController::class, "how_to_shop"]);
+
+
+
 
 // LOGIN AND REG ROUTES
 Route::get('login', [App\Http\Controllers\WebController::class, "login_page"])->name("login");
@@ -201,6 +208,13 @@ Route::group(["middleware" => "auth"], function () {
     Route::get("/dashboard", function () {
         return view("vendor.custom.user.dashboard");
     })->name("dashboard");
+
+    Route::get('dashboard/wishlist', [App\Http\Controllers\UserController::class, "wishlist"])->name("dashboard.account.wishlist");
+    Route::get('dashboard/account/contacts', [App\Http\Controllers\UserController::class, "wishlist"])->name("dashboard.account.contacts");
+    Route::get('dashboard/account/settings', [App\Http\Controllers\UserController::class, "wishlist"])->name("dashboard.account.settings");
+
+
+
 
     // ADs ROUTES
     Route::get("/ads", [App\Http\Controllers\UserController::class, "list_user_ads_page"])->name("ads.list.page");

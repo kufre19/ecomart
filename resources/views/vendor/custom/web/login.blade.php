@@ -6,7 +6,7 @@
         <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Login</li>
                 </ol>
@@ -69,13 +69,13 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <a href="{{ url('/auth/google') }}" class="btn btn-login btn-g">
-                                                <i class="icon-google"></i>
+                                                <i class="lab la-google la-2x"></i>
                                                 Login With Google
                                             </a>
                                         </div><!-- End .col-6 -->
                                         <div class="col-sm-6">
                                             <a href="#" id="login-fb" class="btn btn-login btn-f">
-                                                <i class="icon-facebook-f"></i>
+                                                <i class="lab la-facebook-f la-2x"></i>
                                                 Login With Facebook
                                             </a>
                                             
@@ -132,13 +132,13 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <a href="{{ url('/auth/google') }}" class="btn btn-login btn-g">
-                                                <i class="icon-google"></i>
+                                                <i class="lab la-google la-2x"></i>
                                                 Login With Google
                                             </a>
                                         </div><!-- End .col-6 -->
                                         <div class="col-sm-6">
                                             <a href="#" id="signup-fb" class="btn btn-login  btn-f">
-                                                <i class="icon-facebook-f"></i>
+                                                <i class="lab la-facebook la-2x"></i>
                                                 Login With Facebook
                                             </a>
                                           

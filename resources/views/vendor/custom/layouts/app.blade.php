@@ -51,7 +51,7 @@
                 <div class="container">
                     <div class="header-left">
                         <!-- <a href="tel:#" style="color: white;"><i class="icon-phone"></i>Call: +0123 456 789</a> -->
-                        <a href="index.html" class="logo header-top-logo">
+                        <a href="{{url('/')}}" class="logo header-top-logo">
                             <img src="{{ asset('custom/assets/images/demos/demo-13/logo.png') }}" alt="Ecomart Logo"
                                 width="90" height="25">
                             <!-- <h1 Ecomart</h1> -->
@@ -98,7 +98,7 @@
                             <i class="las la-bars"></i>
                         </button>
                         
-                        <a href="index.html" class="logo header-middle-logo">
+                        <a href="{{url('/')}}" class="logo header-middle-logo">
                             <img src="{{ asset('custom/assets/images/demos/demo-13/logo.png') }}" alt="Ecomart Logo" width="55" height="10">
                         </a>
                     </div><!-- End .header-left -->
@@ -556,11 +556,11 @@
                                 <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
 
                                 <ul class="widget-list">
-                                    <li><a href="#">Sign In</a></li>
+                                    <li><a href="{{url('login')}}">Sign In</a></li>
 
                                     <li><a href="#">My Wishlist</a></li>
 
-                                    <li><a href="#">Help</a></li>
+                                    
                                 </ul><!-- End .widget-list -->
                             </div><!-- End .widget -->
                         </div><!-- End .col-sm-64 col-lg-3 -->
@@ -623,18 +623,18 @@
                     <nav class="mobile-nav">
                         <ul class="mobile-menu">
                             <li>
-                                <a href="index.html" class="sf">Home</a>
+                                <a href="{{url('/')}}" class="sf">Home</a>
                             </li>
 
                             <li>
-                                <a href="contact-2.html" class="sf">Contact</a>
+                                <a href="{{url('contact-us')}}" class="sf">Contact</a>
 
                             </li>
                             <li>
-                                <a href="login.html" class="sf">Login</a>
+                                <a href="{{url('login')}}" class="sf">Login</a>
                             </li>
                             <li>
-                                <a href="faq.html" class="sf">FAQs</a>
+                                <a href="{{url('faqs')}}" class="sf">FAQs</a>
                             </li>
                         </ul>
                     </nav><!-- End .mobile-nav -->
