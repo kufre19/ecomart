@@ -95,7 +95,7 @@
                     <div class="header-left">
                         <button class="mobile-menu-toggler">
                             <span class="sr-only">Toggle mobile menu</span>
-                            <i class="icon-bars"></i>
+                            <i class="lab la-bars"></i>
                         </button>
                         
                         <a href="index.html" class="logo header-middle-logo">
@@ -105,7 +105,7 @@
 
                     <div class="header-center">
                         <div class="header-search header-search-extended header-search-visible header-search-no-radius d-none d-lg-block">
-                            <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                            <a href="#" class="search-toggle" role="button"><i class="fa fa-search"></i></a>
                             <form action="#" method="get">
                                 <div class="header-search-wrapper search-wrapper-wide">
                                     <div class="select-custom">
@@ -129,7 +129,7 @@
                                     </div><!-- End .select-custom -->
                                     <label for="q" class="sr-only">Search</label>
                                     <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
-                                    <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+                                    <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
                                 </div><!-- End .header-search-wrapper -->
                             </form>
                         </div><!-- End .header-search -->
@@ -590,20 +590,20 @@
             </div><!-- End .footer-bottom -->
         </footer><!-- End .footer -->
     </div><!-- End .page-wrapper -->
-    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+    <button id="scroll-top" title="Back to Top"><i class="fa fa-arrow-up"></i></button>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
 
     <div class="mobile-menu-container mobile-menu-light">
         <div class="mobile-menu-wrapper">
-            <span class="mobile-menu-close"><i class="icon-close"></i></span>
+            <span class="mobile-menu-close"><i class="fa fa-close"></i></span>
 
             <form action="#" method="get" class="mobile-search">
                 <label for="mobile-search" class="sr-only">Search</label>
                 <input type="search" class="form-control" name="mobile-search" id="mobile-search"
                     placeholder="Search in..." required>
-                <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+                <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
             </form>
 
             <ul class="nav nav-pills-mobile nav-border-anim" role="tablist">
