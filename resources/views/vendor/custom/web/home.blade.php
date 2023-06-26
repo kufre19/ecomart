@@ -16,6 +16,19 @@
                         <a href="category-auto.html" class="cat-block">
                             <figure>
                                 <span>
+                                    <i class="fa fa-plus fa-5x"></i>
+                                    {{-- <img src="{{asset('custom/assets/images/demos/demo-13/cats/14.jpg')}}" alt="Category image"> --}}
+                                </span>
+                            </figure>
+
+                            <h3 class="cat-block-title">POST AD</h3><!-- End .cat-block-title -->
+                        </a>
+                    </div><!-- End .col-sm-4 col-lg-2 -->
+
+                    <div class="col-4 col-lg-2">
+                        <a href="category-auto.html" class="cat-block">
+                            <figure>
+                                <span>
                                     <img src="{{asset('custom/assets/images/demos/demo-13/cats/14.jpg')}}" alt="Category image">
                                 </span>
                             </figure>

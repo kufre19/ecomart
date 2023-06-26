@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="{{ asset('custom/assets/css/skins/skin-demo-13.css') }}">
     <link rel="stylesheet" href="{{ asset('custom/assets/css/demos/demo-13.css') }}">
     {{-- ICON --}}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
 
 </head>
 
@@ -58,7 +58,7 @@
                         </a>
                     </div><!-- End .header-left -->
 
-                    <div class="header-right">
+                    <div class="header-right header-right-links">
 
                         <ul class="top-menu">
                             <li>
@@ -89,7 +89,7 @@
                 </div><!-- End .container -->
             </div><!-- End .header-top -->
 
-            <div class="header-middle">
+            <div class="header-right-sm header-right">
                 <div class="container">
                     <div class="header-left">
                         <button class="mobile-menu-toggler">
