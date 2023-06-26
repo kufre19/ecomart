@@ -597,7 +597,7 @@
 
     <div class="mobile-menu-container mobile-menu-light">
         <div class="mobile-menu-wrapper">
-            <span class="mobile-menu-close"><i class="fa fa-close"></i></span>
+            <span class="mobile-menu-close"><i class="fa fa-times"></i></span>
 
             <form action="#" method="get" class="mobile-search">
                 <label for="mobile-search" class="sr-only">Search</label>
