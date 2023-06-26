@@ -478,18 +478,18 @@
                         <nav class="main-nav">
                             <ul class="menu sf-arrows">
                                 <li>
-                                    <a href="index.html" class="sf">Home</a>
+                                    <a href="{{url('/')}}" class="sf">Home</a>
                                 </li>
-
+    
                                 <li>
-                                    <a href="contact-2.html" class="sf">Contact</a>
-
+                                    <a href="{{url('contact-us')}}" class="sf">Contact</a>
+    
                                 </li>
-                                <!-- <li>
-                                    <a href="login.html" class="sf">Login</a>
-                                </li> -->
                                 <li>
-                                    <a href="faq.html" class="sf">FAQs</a>
+                                    <a href="{{url('login')}}" class="sf">Login</a>
+                                </li>
+                                <li>
+                                    <a href="{{url('faqs')}}" class="sf">FAQs</a>
                                 </li>
                             </ul><!-- End .menu -->
                         </nav><!-- End .main-nav -->
