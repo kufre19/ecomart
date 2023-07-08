@@ -39,8 +39,11 @@
     <link rel="stylesheet" href="{{ asset('custom/assets/css/skins/skin-demo-13.css') }}">
     <link rel="stylesheet" href="{{ asset('custom/assets/css/demos/demo-13.css') }}">
     {{-- ICON --}}
-    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+        integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 </head>
 
 <body>
@@ -51,7 +54,7 @@
                 <div class="container">
                     <div class="header-left">
                         <!-- <a href="tel:#" style="color: white;"><i class="icon-phone"></i>Call: +0123 456 789</a> -->
-                        <a href="{{url('/')}}" class="logo header-top-logo">
+                        <a href="{{ url('/') }}" class="logo header-top-logo">
                             <img src="{{ asset('custom/assets/images/demos/demo-13/logo.png') }}" alt="Ecomart Logo"
                                 width="90" height="25">
                             <!-- <h1 Ecomart</h1> -->
@@ -64,7 +67,7 @@
                             <li>
                                 <a href="#" style="color: rgb(2, 2, 2);">Navigation</a>
                                 <ul>
-                                   
+
                                     <li>
                                         <div class="header-dropdown">
                                             <a href="#" style="color: rgb(10, 5, 5);">Engligh</a>
@@ -78,10 +81,17 @@
                                             </div><!-- End .header-menu -->
                                         </div><!-- End .header-dropdown -->
                                     </li>
-                                    <li class="login">
-                                        <a href="{{ url('login') }}" style="color: rgb(0, 0, 0);">Sign in / Sign
-                                            up</a>
-                                    </li>
+                                    @guest
+                                        <li class="login">
+                                            <a href="{{ url('login') }}" style="color: rgb(0, 0, 0);">Sign in / Sign
+                                                up</a>
+                                        </li>
+                                    @endguest
+                                    @auth
+                                        <li class="login">
+                                            <a href="{{ url('dashboard') }}" style="color: rgb(0, 0, 0);">My Account</a>
+                                        </li>
+                                    @endauth
                                 </ul>
                             </li>
                         </ul><!-- End .top-menu -->
@@ -89,7 +99,7 @@
                 </div><!-- End .container -->
             </div><!-- End .header-top -->
 
-           
+
             <div class="header-middle">
                 <div class="container">
                     <div class="header-left">
@@ -97,14 +107,16 @@
                             <span class="sr-only">Toggle mobile menu</span>
                             <i class="las la-bars"></i>
                         </button>
-                        
-                        <a href="{{url('/')}}" class="logo header-middle-logo">
-                            <img src="{{ asset('custom/assets/images/demos/demo-13/logo.png') }}" alt="Ecomart Logo" width="55" height="10">
+
+                        <a href="{{ url('/') }}" class="logo header-middle-logo">
+                            <img src="{{ asset('custom/assets/images/demos/demo-13/logo.png') }}" alt="Ecomart Logo"
+                                width="55" height="10">
                         </a>
                     </div><!-- End .header-left -->
 
                     <div class="header-center">
-                        <div class="header-search header-search-extended header-search-visible header-search-no-radius d-none d-lg-block">
+                        <div
+                            class="header-search header-search-extended header-search-visible header-search-no-radius d-none d-lg-block">
                             <a href="#" class="search-toggle" role="button"><i class="fa fa-search"></i></a>
                             <form action="#" method="get">
                                 <div class="header-search-wrapper search-wrapper-wide">
@@ -128,8 +140,10 @@
                                         </select>
                                     </div><!-- End .select-custom -->
                                     <label for="q" class="sr-only">Search</label>
-                                    <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
-                                    <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                                    <input type="search" class="form-control" name="q" id="q"
+                                        placeholder="Search product ..." required>
+                                    <button class="btn btn-primary" type="submit"><i
+                                            class="fa fa-search"></i></button>
                                 </div><!-- End .header-search-wrapper -->
                             </form>
                         </div><!-- End .header-search -->
@@ -137,19 +151,19 @@
 
                     <div class="header-right">
                         <div class="header-dropdown-link">
-                          
+
                             <a href="wishlist.html" class="wishlist-link">
                                 <i class="fa fa-heart"></i>
                                 <span class="wishlist-count">0</span>
                                 <span class="wishlist-txt">Wishlist</span>
                             </a>
 
-                           
+
                         </div>
                     </div><!-- End .header-right -->
                 </div><!-- End .container -->
             </div><!-- End .header-middle -->
-            
+
             <div class="header-bottom sticky-header">
                 <div class="container">
                     <div class="header-left">
@@ -478,18 +492,25 @@
                         <nav class="main-nav">
                             <ul class="menu sf-arrows">
                                 <li>
-                                    <a href="{{url('/')}}" class="sf">Home</a>
+                                    <a href="{{ url('/') }}" class="sf">Home</a>
                                 </li>
-    
+
                                 <li>
-                                    <a href="{{url('contact-us')}}" class="sf">Contact</a>
-    
+                                    <a href="{{ url('contact-us') }}" class="sf">Contact</a>
+
                                 </li>
+                                @guest
+                                    <li>
+                                        <a href="{{ url('login') }}" class="sf">Login</a>
+                                    </li>
+                                @endguest
+                                @auth
+                                    <li>
+                                        <a href="{{ url('dashboard') }}" class="sf">My Account</a>
+                                    </li>
+                                @endauth
                                 <li>
-                                    <a href="{{url('login')}}" class="sf">Login</a>
-                                </li>
-                                <li>
-                                    <a href="{{url('faqs')}}" class="sf">FAQs</a>
+                                    <a href="{{ url('faqs') }}" class="sf">FAQs</a>
                                 </li>
                             </ul><!-- End .menu -->
                         </nav><!-- End .main-nav -->
@@ -556,11 +577,11 @@
                                 <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
 
                                 <ul class="widget-list">
-                                    <li><a href="{{url('login')}}">Sign In</a></li>
+                                    <li><a href="{{ url('login') }}">Sign In</a></li>
 
                                     <li><a href="#">My Wishlist</a></li>
 
-                                    
+
                                 </ul><!-- End .widget-list -->
                             </div><!-- End .widget -->
                         </div><!-- End .col-sm-64 col-lg-3 -->
@@ -582,9 +603,12 @@
 
                     <div class="social-icons social-icons-color">
                         <span class="social-label">Social Media</span>
-                        <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="lab la-google"></i></a>
-                        <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="lab la-twitter"></i></a>
-                        <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="lab la-instagram"></i></a>
+                        <a href="#" class="social-icon" target="_blank" title="Facebook"><i
+                                class="lab la-google"></i></a>
+                        <a href="#" class="social-icon" target="_blank" title="Twitter"><i
+                                class="lab la-twitter"></i></a>
+                        <a href="#" class="social-icon" target="_blank" title="Instagram"><i
+                                class="lab la-instagram"></i></a>
                     </div><!-- End .soial-icons -->
                 </div><!-- End .container -->
             </div><!-- End .footer-bottom -->
@@ -623,18 +647,18 @@
                     <nav class="mobile-nav">
                         <ul class="mobile-menu">
                             <li>
-                                <a href="{{url('/')}}" class="sf">Home</a>
+                                <a href="{{ url('/') }}" class="sf">Home</a>
                             </li>
 
                             <li>
-                                <a href="{{url('contact-us')}}" class="sf">Contact</a>
+                                <a href="{{ url('contact-us') }}" class="sf">Contact</a>
 
                             </li>
                             <li>
-                                <a href="{{url('login')}}" class="sf">Login</a>
+                                <a href="{{ url('login') }}" class="sf">Login</a>
                             </li>
                             <li>
-                                <a href="{{url('faqs')}}" class="sf">FAQs</a>
+                                <a href="{{ url('faqs') }}" class="sf">FAQs</a>
                             </li>
                         </ul>
                     </nav><!-- End .mobile-nav -->
@@ -659,15 +683,18 @@
             </div><!-- End .tab-content -->
 
             <div class="social-icons">
-                <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="lab la-google"></i></a>
-                <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="lab la-twitter"></i></a>
-                <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="lab la-instagram"></i></a>
-                
+                <a href="#" class="social-icon" target="_blank" title="Facebook"><i
+                        class="lab la-google"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Twitter"><i
+                        class="lab la-twitter"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Instagram"><i
+                        class="lab la-instagram"></i></a>
+
             </div><!-- End .social-icons -->
         </div><!-- End .mobile-menu-wrapper -->
     </div><!-- End .mobile-menu-container -->
 
- 
+
 
     @include('platform::partials.toast')
 
