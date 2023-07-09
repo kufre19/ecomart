@@ -223,5 +223,5 @@ Route::group(["middleware" => "auth"], function () {
 });
 
 Route::any("test-page", function () {
-    return view("vendor.custom.web.view-ad");
+    return view("vendor.custom.user.account-settings");
 });
