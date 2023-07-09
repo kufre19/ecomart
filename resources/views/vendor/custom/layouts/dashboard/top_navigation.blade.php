@@ -32,7 +32,7 @@
                 <nav class="main-nav">
                     <ul class="menu sf-arrows">
                         <li>
-                            <a href="{{url('dashboard')}}" class="sf">Home</a>
+                            <a href="{{url('/')}}" class="sf">Home</a>
                         </li>
                         <li>
                             <a href="{{url('contact')}}" class="sf">Contact</a>

@@ -8,10 +8,10 @@
             <a class="nav-link {{request()->routeIs('ads.create.page') ? 'active' : ''}}" id="tab-adverts-link"
                 href="{{url("ads/create")}}" role="tab" aria-controls="tab-adverts">Adverts</a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link {{request()->routeIs('dashboard.account.contacts') ? 'active' : ''}}" id="tab-address-link"
                 href="{{url("ads/create")}}" role="tab" aria-controls="tab-address">Contacts</a>
-        </li>
+        </li> --}}
         <li class="nav-item">
             <a class="nav-link {{request()->routeIs('dashboard.account.settings') ? 'active' : ''}}" id="tab-account-link"
                 href="{{url("ads/create")}}" role="tab" aria-controls="tab-account">Account Settings</a>
