@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdsCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,9 +14,10 @@ class WebController extends Controller
 {
 
     public function home(Request $request)
-    {
-
-        return view("vendor.custom.web.home");
+    {   
+        $category_model = new AdsCategory();
+        $categories = $category_model->with("adsSubCategory")->get(); 
+        return view("vendor.custom.web.home",compact("categories"));
     }
 
     public function login_page()

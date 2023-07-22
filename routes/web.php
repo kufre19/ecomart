@@ -208,6 +208,11 @@ Route::get('/auth/facebook', [App\Http\Controllers\WebController::class, "facebo
 // LOGIN AND REG ROUTES
 
 
+// UNGUARDED ADS ROUTES
+Route::get("ads/category/{id}");
+
+
+
 Route::group(["middleware" => "auth"], function () {
 
     Route::get("/dashboard", function () {

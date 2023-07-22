@@ -25,133 +25,24 @@
                         </a>
                     </div><!-- End .col-sm-4 col-lg-2 -->
 
-                    <div class="col-4 col-lg-2">
-                        <a href="category-auto.html" class="cat-block">
-                            <figure>
-                                <span>
-                                    <img src="{{asset('custom/assets/images/demos/demo-13/cats/14.jpg')}}" alt="Category image">
-                                </span>
-                            </figure>
+                    @foreach ($categories as $category)
+                        <div class="col-4 col-lg-2">
+                            <a href="{{url('ads/category')."/".$category->id}}" class="cat-block">
+                                <figure>
+                                    <span>
+                                        <img src="{{asset($category->image)}}" alt="Category image">
+                                    </span>
+                                </figure>
 
-                            <h3 class="cat-block-title">Automobiles</h3><!-- End .cat-block-title -->
-                        </a>
-                    </div><!-- End .col-sm-4 col-lg-2 -->
+                                <h3 class="cat-block-title">{{$category->category_name}}</h3><!-- End .cat-block-title -->
+                            </a>
+                        </div><!-- End .col-sm-4 col-lg-2 -->
 
-                    <div class="col-4 col-lg-2">
-                        <a href="category-phones.html" class="cat-block">
-                            <figure>
-                                <span>
-                                    <img src="{{asset('custom/assets/images/demos/demo-13/cats/3.jpg')}}" alt="Category image">
-                                </span>
-                            </figure>
+                    @endforeach
 
-                            <h3 class="cat-block-title">Phones & Tablets</h3><!-- End .cat-block-title -->
-                        </a>
-                    </div><!-- End .col-sm-4 col-lg-2 -->
-
-                    <div class="col-4 col-lg-2">
-                        <a href="category-electronics.html" class="cat-block">
-                            <figure>
-                                <span>
-                                    <img src="{{asset('custom/assets/images/demos/demo-13/cats/4.jpg')}}" alt="Category image">
-                                </span>
-                            </figure>
-
-                            <h3 class="cat-block-title">Electronics</h3><!-- End .cat-block-title -->
-                        </a>
-                    </div><!-- End .col-sm-4 col-lg-2 -->
-
-                    <div class="col-4 col-lg-2">
-                        <a href="category-cooking.html" class="cat-block">
-                            <figure>
-                                <span>
-                                    <img src="{{asset('custom/assets/images/demos/demo-13/cats/5.jpg')}}" alt="Category image">
-                                </span>
-                            </figure>
-
-                            <h3 class="cat-block-title">Cooking</h3><!-- End .cat-block-title -->
-                        </a>
-                    </div><!-- End .col-sm-4 col-lg-2 -->
-
-                    <div class="col-4 col-lg-2">
-                        <a href="category-furniture.html" class="cat-block">
-                            <figure>
-                                <span>
-                                    <img src="{{asset('custom/assets/images/demos/demo-13/cats/2.jpg')}}" alt="Category image">
-                                </span>
-                            </figure>
-
-                            <h3 class="cat-block-title">Furniture & Appliances</h3><!-- End .cat-block-title -->
-                        </a>
-                    </div><!-- End .col-sm-4 col-lg-2 -->
-                    <div class="col-4 col-lg-2">
-                        <a href="category-prop.html" class="cat-block">
-                            <figure>
-                                <span>
-                                    <img src="{{asset('custom/assets/images/demos/demo-13/cats/11.jpg')}}" alt="Category image">
-                                </span>
-                            </figure>
-
-                            <h3 class="cat-block-title">Houses & Properties</h3><!-- End .cat-block-title -->
-                        </a>
-                    </div><!-- End .col-sm-4 col-lg-2 -->
-                    <div class="col-4 col-lg-2">
-                        <a href="category-pets.html" class="cat-block">
-                            <figure>
-                                <span>
-                                    <img src="{{asset('custom/assets/images/demos/demo-13/cats/12.jpg')}}" alt="Category image">
-                                </span>
-                            </figure>
-
-                            <h3 class="cat-block-title">Animals & Pets</h3><!-- End .cat-block-title -->
-                        </a>
-                    </div><!-- End .col-sm-4 col-lg-2 -->
-                    <div class="col-4 col-lg-2">
-                        <a href="category-fashion.html" class="cat-block">
-                            <figure>
-                                <span>
-                                    <img src="{{asset('custom/assets/images/demos/demo-13/cats/8.jpg')}}" alt="Category image">
-                                </span>
-                            </figure>
-
-                            <h3 class="cat-block-title">Fashion & Accessories</h3><!-- End .cat-block-title -->
-                        </a>
-                    </div><!-- End .col-sm-4 col-lg-2 -->
-                    <div class="col-4 col-lg-2">
-                        <a href="category-health.html" class="cat-block">
-                            <figure>
-                                <span>
-                                    <img src="{{asset('custom/assets/images/demos/demo-13/cats/10.jpg')}}" alt="Category image">
-                                </span>
-                            </figure>
-
-                            <h3 class="cat-block-title">Health & Beauty</h3><!-- End .cat-block-title -->
-                        </a>
-                    </div><!-- End .col-sm-4 col-lg-2 -->
-                    <div class="col-4 col-lg-2">
-                        <a href="category-marine.html" class="cat-block">
-                            <figure>
-                                <span>
-                                    <img src="{{asset('custom/assets/images/demos/demo-13/cats/13.jpg')}}" alt="Category image">
-                                </span>
-                            </figure>
-
-                            <h3 class="cat-block-title">Marine & Accessories</h3><!-- End .cat-block-title -->
-                        </a>
-                    </div><!-- End .col-sm-4 col-lg-2 -->
-                    <div class="col-4 col-lg-2">
-                        <a href="category-babies.html" class="cat-block">
-                            <figure>
-                                <span>
-                                    <img src="{{asset('custom/assets/images/demos/demo-13/cats/16.jpg')}}" alt="Category image">
-                                </span>
-                            </figure>
-
-                            <h3 class="cat-block-title">Babies & Kids</h3><!-- End .cat-block-title -->
-                        </a>
-                    </div><!-- End .col-sm-4 col-lg-2 -->
-                   
-                   
+                  
+                  
+            
                    
 
                 </div><!-- End .row -->
