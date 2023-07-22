@@ -411,17 +411,13 @@
                 <div class="tab-pane fade" id="mobile-cats-tab" role="tabpanel" aria-labelledby="mobile-cats-link">
                     <nav class="mobile-cats-nav">
                         <ul class="mobile-cats-menu">
-                            <li><a class="mobile-cats-lead" href="#">Daily offers</a></li>
-                            <li><a class="mobile-cats-lead" href="#">Gift Ideas</a></li>
-                            <li><a href="#">Beds</a></li>
-                            <li><a href="#">Lighting</a></li>
-                            <li><a href="#">Sofas & Sleeper sofas</a></li>
-                            <li><a href="#">Storage</a></li>
-                            <li><a href="#">Armchairs & Chaises</a></li>
-                            <li><a href="#">Decoration </a></li>
-                            <li><a href="#">Kitchen Cabinets</a></li>
-                            <li><a href="#">Coffee & Tables</a></li>
-                            <li><a href="#">Outdoor Furniture </a></li>
+                         
+                            @foreach ($categories as $category)
+                                <li><a href="{{url('ads/category')."/".$category->id}}">{{$category->category_name}}</a></li>
+                                
+                            @endforeach
+                           
+                            
                         </ul><!-- End .mobile-cats-menu -->
                     </nav><!-- End .mobile-cats-nav -->
                 </div><!-- .End .tab-pane -->
