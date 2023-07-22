@@ -30,7 +30,7 @@
                             <a href="{{url('ads/category')."/".$category->id}}" class="cat-block">
                                 <figure>
                                     <span>
-                                        <img src="{{asset($category->image)}}" alt="Category image">
+                                        <img src="{{asset(storage_path($category->image))}}" alt="Category image">
                                     </span>
                                 </figure>
 
