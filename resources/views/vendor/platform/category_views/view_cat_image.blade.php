@@ -1,0 +1,1 @@
+<img src="{{asset($category_image)}}" alt="" height="500">

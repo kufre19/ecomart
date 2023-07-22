@@ -43,10 +43,10 @@ class SubCategoriesEditLayout extends Rows
                 ->required()
                 ->value($cat['adsSubCategory.ads_category_id']),
 
-            Input::make('adsSubCategory.image')
-                ->type('file')
-                ->title(__('Image(optional)'))
-                ->placeholder(__('Select Image')),
+            // Input::make('adsSubCategory.image')
+            //     ->type('file')
+            //     ->title(__('Image(optional)'))
+            //     ->placeholder(__('Select Image')),
         ];
     }
 }

@@ -22,6 +22,7 @@ use App\Orchid\Screens\AdsCategories\CategoriesListScreen;
 use App\Orchid\Screens\AdsCategories\SubCategoriesEditScreen;
 use App\Orchid\Screens\AdsCategories\SubCategoriesListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Tabuna\Breadcrumbs\Trail;
 use Laravel\Socialite\Facades\Socialite;
@@ -50,6 +51,10 @@ use Laravel\Socialite\Facades\Socialite;
 | contains the need "dashboard" middleware group. Now create something great!
 |
 */
+
+Route::get('/foo', function () {
+    Artisan::call('storage:link');
+});
 
 Route::group(["middleware" => ["admin_auth"], "prefix" => "admin"], function () {
     Route::get("test", function () {
