@@ -17,6 +17,7 @@ class WebController extends Controller
     {   
         $category_model = new AdsCategory();
         $categories = $category_model->with("adsSubCategory")->get(); 
+        
         return view("vendor.custom.web.home",compact("categories"));
     }
 
