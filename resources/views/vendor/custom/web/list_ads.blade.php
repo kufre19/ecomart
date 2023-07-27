@@ -93,7 +93,7 @@
                                     <figure class="product-media">
                                         {{-- <span class="product-label label-new">New</span> --}}
                                         <a href="product.html">
-                                            <img src="{{  }}"
+                                            <img src=""
                                                 alt="Product image" class="product-image">
                                         </a>
         

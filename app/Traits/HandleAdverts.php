@@ -50,7 +50,7 @@ trait HandleAdverts
             'item_title' => 'required|min:3',
             'item_description' => 'required|min:8',
             'adsImages.*' => 'required|file|mimes:jpeg,png,gif|max:5120',
-            'adCoverImage' => 'required|file|mimes:jpeg,png,gif|max:5120',
+            'cover_image' => 'required|file|mimes:jpeg,png,gif|max:5120',
 
         ]);
 
@@ -84,7 +84,9 @@ trait HandleAdverts
         // store_cover image
         $cover_image = $request->file("cover_image");
         $filename = time() . '.' . $cover_image->getClientOriginalExtension();
-        $ads_cover_image_path = $cover_image->storeAs('storage/ads_images/cover_image', $filename);
+        $cover_image->storeAs('ads_images/cover_image', $filename);
+        $ads_cover_image_path = "storage/ads_images/cover_image/" . $filename;
+
 
 
 
@@ -125,7 +127,9 @@ trait HandleAdverts
 
 
                     // Store the image in the public/ads_images folder
-                    $ads_image_Stored = $image->storeAs('storage/ads_images', $filename);
+                    $image->storeAs('ads_images', $filename);
+                    $ads_image_Stored = "storage/ads_images/" . $filename;
+
                     // dd("ol",$filename);
 
                     // Associate the image with the Ads model
