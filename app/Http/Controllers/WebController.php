@@ -34,14 +34,18 @@ class WebController extends BaseController
         $category = $category_model->with("adsSubCategory")->first();
         if ($category) {
 
-            $ads = $ads_model->where("category", $cat)->where("status", "approved")->with("adsImage")->paginate(20);
+            $ads = $ads_model->where("category", $cat)->where("status", "approved")->with("adsImage")->orderBy('created_at', 'DESC')->paginate(20);
             if ($ads->count() > 0) {
-                return view("vendor.custom.web.list_ads", compact("ads", "category"));
+                $found = true;
             } else {
                 // return only 20 first ads as none in category is found
-                $ads = false;
-                return view("vendor.custom.web.list_ads", compact("ads","category"));
+                $found = false;
+                $ads = $ads_model->where("status", "approved")->with("adsImage","getcategory")->orderBy('created_at', 'DESC')->paginate(20);
+               
             }
+
+            return view("vendor.custom.web.list_ads", compact("ads", "category","found"));
+
         } else {
             // tried wrong category
             return redirect()->back();
