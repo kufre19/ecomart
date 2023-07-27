@@ -30,6 +30,7 @@
             <div class="form-group mb-2">
                 <label for="myInput">Choose a sub-category:</label>
                 <select name="sub_category" class="form-control" id="myInputsub" required>
+                    <option value="NA">NA</option>
                     @foreach ($sub_categories as $sub_category)
                         <option value="{{ $category->id }}">{{ $sub_category->sub_category_name }}</option>
                     @endforeach
