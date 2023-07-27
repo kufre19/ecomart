@@ -33,8 +33,8 @@ class WebController extends BaseController
         $ad = $ads_model->where("id", $id)->where("status", "approved")->with("adsImage","getcategory","getUser")->first();
 
         if($ad){
-
-            return view("vendor.custom.web.view-ad",compact("ad"));
+            $other_ads  = $ads_model->where("id", "!=", $ad->id)->where("category", $ad->getcategory->id)->where("status", "approved")->with("adsImage","getcategory")->paginate(8);
+            return view("vendor.custom.web.view-ad",compact("ad","other_ads"));
         }else {
 
             // tried getting ads that id is not found
