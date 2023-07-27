@@ -10,7 +10,7 @@
             <div class="heading heading-flex heading-border mb-3">
                 <div class="heading-left">
                     <h2 class="title">{{ $category->category_name }}</h2> <i class="fa fa-arrow-right fa-sm"
-                        aria-hidden="true"></i><!-- End .title -->
+                        aria-hidden="true"></i>{{$subcategory->sub_category_name ?? ""}}<!-- End .title -->
                 </div><!-- End .heading-left -->
 
 
@@ -57,8 +57,7 @@
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add
                                                     to wishlist</span></a>
-                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
-                                                title="Quick view"><span>Quick view</span></a>
+                                           
                                         </div><!-- End .product-action-vertical -->
 
                                         <div class="product-action">
@@ -101,8 +100,7 @@
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add
                                                     to wishlist</span></a>
-                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
-                                                title="Quick view"><span>Quick view</span></a>
+                                          
                                         </div><!-- End .product-action-vertical -->
 
                                         <div class="product-action">

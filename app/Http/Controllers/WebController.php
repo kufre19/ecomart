@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ads;
 use App\Models\AdsCategory;
+use App\Models\AdsSubCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -45,6 +46,33 @@ class WebController extends BaseController
             }
 
             return view("vendor.custom.web.list_ads", compact("ads", "category","found"));
+
+        } else {
+            // tried wrong category
+            return redirect()->back();
+        }
+    }
+
+    public function list_ads_by_subcategory($subcat)
+    {
+        $subcategory_model = new AdsSubCategory();
+        $ads_model = new Ads();
+
+        $subcategory = $subcategory_model->with("category")->first();
+        if ($subcategory) {
+            $category = $subcategory->category;
+
+            $ads = $ads_model->where("sub_category", $subcat)->where("status", "approved")->with("adsImage")->orderBy('created_at', 'DESC')->paginate(20);
+            if ($ads->count() > 0) {
+                $found = true;
+            } else {
+                // return only 20 first ads as none in category is found
+                $found = false;
+                $ads = $ads_model->where("status", "approved")->with("adsImage","getcategory")->orderBy('created_at', 'DESC')->paginate(20);
+               
+            }
+
+            return view("vendor.custom.web.list_ads", compact("ads", "category","found","subcategory"));
 
         } else {
             // tried wrong category

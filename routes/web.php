@@ -212,9 +212,7 @@ Route::get('/auth/facebook', [App\Http\Controllers\WebController::class, "facebo
 // UNGUARDED ADS ROUTES
 Route::get("ads/category/{id}",[WebController::class,"list_ads_by_category"]);
 
-Route::get("ads/sub-category/{id}",function(){
-    return "show ads for this sub category";
-});
+Route::get("ads/sub-category/{id}",[WebController::class,"list_ads_by_subcategory"]);
 
 Route::group(["middleware" => "auth"], function () {
 
