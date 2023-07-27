@@ -84,7 +84,7 @@ trait HandleAdverts
         // store_cover image
         $cover_image = $request->file("cover_image");
         $filename = time() . '.' . $cover_image->getClientOriginalExtension();
-        $cover_image->storeAs('ads_images/cover_image', $filename);
+        $cover_image->storeAs('ads_images/cover_image', $filename,"public");
         $ads_cover_image_path = "storage/ads_images/cover_image/" . $filename;
 
 
@@ -127,7 +127,7 @@ trait HandleAdverts
 
 
                     // Store the image in the public/ads_images folder
-                    $image->storeAs('ads_images', $filename);
+                    $image->storeAs('ads_images', $filename,"public");
                     $ads_image_Stored = "storage/ads_images/" . $filename;
 
                     // dd("ol",$filename);

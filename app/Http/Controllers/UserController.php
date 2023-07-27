@@ -16,6 +16,7 @@ class UserController extends Controller
     {
         $categories = AdsCategory::fetchAllCategoties();
         $sub_categories = AdsSubCategory::fetchAllSubCat();
+        
         return view("vendor.custom.user.ads_create",compact("categories","sub_categories"));
     }
 }

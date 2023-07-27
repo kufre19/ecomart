@@ -50,8 +50,8 @@
                                     <figure class="product-media">
                                         {{-- <span class="product-label label-new">New</span> --}}
                                         <a href="product.html">
-                                            <img src="{{asset($ad->cover_image) }}"
-                                                alt="Product image" class="product-image">
+                                            <img src="{{ asset($ad->cover_image) }}" alt="Product image"
+                                                class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
@@ -69,70 +69,67 @@
 
                                     <div class="product-body">
                                         <div class="product-cat">
-                                            <a href="#">Tables</a>
+                                            <a href="#">{{ $category->category_name }}</a>
                                         </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">Block Side Table/Trolley</a></h3>
+                                        <h3 class="product-title"><a href="product.html">{{ $ad->title }}</a></h3>
                                         <!-- End .product-title -->
                                         <div class="product-price">
-                                            $229.00
+                                            ₦ {{ number_format($ad->price, 2) }}
                                         </div><!-- End .product-price -->
-                                        {{-- <div class="ratings-container">
-                                <div class="ratings">
-                                    <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                </div><!-- End .ratings -->
-                                <span class="ratings-text">( 12 Reviews )</span>
-                            </div><!-- End .rating-container --> --}}
+                                        <div class="ratings-container">
+                                            <div class="">
+                                                Negotioable:
+                                            </div><!-- End .ratings -->
+                                             {{$ad->negotiable}}  
+                                        </div><!-- End .rating-container -->
 
 
                                     </div><!-- End .product-body -->
                                 </div><!-- End .product -->
                             @endforeach
                         @else
-                                <h5>Sorry No Ads under {{ $category->category_name}}, see other Ads below</h5>
-                                <div class="product">
-                                    <figure class="product-media">
-                                        {{-- <span class="product-label label-new">New</span> --}}
-                                        <a href="product.html">
-                                            <img src=""
-                                                alt="Product image" class="product-image">
-                                        </a>
-        
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                                    wishlist</span></a>
-                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
-                                                title="Quick view"><span>Quick view</span></a>
-                                        </div><!-- End .product-action-vertical -->
-        
-                                        <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>Contact
-                                                    Advertiser</span></a>
-                                        </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
-        
-                                    <div class="product-body">
-                                        <div class="product-cat">
-                                            <a href="#">Tables</a>
-                                        </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">Block Side Table/Trolley</a></h3>
-                                        <!-- End .product-title -->
-                                        <div class="product-price">
-                                            $229.00
-                                        </div><!-- End .product-price -->
-                                        {{-- <div class="ratings-container">
+                            <h5>Sorry No Ads under {{ $category->category_name }}, see other Ads below</h5>
+                            <div class="product">
+                                <figure class="product-media">
+                                    {{-- <span class="product-label label-new">New</span> --}}
+                                    <a href="product.html">
+                                        <img src="" alt="Product image" class="product-image">
+                                    </a>
+
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                                wishlist</span></a>
+                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
+                                            title="Quick view"><span>Quick view</span></a>
+                                    </div><!-- End .product-action-vertical -->
+
+                                    <div class="product-action">
+                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>Contact
+                                                Advertiser</span></a>
+                                    </div><!-- End .product-action -->
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <div class="product-cat">
+                                        <a href="#">Tables</a>
+                                    </div><!-- End .product-cat -->
+                                    <h3 class="product-title"><a href="product.html">Block Side Table/Trolley</a></h3>
+                                    <!-- End .product-title -->
+                                    <div class="product-price">
+                                        $229.00
+                                    </div><!-- End .product-price -->
+                                    {{-- <div class="ratings-container">
                                             <div class="ratings">
                                                 <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
                                             </div><!-- End .ratings -->
                                             <span class="ratings-text">( 12 Reviews )</span>
                                         </div><!-- End .rating-container --> --}}
-        
-        
-                                    </div><!-- End .product-body -->
-                                </div><!-- End .product -->
-        
-        
+
+
+                                </div><!-- End .product-body -->
+                            </div><!-- End .product -->
                         @endif
-                        
+
 
 
                     </div><!-- End .owl-carousel -->

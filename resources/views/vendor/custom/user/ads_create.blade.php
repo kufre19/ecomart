@@ -14,19 +14,7 @@
         </div><!-- End .text-center -->
 
         <form action="{{ url('ads/create') }}" method="POST" class="contact-form mb-2" enctype="multipart/form-data">
-            @if (session()->has(""))
-                
-            @endif
-            <div class="form-group mb-2">
-                <label for="myInputmain">Select Category</label>
-                <select name="category" class="form-control" id="myInputmain" required>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                    @endforeach
-                </select>
-               
-
-            </div>
+           
             @csrf
             <div class="form-group mb-2">
                 <label for="myInputmain">Select Category</label>
