@@ -7,8 +7,8 @@
         <div class="container d-flex align-items-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Products</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Default</li>
+                <li class="breadcrumb-item"><a href="#">Ads</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{$ad->title}}</li>
             </ol>
 
   
@@ -23,7 +23,7 @@
                         <div class="product-gallery product-gallery-vertical">
                             <div class="row">
                                 <figure class="product-main-image">
-                                    <img id="product-zoom" src="{{asset('custom/assets/images/products/single/1.jpg')}}" data-zoom-image="assets/images/products/single/1-big.jpg" alt="product image">
+                                    <img id="product-zoom" src="{{asset($ad->cover_image)}}" data-zoom-image="{{asset($ad->cover_image)}}" alt="product image">
 
                                     <a href="#" id="btn-product-gallery" class="btn-product-gallery">
                                         <i class="icon-arrows"></i>
@@ -31,21 +31,13 @@
                                 </figure><!-- End .product-main-image -->
 
                                 <div id="product-zoom-gallery" class="product-image-gallery">
-                                    <a class="product-gallery-item active" href="#" data-image="assets/images/products/single/1.jpg" data-zoom-image="assets/images/products/single/1-big.jpg">
-                                        <img src="assets/images/products/single/1-small.jpg" alt="product side">
-                                    </a>
+                                    @foreach ($ad->adsImage as $ad_images)
+                                        <a class="product-gallery-item active" href="#" data-image="{{asset($ad_images->ads_image)}}" data-zoom-image="{{asset($ad_images->ads_image)}}">
+                                            <img src="{{asset($ad_images->ads_image)}}" alt="product side">
+                                        </a>
+                                    @endforeach
+                                  
 
-                                    <a class="product-gallery-item" href="#" data-image="assets/images/products/single/2.jpg" data-zoom-image="assets/images/products/single/2-big.jpg">
-                                        <img src="assets/images/products/single/2-small.jpg" alt="product cross">
-                                    </a>
-
-                                    <a class="product-gallery-item" href="#" data-image="assets/images/products/single/3.jpg" data-zoom-image="assets/images/products/single/3-big.jpg">
-                                        <img src="assets/images/products/single/3-small.jpg" alt="product with model">
-                                    </a>
-
-                                    <a class="product-gallery-item" href="#" data-image="assets/images/products/single/4.jpg" data-zoom-image="assets/images/products/single/4-big.jpg">
-                                        <img src="assets/images/products/single/4-small.jpg" alt="product back">
-                                    </a>
                                 </div><!-- End .product-image-gallery -->
                             </div><!-- End .row -->
                         </div><!-- End .product-gallery -->
@@ -53,17 +45,17 @@
 
                     <div class="col-md-6">
                         <div class="product-details">
-                            <h1 class="product-title">Dark yellow lace cut out swing dress</h1><!-- End .product-title -->
+                            <h1 class="product-title">{{$ad->title}}</h1><!-- End .product-title -->
 
                             <div class="ratings-container">
-                                <div class="ratings">
-                                    <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
+                                <div class="">
+                                    Negotiable:
                                 </div><!-- End .ratings -->
-                                <a class="ratings-text" href="#product-review-link" id="review-link">( 2 Reviews )</a>
+                               {{$ad->negotiable}}
                             </div><!-- End .rating-container -->
 
                             <div class="product-price">
-                                $84.00
+                                ₦ {{ number_format($ad->price, 2) }}
                             </div><!-- End .product-price -->
 
                             <div class="product-content">

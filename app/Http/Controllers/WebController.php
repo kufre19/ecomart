@@ -29,7 +29,18 @@ class WebController extends BaseController
 
     public function view_ad($id)
     {
-        return view("vendor.custom.web.view-ad");
+        $ads_model = new Ads();
+        $ad = $ads_model->where("id", $id)->where("status", "approved")->with("adsImage")->first();
+
+        if($ad){
+
+            return view("vendor.custom.web.view-ad",compact("ad"));
+        }else {
+
+            // tried getting ads that id is not found
+            return redirect()->back();
+        }
+
     }
 
     public function list_ads_by_category($cat)
