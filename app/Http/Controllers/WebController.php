@@ -30,7 +30,7 @@ class WebController extends BaseController
     public function view_ad($id)
     {
         $ads_model = new Ads();
-        $ad = $ads_model->where("id", $id)->where("status", "approved")->with("adsImage")->first();
+        $ad = $ads_model->where("id", $id)->where("status", "approved")->with("adsImage","getcategory")->first();
 
         if($ad){
 
@@ -220,5 +220,16 @@ class WebController extends BaseController
     public function facebookAuth()
     {
         return Socialite::driver('facebook')->redirect();
+    }
+
+
+    public function contact_us()
+    {
+        return "contact us page";
+    }
+
+    public function faqs()
+    {
+        return "faqs page";
     }
 }

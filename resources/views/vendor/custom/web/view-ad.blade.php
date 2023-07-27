@@ -59,7 +59,10 @@
                             </div><!-- End .product-price -->
 
                             <div class="product-content">
-                                <p>Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing. Sed lectus. </p>
+                                <p>Manufacturer Year: {{$ad->manufacturer_year}}</p>
+                                <p>Condition: {{$ad->condition}}</p>
+                                <p>Location: {{$ad->location}}</p>
+
                             </div><!-- End .product-content -->
 
                           
@@ -69,9 +72,8 @@
                             <div class="product-details-footer">
                                 <div class="product-cat">
                                     <span>Category:</span>
-                                    <a href="#">Women</a>,
-                                    <a href="#">Dresses</a>,
-                                    <a href="#">Yellow</a>
+                                    <a href="{{url('ads/category'). "/" .$ad->getcategory->id}}">{{$ad->getcategory->category_name}}</a>,
+                                    
                                 </div><!-- End .product-cat -->
 
                                 
@@ -95,15 +97,11 @@
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="product-desc-tab" role="tabpanel" aria-labelledby="product-desc-link">
                         <div class="product-desc-content">
-                            <h3>Product Information</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. </p>
-                            <ul>
-                                <li>Nunc nec porttitor turpis. In eu risus enim. In vitae mollis elit. </li>
-                                <li>Vivamus finibus vel mauris ut vehicula.</li>
-                                <li>Nullam a magna porttitor, dictum risus nec, faucibus sapien.</li>
-                            </ul>
+                            <h3>Product Description</h3>
+                            <p>{{$ad->description}}</p>
+                            
 
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. </p>
+                            
                         </div><!-- End .product-desc-content -->
                     </div><!-- .End .tab-pane -->
                     <div class="tab-pane fade" id="product-info-tab" role="tabpanel" aria-labelledby="product-info-link">
