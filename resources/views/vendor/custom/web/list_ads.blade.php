@@ -50,7 +50,7 @@
                                     <figure class="product-media">
                                         {{-- <span class="product-label label-new">New</span> --}}
                                         <a href="product.html">
-                                            <img src="{{ asset('custom/assets/images/demos/demo-13/products/product-11.jpg') }}"
+                                            <img src="{{asset($ad->cover_image) }}"
                                                 alt="Product image" class="product-image">
                                         </a>
 
@@ -93,7 +93,7 @@
                                     <figure class="product-media">
                                         {{-- <span class="product-label label-new">New</span> --}}
                                         <a href="product.html">
-                                            <img src="{{ asset('custom/assets/images/demos/demo-13/products/product-11.jpg') }}"
+                                            <img src="{{  }}"
                                                 alt="Product image" class="product-image">
                                         </a>
         

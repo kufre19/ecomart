@@ -50,6 +50,8 @@ trait HandleAdverts
             'item_title' => 'required|min:3',
             'item_description' => 'required|min:8',
             'adsImages.*' => 'required|file|mimes:jpeg,png,gif|max:5120',
+            'adCoverImage' => 'required|file|mimes:jpeg,png,gif|max:5120',
+
         ]);
 
 
@@ -79,9 +81,16 @@ trait HandleAdverts
         $negotiate = $request->has('negotiable');
         $isNegotiable = ($negotiate == true) ? 'Yes' : 'No';
 
+        // store_cover image
+        $cover_image = $request->file("cover_image");
+        $filename = time() . '.' . $cover_image->getClientOriginalExtension();
+        $ads_cover_image_path = $cover_image->storeAs('storage/ads_images/cover_image', $filename);
 
 
 
+
+
+        // create new ads model object
         $this->initAdsModel();
 
         // Store the data in the Ads model
@@ -95,6 +104,7 @@ trait HandleAdverts
         $ads->title = $title;
         $ads->description = $description;
         $ads->negotiable = $isNegotiable;
+        $ads->cover_image = $ads_cover_image_path;
         $ads->life_cycle = $life_cycle;
         $ads->user_id = $user_id;
 
@@ -111,11 +121,11 @@ trait HandleAdverts
 
                 foreach ($images as $image) {
                     // Generate a unique filename with timestamp
-                    $filename = time() . '_' . $image->getClientOriginalName();
+                    $filename = time() . '.' . $image->getClientOriginalExtension();
 
 
                     // Store the image in the public/ads_images folder
-                    $ads_image_Stored = $image->storeAs('public/ads_images', $filename);
+                    $ads_image_Stored = $image->storeAs('storage/ads_images', $filename);
                     // dd("ol",$filename);
 
                     // Associate the image with the Ads model

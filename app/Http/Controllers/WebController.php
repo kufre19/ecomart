@@ -34,7 +34,7 @@ class WebController extends BaseController
         $category = $category_model->with("adsSubCategory")->first();
         if ($category) {
 
-            $ads = $ads_model->where("category", $cat)->where("status", "approved")->paginate(20);
+            $ads = $ads_model->where("category", $cat)->where("status", "approved")->with("adsImage")->paginate(20);
             if ($ads->count() > 0) {
                 return view("vendor.custom.web.list_ads", compact("ads", "category"));
             } else {

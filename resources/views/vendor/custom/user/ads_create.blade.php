@@ -71,7 +71,12 @@
                     aria-describedby="emailHelp" placeholder="Enter Item Price In Naira"
                     inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
             </div>
-            
+
+            <div class="form-group mb-2">
+                <label for="coverimage">Ad Cover Image</label>
+                <input type="file" name="cover_image" class="form-control-file" id="coverimage"
+                    accept="image/jpeg, image/png, image/gif"  required>
+            </div>
 
             <div class="form-group mb-2">
                 <label for="imageUpload">Item Images</label>
