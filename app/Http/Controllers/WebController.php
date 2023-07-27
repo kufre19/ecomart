@@ -30,7 +30,7 @@ class WebController extends BaseController
     public function view_ad($id)
     {
         $ads_model = new Ads();
-        $ad = $ads_model->where("id", $id)->where("status", "approved")->with("adsImage","getcategory")->first();
+        $ad = $ads_model->where("id", $id)->where("status", "approved")->with("adsImage","getcategory","getUser")->first();
 
         if($ad){
 
