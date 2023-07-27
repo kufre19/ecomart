@@ -27,6 +27,11 @@ class WebController extends BaseController
         return view("vendor.custom.web.home");
     }
 
+    public function view_ad($id)
+    {
+        return view("vendor.custom.web.view-ad");
+    }
+
     public function list_ads_by_category($cat)
     {
         $category_model = new AdsCategory();

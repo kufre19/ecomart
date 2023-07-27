@@ -49,7 +49,7 @@
                                 <div class="product">
                                     <figure class="product-media">
                                         {{-- <span class="product-label label-new">New</span> --}}
-                                        <a href="product.html">
+                                        <a href="{{url('ads/view') . "/". $ad->id}}">
                                             <img src="{{ asset($ad->cover_image) }}" alt="Product image"
                                                 class="product-image">
                                         </a>
