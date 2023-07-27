@@ -134,7 +134,7 @@
                         @endif
 
 
-                    <p>{{$ads->link()}}</p>
+                    <p>{{$ads->links()}}</p>
                     </div><!-- End .owl-carousel -->
                 </div><!-- .End .tab-pane -->
 
