@@ -26,7 +26,7 @@ class WebController extends BaseController
         return view("vendor.custom.web.home");
     }
 
-    public function list_ads($cat)
+    public function list_ads_by_category($cat)
     {
         $category_model = new AdsCategory();
         $ads_model = new Ads();
@@ -34,11 +34,17 @@ class WebController extends BaseController
         $category = $category_model->with("adsSubCategory")->first();
         if ($category) {
 
-            $ads = $ads_model->where("category", $cat)->orWhere("sub_category", $cat)->paginate(20);
-            return view("vendor.custom.web.list_ads", compact("ads","category"));
+            $ads = $ads_model->where("category", $cat)->where("status", "approved")->paginate(20);
+            if ($ads->count() > 0) {
+                return view("vendor.custom.web.list_ads", compact("ads", "category"));
+            } else {
+                // return only 20 first ads as none in category is found
+                $ads = false;
+                return view("vendor.custom.web.list_ads", compact("ads","category"));
+            }
         } else {
-            // return only 20 first ads as none in category is found
-            return view("vendor.custom.web.list_ads", compact("ads"));
+            // tried wrong category
+            return redirect()->back();
         }
     }
 
