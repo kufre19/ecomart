@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\WebController;
 use App\Orchid\Screens\Ads\AdsEditScreen;
 use App\Orchid\Screens\Ads\AdsListScreen;
 use App\Orchid\Screens\AdsCategories\CategoriesEdit;
@@ -209,9 +210,7 @@ Route::get('/auth/facebook', [App\Http\Controllers\WebController::class, "facebo
 
 
 // UNGUARDED ADS ROUTES
-Route::get("ads/category/{id}",function(){
-    return "show ads for this category";
-});
+Route::get("ads/category/{id}",[WebController::class,"list_ads"]);
 
 Route::get("ads/sub-category/{id}",function(){
     return "show ads for this sub category";
@@ -237,5 +236,5 @@ Route::group(["middleware" => "auth"], function () {
 });
 
 Route::any("test-page", function () {
-    return view("vendor.custom.user.account-settings");
+    return view("vendor.custom.web.list_ads");
 });

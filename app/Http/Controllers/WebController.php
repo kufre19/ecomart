@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\AdsCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -10,21 +11,40 @@ use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
 
 
-class WebController extends Controller
+class WebController extends BaseController
 {
 
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     public function home(Request $request)
-    {   
+    {
+
+
+        return view("vendor.custom.web.home");
+    }
+
+    public function list_ads($cat)
+    {
         $category_model = new AdsCategory();
-        $categories = $category_model->with("adsSubCategory")->get(); 
-        
-        return view("vendor.custom.web.home",compact("categories"));
+        $ads_model = new Ads();
+
+        $category = $category_model->with("adsSubCategory")->first();
+        if ($category) {
+
+            $ads = $ads_model->where("category", $cat)->orWhere("sub_category", $cat)->paginate(20);
+            return view("vendor.custom.web.list_ads", compact("ads","category"));
+        } else {
+            // return only 20 first ads as none in category is found
+            return view("vendor.custom.web.list_ads", compact("ads"));
+        }
     }
 
     public function login_page()
     {
         return view("vendor.custom.web.login");
-
     }
 
     public function logout()
@@ -36,7 +56,6 @@ class WebController extends Controller
     public function register_page()
     {
         return view("vendor.custom.web.login");
-
     }
     public function login(Request $request)
     {
@@ -50,7 +69,7 @@ class WebController extends Controller
             return redirect()->intended('/dashboard');
         } else {
             // Invalid credentials
-     
+
             return redirect()->back()->withErrors([
                 'email' => 'The provided credentials do not match our records.',
             ]);
@@ -72,23 +91,20 @@ class WebController extends Controller
         ]);
 
         if ($user) {
-           Auth::login($user);
-           return redirect()->intended('/dashboard');
+            Auth::login($user);
+            return redirect()->intended('/dashboard');
         } else {
             // Failed to create a new user
             return redirect()->back()->withErrors([
                 'registration_error' => 'Failed to register the user. Please try again.',
             ]);
         }
-
-
-        
     }
 
     public function googleAuthCallback(Request $request)
     {
         $user = Socialite::driver('google')->user();
-        
+
 
         // Find or create the user based on the email
         $existingUser = User::where('email', $user->email)->first();
@@ -96,17 +112,14 @@ class WebController extends Controller
         if ($existingUser) {
             $password = $user->id;
             $attempt_login = Auth::attempt(['email' => $user->email, 'password' => $password]);
-          
-           if( $attempt_login)
-           {
-            return redirect()->intended('/dashboard');
 
-           }else{
-            return redirect()->back()->withErrors([
-                'email' => 'An error occured please try again!',
-            ]);
-           }
-            
+            if ($attempt_login) {
+                return redirect()->intended('/dashboard');
+            } else {
+                return redirect()->back()->withErrors([
+                    'email' => 'An error occured please try again!',
+                ]);
+            }
         } else {
             $newUser = User::create([
                 'name' => $user->name,
@@ -114,53 +127,44 @@ class WebController extends Controller
                 'password' => Hash::make($user->id), // Set a temporary password or generate a random password
             ]);
             Auth::login($newUser);
-           return redirect()->intended('/dashboard');
-
+            return redirect()->intended('/dashboard');
         }
-
     }
 
     public function facebookAuthCallback(Request $request)
     {
-        
+
         $name = $request->input("name");
         $id = $request->input("userID");
 
-         // Find or create the user based on the email
-         $existingUser = User::where('email', $id)->first();
-         
-         if ($existingUser) {
-             $password = $id . $name;
-             $attempt_login = Auth::attempt(['email' => $id, 'password' => $password]);
-           
-            if( $attempt_login)
-            {
-             return response("ok");
- 
-            }else{
-             return redirect()->back()->withErrors([
-                 'email' => 'An error occured please try again!',
-             ]);
-            }
-             
-         } else {
+        // Find or create the user based on the email
+        $existingUser = User::where('email', $id)->first();
+
+        if ($existingUser) {
             $password = $id . $name;
-             $newUser = User::create([
-                 'name' => $name,
-                 'email' => $id,
-                 'password' => Hash::make($password), // Set a temporary password or generate a random password
-             ]);
-             $attempt_login = Auth::attempt(['email' => $id, 'password' => $password]);
-             return response("ok");
- 
-         }
+            $attempt_login = Auth::attempt(['email' => $id, 'password' => $password]);
+
+            if ($attempt_login) {
+                return response("ok");
+            } else {
+                return redirect()->back()->withErrors([
+                    'email' => 'An error occured please try again!',
+                ]);
+            }
+        } else {
+            $password = $id . $name;
+            $newUser = User::create([
+                'name' => $name,
+                'email' => $id,
+                'password' => Hash::make($password), // Set a temporary password or generate a random password
+            ]);
+            $attempt_login = Auth::attempt(['email' => $id, 'password' => $password]);
+            return response("ok");
+        }
     }
 
     public function facebookAuth()
     {
         return Socialite::driver('facebook')->redirect();
     }
-
-
-
 }
