@@ -134,7 +134,7 @@
                 </div><!-- End .product-details-tab -->
 
 
-                @if ($other_ads)
+                @if ($other_ads->count() > 0)
                 <h2 class="title text-center mb-4">You May Also Like</h2><!-- End .title text-center -->
 
                     @foreach ($other_ads as $other_ad)

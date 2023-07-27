@@ -34,6 +34,7 @@ class WebController extends BaseController
 
         if($ad){
             $other_ads  = $ads_model->where("id", "!=", $ad->id)->where("category", $ad->getcategory->id)->where("status", "approved")->with("adsImage","getcategory")->paginate(8);
+            
             return view("vendor.custom.web.view-ad",compact("ad","other_ads"));
         }else {
 
