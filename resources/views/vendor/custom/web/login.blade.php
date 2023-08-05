@@ -98,6 +98,17 @@
                                         <label for="email">Your email address *</label>
                                         <input type="email" class="form-control" id="email" name="email" required>
                                     </div><!-- End .form-group -->
+                                    
+
+                                    <div class="form-group">
+                                        <label for="email">Your Phone *</label>
+                                        <input type="text" class="form-control" id="email" name="phone" required>
+                                    </div><!-- End .form-group -->
+
+                                    <div class="form-group">
+                                        <label for="wa_phone">Your Whatsapp Phone *</label>
+                                        <input type="text" class="form-control" id="wa_phone" name="whatsapp_phone">
+                                    </div><!-- End .form-group -->
 
                                     <div class="form-group">
                                         <label for="password">Password *</label>

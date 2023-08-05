@@ -117,6 +117,8 @@ class WebController extends BaseController
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
+           
+
         ]);
 
         if (Auth::attempt($credentials)) {
@@ -137,11 +139,14 @@ class WebController extends BaseController
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|confirmed',
+            'phone' => 'required|min:10',
         ]);
 
         $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'whatsapp_phone' => $request->input('whatsapp_phone'),
             'password' => Hash::make($request->input('password')),
         ]);
 
