@@ -224,8 +224,7 @@ class WebController extends BaseController
 
             $email = $request->input("email") ;
             $phone = $request->input("phone") ;
-            dd("new user");
-
+            
             session()->put("email", $email);
             session()->put("phone", $phone);
     
