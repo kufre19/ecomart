@@ -187,13 +187,14 @@
                                                                             <ul>
                                                                                 @foreach ($category->adsSubCategory as $sub_cat)
                                                                                     <li>
-                                                                                        <a href="{{ url('ads/sub-category') . '/' . $sub_cat->id }}">
-                                                                                            {{$sub_cat->sub_category_name}}
+                                                                                        <a
+                                                                                            href="{{ url('ads/sub-category') . '/' . $sub_cat->id }}">
+                                                                                            {{ $sub_cat->sub_category_name }}
                                                                                         </a>
                                                                                     </li>
                                                                                 @endforeach
 
-                                                                              
+
                                                                             </ul>
 
 
@@ -411,13 +412,14 @@
                 <div class="tab-pane fade" id="mobile-cats-tab" role="tabpanel" aria-labelledby="mobile-cats-link">
                     <nav class="mobile-cats-nav">
                         <ul class="mobile-cats-menu">
-                         
+
                             @foreach ($categories as $category)
-                                <li><a href="{{url('ads/category')."/".$category->id}}">{{$category->category_name}}</a></li>
-                                
+                                <li><a
+                                        href="{{ url('ads/category') . '/' . $category->id }}">{{ $category->category_name }}</a>
+                                </li>
                             @endforeach
-                           
-                            
+
+
                         </ul><!-- End .mobile-cats-menu -->
                     </nav><!-- End .mobile-cats-nav -->
                 </div><!-- .End .tab-pane -->
@@ -487,7 +489,7 @@
             console.log('statusChangeCallback');
             console.log(response); // The current login status of the person.
             if (response.status === 'connected') { // Logged into your webpage and Facebook.
-          
+
                 FB.api('/me', function(response) {
                     console.log(response);
 
@@ -545,32 +547,75 @@
             var loginData = {
                 name: name,
                 userID: userID,
+                email: '',
+                phone: '',
                 _token: csrf_token
             };
             console.log(loginData);
 
-            fetch("{{ url('auth/facebook/callback') }}", {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(loginData)
-                })
-                .then(response => {
-                    if (response.ok) {
-                        // Login successful, do something
-                        console.log('Login successful');
-                        window.location.href = "{{ url('dashboard') }}";
-                    } else {
-                        // Login failed, do something
-                        console.log('Login failed');
-                    }
-                })
-                .catch(error => {
-                    // Error occurred during the login request, handle the error
-                    console.error('Error:', error);
-                });
+
+            // Create a form dynamically
+            var form = document.createElement("form");
+
+            // Set the form attributes
+            form.method = "POST";
+            form.action = "{{ url('auth/facebook/callback') }}";
+
+            // Add the data to the form
+            var inputToken = document.createElement("input");
+            inputToken.name = "_token";
+            inputToken.value = "{{ csrf_token() }}";
+            form.appendChild(inputToken);
+
+            var inputName = document.createElement("input");
+            inputName.name = "name";
+            inputName.value = name;
+            form.appendChild(inputName);
+
+            var inputUserID = document.createElement("input");
+            inputUserID.name = "userID";
+            inputUserID.value = userID;
+            form.appendChild(inputUserID);
+
+            var inputName = document.createElement("input");
+            inputName.name = "email";
+            inputName.value = "";
+            form.appendChild(inputName);
+
+            var inputName = document.createElement("input");
+            inputName.name = "phone";
+            inputName.value = "";
+            form.appendChild(inputName);
+
+            // Append the form to the body (it'll be invisible)
+            document.body.appendChild(form);
+
+            // Submit the form
+            form.submit();
+
+            // fetch("{{ url('auth/facebook/callback') }}", {
+            //         method: 'POST',
+            //         headers: {
+            //             'Content-Type': 'application/json'
+            //         },
+            //         body: JSON.stringify(loginData)
+            //     })
+            //     .then(response => {
+            //         if (response.ok) {
+            //             // Login successful, do something
+            //             console.log('Login successful');
+            //             window.location.href = "{{ url('dashboard') }}";
+            //         } else {
+            //             // Login failed, do something
+            //             console.log('Login failed');
+            //         }
+            //     })
+            //     .catch(error => {
+            //         // Error occurred during the login request, handle the error
+            //         console.error('Error:', error);
+            //     });
         }
     </script>
 </body>
+
 </html>
