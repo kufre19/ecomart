@@ -207,6 +207,7 @@ class WebController extends BaseController
                 $email =  Auth::user()->email;
                 $phone =  Auth::user()->phone;
 
+                dd($phone,$email);
                 
                 session()->put("email", $email);
                 session()->put("phone", $phone);
@@ -217,6 +218,8 @@ class WebController extends BaseController
         
                 return redirect()->to("dashboard");
             } else {
+                dd("can't logg uer");
+
                 return redirect()->back()->withErrors([
                     'email' => 'An error occured please try again!',
                 ]);
