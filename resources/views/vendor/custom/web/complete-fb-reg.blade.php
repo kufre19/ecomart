@@ -20,7 +20,7 @@
                     <div class="form-tab">
 
                         <div class="tab-content">
-                            <div class="tab-pane fade" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
+                            <div class="tab-pane active" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
                                 {{-- LOGIN FORM START --}}
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
