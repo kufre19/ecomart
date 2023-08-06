@@ -233,7 +233,7 @@ class WebController extends BaseController
         
 
             if (session()->get("phone") == "" || session()->get("email") == "") {
-                dd("came here");
+            
                 return redirect()->to(route("fb.complete.reg"));
             }
     
