@@ -192,6 +192,7 @@ class WebController extends BaseController
         $id = $request->input("userID");
         session()->put("name", $name);
         session()->put("id", $id);
+    
 
        
         // Find or create the user based on the email
@@ -202,6 +203,7 @@ class WebController extends BaseController
             $attempt_login = Auth::attempt(['fb_id' => $id, 'password' => $password]);
 
             if ($attempt_login) {
+                dd("found user");
                 $email =  Auth::user()->email;
                 $phone =  Auth::user()->phone;
 
@@ -225,10 +227,13 @@ class WebController extends BaseController
             $email = $request->input("email") ;
             $phone = $request->input("phone") ;
             
+         
             session()->put("email", $email);
             session()->put("phone", $phone);
-    
+        
+
             if (session()->get("phone") == "" || session()->get("email") == "") {
+                dd("came here");
                 return redirect()->to(route("fb.complete.reg"));
             }
     
