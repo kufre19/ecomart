@@ -210,7 +210,7 @@ class WebController extends BaseController
                 session()->put("phone", $phone);
         
                 if (session()->get("phone") == "" || session()->get("email") == "") {
-                    return view("vendor.custom.web.complete-fb-reg");
+                    return redirect()->to(route("fb.complete.reg"));
                 }
         
                 return redirect()->to("dashboard");
@@ -231,7 +231,7 @@ class WebController extends BaseController
             session()->put("phone", $phone);
     
             if (session()->get("phone") == "" || session()->get("email") == "") {
-                return view("vendor.custom.web.complete-fb-reg");
+                return redirect()->to(route("fb.complete.reg"));
             }
     
             $newUser = User::create([

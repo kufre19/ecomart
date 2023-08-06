@@ -205,7 +205,10 @@ Route::get('/auth/google', function () {
     return Socialite::driver('google')->redirect();
 });
 
-Route::any('/auth/facebook/callback', [App\Http\Controllers\WebController::class, "facebookAuthCallback"]);
+Route::post('/auth/facebook/callback', [App\Http\Controllers\WebController::class, "facebookAuthCallback"]);
+Route::get('/auth/facebook/complete-registration', function(){
+    return view("vendor.custom.web.complete-fb-reg");
+})->name("fb.complete.reg");
 Route::get('/auth/facebook', [App\Http\Controllers\WebController::class, "facebookAuth"]);
 // LOGIN AND REG ROUTES
 
