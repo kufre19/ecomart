@@ -190,7 +190,8 @@ class WebController extends BaseController
 
         $name = $request->input("name");
         $id = $request->input("userID");
-        
+        session()->put("name", $name);
+        session()->put("id", $id);
 
        
         // Find or create the user based on the email
@@ -201,11 +202,10 @@ class WebController extends BaseController
             $attempt_login = Auth::attempt(['fb_id' => $id, 'password' => $password]);
 
             if ($attempt_login) {
-                $email = $request->input("email") ??  Auth::user()->email;
-                $phone = $request->input("phone") ?? Auth::user()->phone;
+                $email =  Auth::user()->email;
+                $phone =  Auth::user()->phone;
 
-                session()->put("name", $name);
-                session()->put("id", $id);
+                
                 session()->put("email", $email);
                 session()->put("phone", $phone);
         
@@ -222,11 +222,10 @@ class WebController extends BaseController
         } else {
             $password = $id . $name;
 
-            $email = $request->input("email") ??  "";
-            $phone = $request->input("phone") ?? "";
+            $email = $request->input("email") ;
+            $phone = $request->input("phone") ;
+            dd("new user");
 
-            session()->put("name", $name);
-            session()->put("id", $id);
             session()->put("email", $email);
             session()->put("phone", $phone);
     

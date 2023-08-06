@@ -20,9 +20,10 @@
                     <div class="form-tab">
 
                         <div class="tab-content">
-                            <div class="tab-pane fade show active" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
+                            <div class="tab-pane fade show active" id="signin-2" role="tabpanel"
+                                aria-labelledby="signin-tab-2">
                                 {{-- LOGIN FORM START --}}
-                               
+
 
                                 <form method="POST" action="{{ url('auth/facebook/callback') }}">
                                     @csrf
@@ -35,8 +36,8 @@
                                     <div class="form-group">
                                         <label for="userphone">Phone/Whatsapp Contact *</label>
                                         <input type="text" class="form-control" id="userphone" name="phone" required>
-                                        <input type="hidden" name="id" value="{{session()->get("id")}}">
-                                        <input type="hidden" name="name" value="{{session()->get("name")}}">
+                                        <input type="hidden" name="id" value="{{ session()->get('id') }}">
+                                        <input type="hidden" name="name" value="{{ session()->get('name') }}">
                                     </div><!-- End .form-group -->
 
 
@@ -45,7 +46,7 @@
                                             <span> Submit</span>
 
                                         </button>
-
+                                        <p>Enter  email and phone number to complete your registration</p>
 
                                     </div><!-- End .form-footer -->
                                 </form>
