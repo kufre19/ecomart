@@ -36,7 +36,7 @@
                                     <div class="form-group">
                                         <label for="userphone">Phone/Whatsapp Contact *</label>
                                         <input type="text" class="form-control" id="userphone" name="phone" required>
-                                        <input type="hidden" name="id" value="{{ session()->get('id') }}">
+                                        <input type="hidden" name="userID" value="{{ session()->get('id') }}">
                                         <input type="hidden" name="name" value="{{ session()->get('name') }}">
                                     </div><!-- End .form-group -->
 
