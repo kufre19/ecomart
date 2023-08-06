@@ -6,7 +6,7 @@
         <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Login</li>
                 </ol>
@@ -31,7 +31,16 @@
                         <div class="tab-content">
                             <div class="tab-pane fade" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
                                 {{-- LOGIN FORM START --}}
-
+                                @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            
                                 <form method="POST" action="{{ url('login') }}">
                                     @csrf
 
@@ -78,8 +87,8 @@
                                                 <i class="lab la-facebook-f la-2x"></i>
                                                 Login With Facebook
                                             </a>
-                                            
-                                          
+
+
                                         </div><!-- End .col-6 -->
                                     </div><!-- End .row -->
                                 </div><!-- End .form-choice -->
@@ -88,6 +97,16 @@
                                 aria-labelledby="register-tab-2">
 
                                 {{-- REGISTER FORM START --}}
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+
                                 <form method="POST" action="{{ url('register') }}">
                                     @csrf
                                     <div class="form-group">
@@ -98,17 +117,13 @@
                                         <label for="email">Your email address *</label>
                                         <input type="email" class="form-control" id="email" name="email" required>
                                     </div><!-- End .form-group -->
-                                    
+
 
                                     <div class="form-group">
                                         <label for="email">Your Phone *</label>
                                         <input type="text" class="form-control" id="email" name="phone" required>
                                     </div><!-- End .form-group -->
 
-                                    <div class="form-group">
-                                        <label for="wa_phone">Your Whatsapp Phone *</label>
-                                        <input type="text" class="form-control" id="wa_phone" name="whatsapp_phone">
-                                    </div><!-- End .form-group -->
 
                                     <div class="form-group">
                                         <label for="password">Password *</label>
@@ -120,7 +135,7 @@
                                         <input type="password" class="form-control" id="password_confirmation"
                                             name="password_confirmation" required>
                                     </div><!-- End .form-group -->
-                                    
+
                                     <div class="form-footer">
                                         <button type="submit" class="btn btn-outline-primary-2">
                                             <span>SIGN UP</span>
@@ -151,7 +166,7 @@
                                                 <i class="lab la-facebook-f la-2x"></i>
                                                 Login With Facebook
                                             </a>
-                                          
+
                                         </div><!-- End .col-6 -->
                                     </div><!-- End .row -->
                                 </div><!-- End .form-choice -->

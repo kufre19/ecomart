@@ -17,8 +17,10 @@
            
             @csrf
             <div class="form-group mb-2">
-                <label for="myInputmain">Select Category</label>
-                <select name="category" class="form-control" id="myInputmain" required>
+                <label for="category">Select Category</label>
+                <select name="category" class="form-control" id="category" required>
+                    <option value="">Select Category</option>
+
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                     @endforeach
@@ -28,12 +30,10 @@
             </div>
 
             <div class="form-group mb-2">
-                <label for="myInput">Choose a sub-category:</label>
-                <select name="sub_category" class="form-control" id="myInputsub" required>
-                    <option value="NA">NA</option>
-                    @foreach ($sub_categories as $sub_category)
-                        <option value="{{ $category->id }}">{{ $sub_category->sub_category_name }}</option>
-                    @endforeach
+                <label for="subcategory">Choose a sub-category:</label>
+                <select name="sub_category" class="form-control" id="subcategory" required>
+                    <option value="">Select Subcategory</option>
+                   
                 </select>
             </div>
 
@@ -94,11 +94,29 @@
             <textarea class="form-control" name="item_description" cols="30" rows="4" id="p_description" required
                 placeholder="Description *"></textarea>
             <br>
+            
+
+            <label for="uname" class="sr-only">Name</label>
+            <input type="text" class="form-control" id="uname"  value="{{Auth::user()->name}}" disabled>
+            <br> 
+
+            <label for="ueamil" class="sr-only">Email</label>
+            <input type="email" name="user_email" class="form-control" id="email" value="{{ Auth::user()->email ?: 'please enter your email' }}" {{ empty(Auth::user()->email) ? 'required' : 'disabled' }}>
+
+            <br> 
+
+            <label for="uphone" class="sr-only">Phone/Whatsapp</label>
+            <input type="text" name="user_phone" class="form-control" id="uphone" 
+            value="{{ Auth::user()->phone ?: 'please enter your phone' }}" {{ empty(Auth::user()->phone) ? 'required' : 'disabled' }}>
+        
+            <br>
+
             <label for="negotiable">
                 <input type="checkbox" id="negotiable" name="negotiable" value="Yes">
                 Negotiable
             </label>
             <br>
+
             <div class="text-center">
                 <button type="submit" class="btn btn-outline-primary-2 btn-minwidth-sm">
                     <span>POST ADVERT</span>
@@ -107,4 +125,30 @@
             </div><!-- End .text-center -->
         </form><!-- End .contact-form -->
     </div><!-- End .col-md-9 col-lg-7 -->
+@endsection
+
+
+@section('extra_script')
+<script>
+    $('#category').on('change', function() {
+        var categoryId = $(this).val();
+
+        if (categoryId) {
+            $.ajax({
+                url: '/subcategories/' + categoryId,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    $('#subcategory').empty();
+                    $.each(data, function(key, value) {
+                        $('#subcategory').append('<option value="' + value.id + '">' + value.sub_category_name + '</option>');
+                    });
+                }
+            });
+        } else {
+            $('#subcategory').empty();
+        }
+    });
+</script>
+
 @endsection

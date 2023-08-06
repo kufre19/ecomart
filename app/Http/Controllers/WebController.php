@@ -146,7 +146,6 @@ class WebController extends BaseController
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'phone' => $request->input('phone'),
-            'whatsapp_phone' => $request->input('whatsapp_phone'),
             'password' => Hash::make($request->input('password')),
         ]);
 

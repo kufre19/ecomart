@@ -15,8 +15,8 @@ class UserController extends Controller
     public function ads_create_page(): View
     {
         $categories = AdsCategory::fetchAllCategoties();
-        $sub_categories = AdsSubCategory::fetchAllSubCat();
+       
         
-        return view("vendor.custom.user.ads_create",compact("categories","sub_categories"));
+        return view("vendor.custom.user.ads_create",compact("categories"));
     }
 }

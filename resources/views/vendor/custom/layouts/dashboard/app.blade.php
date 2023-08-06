@@ -152,6 +152,8 @@
     <script src="{{ asset('custom/assets/js/owl.carousel.min.js') }}"></script>
     <!-- Main JS File -->
     <script src="{{ asset('custom/assets/js/main.js') }}"></script>
+
+    @yield('extra_script')
     
 </body>
 

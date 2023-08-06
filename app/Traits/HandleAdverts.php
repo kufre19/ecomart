@@ -4,6 +4,8 @@ namespace App\Traits;
 
 use App\Models\Ads;
 use App\Models\AdsImages;
+use App\Models\AdsSubCategory;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -23,20 +25,20 @@ trait HandleAdverts
 
     public function initAdsModel()
     {
-       return $this->AdsModel = new Ads();
+        return $this->AdsModel = new Ads();
     }
 
     public function initAdsImageModel()
     {
-       return $this->AdsImageModel = new AdsImages();
+        return $this->AdsImageModel = new AdsImages();
     }
 
     /**
      * to create the image url for and add 
      * @return array
      */
-    
-    public function createAdsImageUrl(): Array
+
+    public function createAdsImageUrl(): array
     {
         return [];
     }
@@ -47,6 +49,8 @@ trait HandleAdverts
 
         $validator = Validator::make($request->all(), [
             'location' => 'required|min:5',
+            'user_email' => 'required',
+            'user_phone' => 'required',
             'item_title' => 'required|min:3',
             'item_description' => 'required|min:8',
             'adsImages.*' => 'required|file|mimes:jpeg,png,gif|max:5120',
@@ -75,6 +79,9 @@ trait HandleAdverts
         $title = $request->input('item_title');
         $description = $request->input('item_description');
         $price = $request->input('price');
+        $user_phone = $request->input('user_phone');
+        $user_email = $request->input('user_email');
+
 
         $user_id = Auth::user()->id;
         $life_cycle = time() + env("ADS_LIFE_CYCLE");
@@ -84,7 +91,7 @@ trait HandleAdverts
         // store_cover image
         $cover_image = $request->file("cover_image");
         $filename = time() . '.' . $cover_image->getClientOriginalExtension();
-        $cover_image->storeAs('ads_images/cover_image', $filename,"public");
+        $cover_image->storeAs('ads_images/cover_image', $filename, "public");
         $ads_cover_image_path = "storage/ads_images/cover_image/" . $filename;
 
 
@@ -114,6 +121,12 @@ trait HandleAdverts
         // Save the model instance to persist the data
         $ads_Stored = $ads->save();
 
+        // update user info
+        User::where("id", Auth::user()->id)->update([
+            "email" => $user_email,
+            "phone" => $user_phone
+        ]);
+
 
         if ($ads_Stored) {
             // Handle uploaded images
@@ -127,7 +140,7 @@ trait HandleAdverts
 
 
                     // Store the image in the public/ads_images folder
-                    $image->storeAs('ads_images', $filename,"public");
+                    $image->storeAs('ads_images', $filename, "public");
                     $ads_image_Stored = "storage/ads_images/" . $filename;
 
                     // dd("ol",$filename);
@@ -146,5 +159,11 @@ trait HandleAdverts
         }
 
         return redirect()->back();
+    }
+
+    public function getSubcategories($categoryId)
+    {
+        $subcategories = AdsSubCategory::where('ads_category_id', $categoryId)->get();
+        return response()->json($subcategories);
     }
 }
