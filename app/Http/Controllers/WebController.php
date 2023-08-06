@@ -203,7 +203,7 @@ class WebController extends BaseController
             $attempt_login = Auth::attempt(['fb_id' => $id, 'password' => $password]);
 
             if ($attempt_login) {
-                dd("found user");
+              
                 $email =  Auth::user()->email;
                 $phone =  Auth::user()->phone;
 
