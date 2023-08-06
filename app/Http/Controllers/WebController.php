@@ -252,6 +252,10 @@ class WebController extends BaseController
         return Socialite::driver('facebook')->redirect();
     }
 
+    public function complete_fb_reg()
+    {
+        return view("vendor.custom.web.complete-fb-reg");
+    }
 
     public function contact_us()
     {
