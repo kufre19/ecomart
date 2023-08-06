@@ -19,6 +19,7 @@ class User extends Authenticatable
         'password',
         'phone',
         'whatsapp_phone',
+        "fb_id",
         'permissions',
     ];
 
