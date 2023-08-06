@@ -190,18 +190,9 @@ class WebController extends BaseController
 
         $name = $request->input("name");
         $id = $request->input("userID");
-        $email = $request->input("email") ??  "";
-        $phone = $request->input("phone") ?? "";
+        
 
-        session()->put("name", $name);
-        session()->put("id", $id);
-        session()->put("email", $email);
-        session()->put("phone", $phone);
-
-        if (session()->get("phone") == "" || session()->get("email") == "") {
-            return view("vendor.custom.web.complete-fb-reg");
-        }
-
+       
         // Find or create the user based on the email
         $existingUser = User::where('fb_id', $id)->first();
 
@@ -210,6 +201,18 @@ class WebController extends BaseController
             $attempt_login = Auth::attempt(['fb_id' => $id, 'password' => $password]);
 
             if ($attempt_login) {
+                $email = $request->input("email") ??  Auth::user()->email;
+                $phone = $request->input("phone") ?? Auth::user()->phone;
+
+                session()->put("name", $name);
+                session()->put("id", $id);
+                session()->put("email", $email);
+                session()->put("phone", $phone);
+        
+                if (session()->get("phone") == "" || session()->get("email") == "") {
+                    return view("vendor.custom.web.complete-fb-reg");
+                }
+        
                 return redirect()->to("dashboard");
             } else {
                 return redirect()->back()->withErrors([
@@ -218,6 +221,19 @@ class WebController extends BaseController
             }
         } else {
             $password = $id . $name;
+
+            $email = $request->input("email") ??  "";
+            $phone = $request->input("phone") ?? "";
+
+            session()->put("name", $name);
+            session()->put("id", $id);
+            session()->put("email", $email);
+            session()->put("phone", $phone);
+    
+            if (session()->get("phone") == "" || session()->get("email") == "") {
+                return view("vendor.custom.web.complete-fb-reg");
+            }
+    
             $newUser = User::create([
                 'name' => $name,
                 'email' => $email,
