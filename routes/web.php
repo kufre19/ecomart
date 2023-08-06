@@ -238,5 +238,5 @@ Route::group(["middleware" => "auth"], function () {
 });
 
 Route::any("test-page", function () {
-    return view("vendor.custom.web.list_ads");
+    return view("vendor.custom.web.complete-fb-reg");
 });

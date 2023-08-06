@@ -457,6 +457,7 @@
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
     <script>
+        // This script will work for login FB btn
         document.addEventListener('DOMContentLoaded', function() {
             var loginFbButton = document.getElementById('login-fb');
             loginFbButton.addEventListener('click', function(event) {
@@ -468,6 +469,8 @@
             });
         });
 
+
+        // This script will work for registeration FB btn
         document.addEventListener('DOMContentLoaded', function() {
             var loginFbButton = document.getElementById('signup-fb');
             loginFbButton.addEventListener('click', function(event) {
@@ -484,19 +487,15 @@
             console.log('statusChangeCallback');
             console.log(response); // The current login status of the person.
             if (response.status === 'connected') { // Logged into your webpage and Facebook.
-                console.log('testing api');
-
+          
                 FB.api('/me', function(response) {
                     console.log(response);
 
-                    console.log('Good to see you testing, ' + response.name + '.');
                     directToServer(response);
 
                 });
                 // loginFBUser();
             } else { // Not logged into your webpage or we are unable to tell.
-                console.log('need tologin api');
-
                 loginFBUser();
             }
         }
@@ -574,10 +573,4 @@
         }
     </script>
 </body>
-
-
-<!-- Ecomart/index-13.html  22 Nov <script>
-    document.write(new Date().getFullYear())
-</script> 09:59:31 GMT -->
-
 </html>

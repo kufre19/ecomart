@@ -30,18 +30,17 @@ class WebController extends BaseController
     public function view_ad($id)
     {
         $ads_model = new Ads();
-        $ad = $ads_model->where("id", $id)->where("status", "approved")->with("adsImage","getcategory","getUser")->first();
+        $ad = $ads_model->where("id", $id)->where("status", "approved")->with("adsImage", "getcategory", "getUser")->first();
 
-        if($ad){
-            $other_ads  = $ads_model->where("id", "!=", $ad->id)->where("category", $ad->getcategory->id)->where("status", "approved")->with("adsImage","getcategory")->paginate(8);
-            
-            return view("vendor.custom.web.view-ad",compact("ad","other_ads"));
-        }else {
+        if ($ad) {
+            $other_ads  = $ads_model->where("id", "!=", $ad->id)->where("category", $ad->getcategory->id)->where("status", "approved")->with("adsImage", "getcategory")->paginate(8);
+
+            return view("vendor.custom.web.view-ad", compact("ad", "other_ads"));
+        } else {
 
             // tried getting ads that id is not found
             return redirect()->back();
         }
-
     }
 
     public function list_ads_by_category($cat)
@@ -58,12 +57,10 @@ class WebController extends BaseController
             } else {
                 // return only 20 first ads as none in category is found
                 $found = false;
-                $ads = $ads_model->where("status", "approved")->with("adsImage","getcategory")->orderBy('created_at', 'DESC')->paginate(20);
-               
+                $ads = $ads_model->where("status", "approved")->with("adsImage", "getcategory")->orderBy('created_at', 'DESC')->paginate(20);
             }
 
-            return view("vendor.custom.web.list_ads", compact("ads", "category","found"));
-
+            return view("vendor.custom.web.list_ads", compact("ads", "category", "found"));
         } else {
             // tried wrong category
             return redirect()->back();
@@ -85,12 +82,10 @@ class WebController extends BaseController
             } else {
                 // return only 20 first ads as none in category is found
                 $found = false;
-                $ads = $ads_model->where("status", "approved")->with("adsImage","getcategory")->orderBy('created_at', 'DESC')->paginate(20);
-               
+                $ads = $ads_model->where("status", "approved")->with("adsImage", "getcategory")->orderBy('created_at', 'DESC')->paginate(20);
             }
 
-            return view("vendor.custom.web.list_ads", compact("ads", "category","found","subcategory"));
-
+            return view("vendor.custom.web.list_ads", compact("ads", "category", "found", "subcategory"));
         } else {
             // tried wrong category
             return redirect()->back();
@@ -117,7 +112,7 @@ class WebController extends BaseController
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
-           
+
 
         ]);
 
@@ -195,6 +190,17 @@ class WebController extends BaseController
 
         $name = $request->input("name");
         $id = $request->input("userID");
+        $email = $request->input("email") ??  "";
+        $phone = $request->input("phone") ?? "";
+
+        session()->put("name", $name);
+        session()->put("id", $id);
+        session()->put("email", $email);
+        session()->put("phone", $phone);
+
+        if (session()->get("phone") == "" || session()->get("email") == "") {
+            return view("vendor.custom.web.complete-fb-reg");
+        }
 
         // Find or create the user based on the email
         $existingUser = User::where('email', $id)->first();
@@ -214,7 +220,8 @@ class WebController extends BaseController
             $password = $id . $name;
             $newUser = User::create([
                 'name' => $name,
-                'email' => $id,
+                'email' => $email,
+                "phone" => $phone,
                 'password' => Hash::make($password), // Set a temporary password or generate a random password
             ]);
             $attempt_login = Auth::attempt(['email' => $id, 'password' => $password]);
