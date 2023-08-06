@@ -203,14 +203,14 @@ class WebController extends BaseController
         }
 
         // Find or create the user based on the email
-        $existingUser = User::where('email', $id)->first();
+        $existingUser = User::where('fb_id', $id)->first();
 
         if ($existingUser) {
             $password = $id . $name;
-            $attempt_login = Auth::attempt(['email' => $id, 'password' => $password]);
+            $attempt_login = Auth::attempt(['fb_id' => $id, 'password' => $password]);
 
             if ($attempt_login) {
-                return response("ok");
+                return redirect()->to("dashboard");
             } else {
                 return redirect()->back()->withErrors([
                     'email' => 'An error occured please try again!',
@@ -222,10 +222,12 @@ class WebController extends BaseController
                 'name' => $name,
                 'email' => $email,
                 "phone" => $phone,
+                "fb_id"=>$id,
                 'password' => Hash::make($password), // Set a temporary password or generate a random password
             ]);
-            $attempt_login = Auth::attempt(['email' => $id, 'password' => $password]);
-            return response("ok");
+            $attempt_login = Auth::attempt(['fb_id' => $id, 'password' => $password]);
+            return redirect()->to("dashboard");
+
         }
     }
 
