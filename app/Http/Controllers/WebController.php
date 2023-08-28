@@ -233,7 +233,7 @@ class WebController extends BaseController
         }
 
         // Token is valid. Redirect to reset password form.
-       
+        session()->put("email",$request->email);
         return redirect()->route('password.reset.form');
     }
 
@@ -250,13 +250,14 @@ class WebController extends BaseController
         ]);
 
         // Find the user and update their password
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('email',session()->get("email"))->first();
         if ($user) {
             $user->password = Hash::make($request->password);
             $user->save();
 
             // Delete the token as it's been used
             DB::table('password_resets')->where('email', $user->email)->delete();
+            session()->forget("email");
 
             return redirect()->route('login')->with('status', 'Password has been reset');
         }
