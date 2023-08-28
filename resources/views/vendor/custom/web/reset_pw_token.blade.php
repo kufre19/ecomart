@@ -33,7 +33,7 @@
                                     </div>
                                 @endif
 
-                                <form method="POST" action="{{ url('forgot-password') }}">
+                                <form method="POST" action="{{ url('verify-token') }}">
                                     @csrf
                                     <p>Please enter the reset token sent to your registered below </p><br>
 
@@ -60,25 +60,7 @@
                                 </form>
                                 {{-- LOGIN FORM ENDS --}}
 
-                                <div class="form-choice">
-                                    <p class="text-center">or sign in with</p>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <a href="{{ url('/auth/google') }}" class="btn btn-login btn-g">
-                                                <i class="lab la-google la-2x"></i>
-                                                Login With Google
-                                            </a>
-                                        </div><!-- End .col-6 -->
-                                        <div class="col-sm-6">
-                                            <a href="#" id="login-fb" class="btn btn-login btn-f">
-                                                <i class="lab la-facebook-f la-2x"></i>
-                                                Login With Facebook
-                                            </a>
-
-
-                                        </div><!-- End .col-6 -->
-                                    </div><!-- End .row -->
-                                </div><!-- End .form-choice -->
+                               
                             </div><!-- .End .tab-pane -->
 
                         </div><!-- End .tab-content -->

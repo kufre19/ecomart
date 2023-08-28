@@ -6,6 +6,7 @@ use App\Models\Ads;
 use App\Models\AdsCategory;
 use App\Models\AdsSubCategory;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -175,11 +176,11 @@ class WebController extends BaseController
             'email' => 'required|email|exists:users,email',
         ]);
 
-        
+
 
         // $token = Str::random(60);
         $token = Str::substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'), 0, 12);
-        $token = Hash::make($token);
+
 
         // Store the reset token in the database
         DB::table('password_resets')->insert([
@@ -200,13 +201,67 @@ class WebController extends BaseController
                 ->subject('Your Password Reset Token');
         });
 
-        return redirect()->to(route("reset.token",['email'=>$request->email]));
+        return redirect()->to(route("reset.token", ['email' => $request->email]));
     }
 
     public function reset_token_page()
     {
         return view("vendor.custom.web.reset_pw_token");
+    }
 
+    public function verifyToken(Request $request)
+    {
+        $request->validate([
+            'token' => 'required',
+            'email' => 'required|email|exists:users,email'
+        ]);
+
+        // Check if the token exists and is valid (e.g., not expired)
+        $tokenData = DB::table('password_resets')
+            ->where('email', $request->email)
+            ->where('token', $request->token)
+            ->first();
+
+        if (!$tokenData) {
+            return redirect()->back()->withErrors(['token' => 'This token is invalid']);
+        }
+
+        // Check if token is expired. Assuming it's valid for 60 minutes.
+        if (Carbon::parse($tokenData->created_at)->addMinutes(60)->isPast()) {
+            DB::table('password_resets')->where('email', $request->email)->delete();
+            return redirect()->back()->withErrors(['token' => 'This token has expired']);
+        }
+
+        // Token is valid. Redirect to reset password form.
+       
+        return redirect()->route('password.reset.form');
+    }
+
+    public function reset_pw_page()
+    {
+        return view("vendor.custom.web.reset_password");
+
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'password' => 'required|confirmed|min:8'
+        ]);
+
+        // Find the user and update their password
+        $user = User::where('email', $request->email)->first();
+        if ($user) {
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            // Delete the token as it's been used
+            DB::table('password_resets')->where('email', $user->email)->delete();
+
+            return redirect()->route('login')->with('status', 'Password has been reset');
+        }
+
+        return redirect()->route('login')->withErrors(['email' => 'Could not reset the password.']);
     }
 
     public function googleAuthCallback(Request $request)
