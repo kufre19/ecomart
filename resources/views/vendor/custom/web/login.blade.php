@@ -20,16 +20,16 @@
                     <div class="form-tab">
                         <ul class="nav nav-pills nav-fill" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link" id="signin-tab-2" data-toggle="tab" href="#signin-2" role="tab"
+                                <a class="nav-link active" id="signin-tab-2" data-toggle="tab" href="#signin-2" role="tab"
                                     aria-controls="signin-2" aria-selected="false">Sign In</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" id="register-tab-2" data-toggle="tab" href="#register-2"
+                                <a class="nav-link " id="register-tab-2" data-toggle="tab" href="#register-2"
                                     role="tab" aria-controls="register-2" aria-selected="true">Register</a>
                             </li>
                         </ul>
                         <div class="tab-content">
-                            <div class="tab-pane fade" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
+                            <div class="tab-pane fade show active" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
                                 {{-- LOGIN FORM START --}}
                                 @if ($errors->any())
                                 <div class="alert alert-danger">
@@ -68,7 +68,7 @@
                                                 Me</label>
                                         </div><!-- End .custom-checkbox -->
 
-                                        <a href="#" class="forgot-link">Forgot Your Password?</a>
+                                        <a href="{{route('forgot.password')}}" class="forgot-link">Forgot Your Password?</a>
                                     </div><!-- End .form-footer -->
                                 </form>
                                 {{-- LOGIN FORM ENDS --}}
@@ -93,7 +93,7 @@
                                     </div><!-- End .row -->
                                 </div><!-- End .form-choice -->
                             </div><!-- .End .tab-pane -->
-                            <div class="tab-pane fade show active" id="register-2" role="tabpanel"
+                            <div class="tab-pane fade" id="register-2" role="tabpanel"
                                 aria-labelledby="register-tab-2">
 
                                 {{-- REGISTER FORM START --}}

@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Validator;
 
 
 class WebController extends BaseController
@@ -92,6 +94,9 @@ class WebController extends BaseController
         }
     }
 
+   
+    
+
     public function login_page()
     {
         return view("vendor.custom.web.login");
@@ -152,6 +157,35 @@ class WebController extends BaseController
             return redirect()->back()->withErrors([
                 'registration_error' => 'Failed to register the user. Please try again.',
             ]);
+        }
+    }
+
+    public function forgot_pw_page()
+    {
+        return view("vendor.custom.web.forget_password");
+
+    }
+
+    public function sendResetLinkEmail(Request $request)
+    {
+        // Validate the email input
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|exists:users,email',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        // Send the reset link
+        $response = Password::broker()->sendResetLink(
+            $request->only('email')
+        );
+
+        if ($response == Password::RESET_LINK_SENT) {
+            return response()->json(['message' => 'Reset link sent to your email.']);
+        } else {
+            return response()->json(['error' => 'Failed to send reset link.'], 500);
         }
     }
 
