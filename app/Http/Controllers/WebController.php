@@ -189,12 +189,24 @@ class WebController extends BaseController
         ]);
 
         // Now send the token to the user's email (using a simple Laravel mailable or basic email for this example)
-        Mail::raw('Here is your password reset token: ' . $token, function ($message) use ($request) {
+        $text = <<<MSG
+        You've requested a password reset on your ecomart.ng account, please find below here reset token,
+        Token: $token
+
+        please if you did not request for a password reset contact our technical support below <support@ecomart.ng>
+        MSG;
+        Mail::raw($text, function ($message) use ($request) {
             $message->to($request->email)
                 ->subject('Your Password Reset Token');
         });
 
-        return response()->json(['message' => 'Reset link sent to your email.']);
+        return redirect()->to(route("reset.token"));
+    }
+
+    public function reset_token_page()
+    {
+        return view("vendor.custom.web.reset_pw_token");
+
     }
 
     public function googleAuthCallback(Request $request)

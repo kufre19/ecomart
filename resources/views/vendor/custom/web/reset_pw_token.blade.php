@@ -8,7 +8,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Forgot Password</li>
+                    <li class="breadcrumb-item active" aria-current="page">Reset Token</li>
                 </ol>
             </div><!-- End .container -->
         </nav><!-- End .breadcrumb-nav -->
@@ -35,12 +35,11 @@
 
                                 <form method="POST" action="{{ url('forgot-password') }}">
                                     @csrf
-                                    <p>Please enter your registerd email below, we will send
-                                        you instructions on how to recover your password</p><br>
+                                    <p>Please enter the reset token sent to your registered email below </p><br>
 
                                     <div class="form-group">
-                                        <label for="login-email">Email address *</label>
-                                        <input type="email" class="form-control" id="login-email" name="email" required>
+                                        <label for="login-email">Reset Token *</label>
+                                        <input type="text" class="form-control" id="login-email" name="token" required>
                                     </div><!-- End .form-group -->
 
 
