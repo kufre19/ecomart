@@ -190,7 +190,7 @@
                                     <div class="product-cat">
                                         <a href="#">{{ $other_ad->getcategory->category_name }}</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="{{{{url('ads/view') . "/". $other_ad->id}}}}">{{ $other_ad->title }}</a></h3>
+                                    <h3 class="product-title"><a href="{{url('ads/view') . "/". $other_ad->id}}">{{ $other_ad->title }}</a></h3>
                                     <!-- End .product-title -->
                                     <div class="product-price">
                                         ₦ {{ number_format($other_ad->price, 2) }}
