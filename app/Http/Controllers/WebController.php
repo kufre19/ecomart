@@ -177,7 +177,9 @@ class WebController extends BaseController
 
         
 
-        $token = Str::random(60);
+        // $token = Str::random(60);
+        $token = Str::substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'), 0, 12);
+        $token = Hash::make($token);
 
         // Store the reset token in the database
         DB::table('password_resets')->insert([
@@ -198,7 +200,7 @@ class WebController extends BaseController
                 ->subject('Your Password Reset Token');
         });
 
-        return redirect()->to(route("reset.token"));
+        return redirect()->to(route("reset.token",['email'=>$request->email]));
     }
 
     public function reset_token_page()
