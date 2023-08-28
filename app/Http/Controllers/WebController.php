@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
 
 
 class WebController extends BaseController
@@ -94,8 +97,8 @@ class WebController extends BaseController
         }
     }
 
-   
-    
+
+
 
     public function login_page()
     {
@@ -163,7 +166,6 @@ class WebController extends BaseController
     public function forgot_pw_page()
     {
         return view("vendor.custom.web.forget_password");
-
     }
 
     public function sendResetLinkEmail(Request $request)
@@ -177,16 +179,22 @@ class WebController extends BaseController
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        // Send the reset link
-        $response = Password::broker()->sendResetLink(
-            $request->only('email')
-        );
+        $token = Str::random(60);
 
-        if ($response == Password::RESET_LINK_SENT) {
-            return response()->json(['message' => 'Reset link sent to your email.']);
-        } else {
-            return response()->json(['error' => 'Failed to send reset link.'], 500);
-        }
+        // Store the reset token in the database
+        DB::table('password_resets')->insert([
+            'email' => $request->email,
+            'token' => $token,
+            'created_at' => now()
+        ]);
+
+        // Now send the token to the user's email (using a simple Laravel mailable or basic email for this example)
+        Mail::raw('Here is your password reset token: ' . $token, function ($message) use ($request) {
+            $message->to($request->email)
+                ->subject('Your Password Reset Token');
+        });
+
+        return response()->json(['message' => 'Reset link sent to your email.']);
     }
 
     public function googleAuthCallback(Request $request)
@@ -226,9 +234,9 @@ class WebController extends BaseController
         $id = $request->input("userID");
         session()->put("name", $name);
         session()->put("id", $id);
-    
 
-       
+
+
         // Find or create the user based on the email
         $existingUser = User::where('fb_id', $id)->first();
 
@@ -237,18 +245,18 @@ class WebController extends BaseController
             $attempt_login = Auth::attempt(['fb_id' => $id, 'password' => $password]);
 
             if ($attempt_login) {
-              
+
                 $email =  Auth::user()->email;
                 $phone =  Auth::user()->phone;
 
-                
+
                 session()->put("email", $email);
                 session()->put("phone", $phone);
-        
+
                 if (session()->get("phone") == "" || session()->get("email") == "") {
                     return redirect()->to(route("fb.complete.reg"));
                 }
-        
+
                 return redirect()->to("dashboard");
             } else {
 
@@ -259,29 +267,28 @@ class WebController extends BaseController
         } else {
             $password = $id . $name;
 
-            $email = $request->input("email") ;
-            $phone = $request->input("phone") ;
-            
-         
+            $email = $request->input("email");
+            $phone = $request->input("phone");
+
+
             session()->put("email", $email);
             session()->put("phone", $phone);
-        
+
 
             if (session()->get("phone") == "" || session()->get("email") == "") {
-            
+
                 return redirect()->to(route("fb.complete.reg"));
             }
-    
+
             $newUser = User::create([
                 'name' => $name,
                 'email' => $email,
                 "phone" => $phone,
-                "fb_id"=>$id,
+                "fb_id" => $id,
                 'password' => Hash::make($password), // Set a temporary password or generate a random password
             ]);
             $attempt_login = Auth::attempt(['fb_id' => $id, 'password' => $password]);
             return redirect()->to("dashboard");
-
         }
     }
 
