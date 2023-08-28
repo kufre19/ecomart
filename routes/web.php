@@ -198,7 +198,7 @@ Route::get('how-to-shop', [App\Http\Controllers\WebController::class, "how_to_sh
 Route::get('login', [App\Http\Controllers\WebController::class, "login_page"])->name("login");
 Route::get('forgot-password', [App\Http\Controllers\WebController::class, "forgot_pw_page"])->name("forgot.password");
 Route::post('forgot-password', [App\Http\Controllers\WebController::class, "sendResetLinkEmail"]);
-Route::get('reset-token', [App\Http\Controllers\WebController::class, "reset_token_page"])->name("rest.token");
+Route::get('reset-token', [App\Http\Controllers\WebController::class, "reset_token_page"])->name("reset.token");
 Route::get('logout', [App\Http\Controllers\WebController::class, "logout"]);
 Route::get('register', [App\Http\Controllers\WebController::class, "register_page"]);
 Route::post('login', [App\Http\Controllers\WebController::class, "login"]);
