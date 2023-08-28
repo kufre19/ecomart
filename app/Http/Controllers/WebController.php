@@ -175,9 +175,7 @@ class WebController extends BaseController
             'email' => 'required|email|exists:users,email',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
-        }
+        
 
         $token = Str::random(60);
 
