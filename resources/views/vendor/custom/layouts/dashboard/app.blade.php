@@ -118,7 +118,7 @@
                     </li>
                    
                     <li>
-                        <a href="product.html" class="sf-with-ul">Contact</a>
+                        <a href="{{url('')}}" class="sf-with-ul">Contact</a>
                     </li>
                   
                     

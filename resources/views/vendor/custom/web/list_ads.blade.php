@@ -70,7 +70,7 @@
                                         <div class="product-cat">
                                             <a href="#">{{ $category->category_name }}</a>
                                         </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">{{ $ad->title }}</a></h3>
+                                        <h3 class="product-title"><a href="">{{ $ad->title }}</a></h3>
                                         <!-- End .product-title -->
                                         <div class="product-price">
                                             ₦ {{ number_format($ad->price, 2) }}
@@ -92,14 +92,12 @@
                                 <div class="product">
                                     <figure class="product-media">
                                         {{-- <span class="product-label label-new">New</span> --}}
-                                        <a href="product.html">
-                                            <img src="{{ asset($ad->cover_image) }}" alt="Product image"
-                                                class="product-image">
+                                        <a href="{{url('ads/view') . "/". $ad->id}}">
+                                            <img src="{{ asset($ad->cover_image) }}" alt="Product image" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add
-                                                    to wishlist</span></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                           
                                         </div><!-- End .product-action-vertical -->
 
@@ -113,7 +111,7 @@
                                         <div class="product-cat">
                                             <a href="#">{{ $ad->getcategory->category_name }}</a>
                                         </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">{{ $ad->title }}</a></h3>
+                                        <h3 class="product-title"><a href="{{url('ads/view') . "/". $ad->id}}">{{ $ad->title }}</a></h3>
                                         <!-- End .product-title -->
                                         <div class="product-price">
                                             ₦ {{ number_format($ad->price, 2) }}
