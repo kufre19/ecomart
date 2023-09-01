@@ -6,6 +6,7 @@ use App\Models\Ads;
 use App\Models\AdsCategory;
 use App\Models\AdsSubCategory;
 use App\Models\User;
+use App\Traits\HandleAdverts;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,6 +22,8 @@ use Illuminate\Support\Facades\Mail;
 class WebController extends BaseController
 {
 
+    use HandleAdverts;
+    
     public function __construct()
     {
         parent::__construct();

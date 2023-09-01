@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use App\Models\Ads;
+use App\Models\AdsCategory;
 use App\Models\AdsImages;
 use App\Models\AdsSubCategory;
 use App\Models\User;
@@ -165,5 +166,28 @@ trait HandleAdverts
     {
         $subcategories = AdsSubCategory::where('ads_category_id', $categoryId)->get();
         return response()->json($subcategories);
+    }
+
+    public function ads_search(Request $request)
+    {
+        $ads_query = $request->input("ads_query");
+        $category = $request->input('category') ?? "all";
+
+        // $findAds = Ads::search($ads_query);
+        $findAds = Ads::where('title', 'LIKE', '%' . $ads_query . '%');
+        if($category != "all")
+        {
+            $findAds = $findAds->where("category",$category);
+        }
+        $findAds = $findAds->paginate(20);
+
+        $ads = $findAds;
+        $found = true;
+        $category_model = new AdsCategory();
+        // dd($ads);
+      
+        $category = $category_model->with("adsSubCategory")->first();
+
+        return view("vendor.custom.web.list_ads", compact("ads","found","category"));
     }
 }

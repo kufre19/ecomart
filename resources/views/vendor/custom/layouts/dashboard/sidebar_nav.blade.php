@@ -6,7 +6,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link {{request()->routeIs('ads.create.page') ? 'active' : ''}}" id="tab-adverts-link"
-                href="{{url("ads/create")}}" role="tab" aria-controls="tab-adverts">Adverts</a>
+                href="{{url("ads/create")}}" role="tab" aria-controls="tab-adverts">My Ads</a>
         </li>
         {{-- <li class="nav-item">
             <a class="nav-link {{request()->routeIs('dashboard.account.contacts') ? 'active' : ''}}" id="tab-address-link"

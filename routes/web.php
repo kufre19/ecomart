@@ -221,6 +221,8 @@ Route::get('/auth/facebook', [App\Http\Controllers\WebController::class, "facebo
 Route::get("ads/category/{id}",[WebController::class,"list_ads_by_category"]);
 Route::get("ads/sub-category/{id}",[WebController::class,"list_ads_by_subcategory"]);
 Route::get("ads/view/{id}",[WebController::class,"view_ad"]);
+Route::get("ads/search",[WebController::class,"ads_search"]);
+
 
 
 Route::group(["middleware" => "auth"], function () {

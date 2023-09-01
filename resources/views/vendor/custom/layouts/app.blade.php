@@ -118,11 +118,12 @@
                         <div
                             class="header-search header-search-extended header-search-visible header-search-no-radius d-none d-lg-block">
                             <a href="#" class="search-toggle" role="button"><i class="fa fa-search"></i></a>
-                            <form action="#" method="get">
+                            <form action="{{url('ads/search')}}" method="get">
                                 <div class="header-search-wrapper search-wrapper-wide">
                                     <div class="select-custom">
-                                        <select id="cat" name="cat">
-
+                                        <select id="cat" name="category">
+                                            <option value="all">All
+                                            </option>
                                             @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->category_name }}
                                                 </option>
@@ -131,7 +132,7 @@
                                         </select>
                                     </div><!-- End .select-custom -->
                                     <label for="q" class="sr-only">Search</label>
-                                    <input type="search" class="form-control" name="q" id="q"
+                                    <input type="search" class="form-control" name="ads_query" id="q"
                                         placeholder="Search product ..." required>
                                     <button class="btn btn-primary" type="submit"><i
                                             class="fa fa-search"></i></button>
@@ -143,11 +144,11 @@
                     <div class="header-right">
                         <div class="header-dropdown-link">
 
-                            <a href="wishlist.html" class="wishlist-link">
+                            {{-- <a href="wishlist.html" class="wishlist-link">
                                 <i class="fa fa-heart"></i>
                                 <span class="wishlist-count">0</span>
                                 <span class="wishlist-txt">Wishlist</span>
-                            </a>
+                            </a> --}}
 
 
                         </div>
@@ -287,15 +288,15 @@
                                 <img src="{{ asset('custom/assets/images/demos/demo-13/logo-footer.png') }}"
                                     class="footer-logo" alt="Footer Logo" width="105" height="25">
                                 <!-- <h1 class="footer-logo">Ecomart</h1> -->
-                                <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate
-                                    magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan
-                                    porttitor, facilisis luctus, metus. </p>
+                                <p>
+                                Ecomart is a multiple vendors local classifieds E-commerce Marketplace that connects buyers and sellers with genuine needs.
+                                </p>
 
                                 <div class="widget-about-info">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-4">
-                                            <span class="widget-about-title">Got Question? Call us 24/7</span>
-                                            <a href="tel:123456789">+0123 456 789</a>
+                                            <span class="widget-about-title">Got Question? Email us 24/7</span>
+                                            <a href="mail:support@ecomart.ng">support@ecomart.ng</a>
                                         </div><!-- End .col-sm-6 -->
 
                                     </div><!-- End .row -->
@@ -325,7 +326,7 @@
                                 <ul class="widget-list">
                                     <li><a href="{{ url('login') }}">Sign In</a></li>
 
-                                    <li><a href="#">My Wishlist</a></li>
+                                    {{-- <li><a href="#">My Wishlist</a></li> --}}
 
 
                                 </ul><!-- End .widget-list -->
@@ -369,10 +370,10 @@
         <div class="mobile-menu-wrapper">
             <span class="mobile-menu-close"><i class="fa fa-times"></i></span>
 
-            <form action="#" method="get" class="mobile-search">
+            <form action="{{url('ads/search')}}" method="get" class="mobile-search">
                 <label for="mobile-search" class="sr-only">Search</label>
-                <input type="search" class="form-control" name="mobile-search" id="mobile-search"
-                    placeholder="Search in..." required>
+                <input type="search" class="form-control" name="ads_query" id="mobile-search"
+                    placeholder="Search Adverts..." required>
                 <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
             </form>
 

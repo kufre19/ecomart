@@ -50,14 +50,14 @@
             <div class="page-header text-center"
                 style="background-image: url('{{ asset('custom/assets/images/page-header-bg.jpg') }}')">
                 <div class="container">
-                    <h1 class="page-title">My Account<span>Shop</span></h1>
+                    <h1 class="page-title">My Account<span>Post Ads</span></h1>
                 </div><!-- End .container -->
             </div><!-- End .page-header -->
             <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
                 <div class="container">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                        <li class="breadcrumb-item"><a href="#">Ads</a></li>
                         <li class="breadcrumb-item active" aria-current="page">My Account</li>
                     </ol>
                 </div><!-- End .container -->
