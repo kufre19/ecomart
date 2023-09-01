@@ -179,15 +179,21 @@ trait HandleAdverts
         {
             $findAds = $findAds->where("category",$category);
         }
-        $findAds = $findAds->paginate(20);
+        $findAds = $findAds->where("status", "approved")->with("adsImage", "getcategory")->paginate(20);
 
         $ads = $findAds;
         $found = true;
         $category_model = new AdsCategory();
         // dd($ads);
+        if (count($ads) < 1) {
+            # code...
+            $found = false;
+            $other_ads  = Ads::where("status", "approved")->paginate(8);
+
+        }
       
         $category = $category_model->with("adsSubCategory")->first();
 
-        return view("vendor.custom.web.list_ads", compact("ads","found","category"));
+        return view("vendor.custom.web.list_ads", compact("ads","found","category","other_ads"));
     }
 }
