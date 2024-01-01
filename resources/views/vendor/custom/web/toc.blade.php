@@ -50,7 +50,7 @@
                             </a>
                         </h2>
                     </div><!-- End .card-header -->
-                    <div id="collapse2-1" class="collapse" aria-labelledby="heading2-1" data-parent="#accordion-2">
+                    <div id="collapse2-1" class="collapse show" aria-labelledby="heading2-1" data-parent="#accordion-2">
                         <div class="card-body">
                             <p>
                                 For Sellers  who intend to have a quicker sales by reach out to an entire wider audience and be at the Top of buyers search 
