@@ -26,7 +26,7 @@
                     <div class="card-header" id="heading2-1">
                         <h2 class="card-title">
                             <a class="collapsed" role="button"  href="#" aria-expanded="false" aria-controls="collapse2-1">
-                                Our terms and confiton of use is as follow
+                                Follow the Instructions below to delete your data from our platform
                             </a>
                         </h2>
                     </div><!-- End .card-header -->
