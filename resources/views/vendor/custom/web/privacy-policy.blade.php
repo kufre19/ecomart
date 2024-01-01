@@ -25,13 +25,16 @@
                     <div class="card-header" id="heading-1">
                         <h2 class="card-title">
                             <a role="button"  href="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
-                                How will my parcel be delivered?
+                               Please Read through Ecomart's privacy-policy to enable get the best out this platform
                             </a>
                         </h2>
                     </div><!-- End .card-header -->
                     <div id="collapse-1" class="collapse show" aria-labelledby="heading-1" data-parent="#accordion-1">
                         <div class="card-body">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi. 
+                            EcoMart recognize the importance of online privacy and we are committed in an appropriate manner for the security of our Users information. 
+                            We do not Sell, exchange, or release your personal information at your back. Informations collected from you when registering  are solely for:
+                            *The purpose of creating your  user account before you can be able to post your products and services to enable customers reach out to you directly on your  provided contact.
+                            To keep track of your advertisement,Handle inquiries and complains by our Resources Administrator. 
                         </div><!-- End .card-body -->
                     </div><!-- End .collapse -->
                 </div><!-- End .card -->
