@@ -382,4 +382,16 @@ class WebController extends BaseController
     {
         return "faqs page";
     }
+
+    public function privacyPolicy()
+    {
+        return view("vendor.custom.web.privacy-policy");
+
+    }
+    public function toc()
+    {
+        return view("vendor.custom.web.toc");
+
+    }
 }
+

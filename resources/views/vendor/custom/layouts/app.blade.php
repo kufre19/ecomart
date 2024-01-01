@@ -310,7 +310,8 @@
 
                                 <ul class="widget-list">
                                     <li><a href="about.html">About Ecomart</a></li>
-                                    <li><a href="#">How to shop on Ecomart</a></li>
+                                    <li><a href="{{ url('/privacy-policy') }}">privacy policy</a></li>
+                                    <li><a href="{{ url('/toc') }}">terms and condition</a></li>
                                     <li><a href="faq.html">FAQ</a></li>
                                     <li><a href="contact.html">Contact us</a></li>
                                     <li><a href="login.html">Post Your Ads</a></li>
