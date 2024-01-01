@@ -393,5 +393,11 @@ class WebController extends BaseController
         return view("vendor.custom.web.toc");
 
     }
+
+    public function deleteAccount()
+    {
+        return view("vendor.custom.web.delete-your-account");
+
+    }
 }
 

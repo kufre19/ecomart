@@ -192,6 +192,8 @@ Route::get('faqs', [App\Http\Controllers\WebController::class, "faqs"]);
 Route::get('how-to-shop', [App\Http\Controllers\WebController::class, "how_to_shop"]);
 Route::get('/privacy-policy', [App\Http\Controllers\WebController::class, "privacyPolicy"]);
 Route::get('/terms-and-condition', [App\Http\Controllers\WebController::class, "toc"]);
+Route::get('/delete-your-account', [App\Http\Controllers\WebController::class, "deleteAccount"]);
+
 
 
 
