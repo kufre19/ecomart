@@ -13,6 +13,7 @@
     <meta name="keywords" content="Ecommerce Marketplace">
     <meta name="description" content="Ecomart - Best online commerce store">
     <meta name="author" content="Temple.inc">
+    <meta name="facebook-domain-verification" content="xk7k5r5zp3bsrrvcbztof979a23ttc" />
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('custom/assets/images/icons/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32"
