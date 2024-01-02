@@ -375,7 +375,7 @@ class WebController extends BaseController
 
     public function contact_us()
     {
-        return "contact us page";
+        return view("vendor.custom.web.contact");
     }
 
     public function faqs()
